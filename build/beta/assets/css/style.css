@@ -78,6 +78,38 @@
   line-height: 0.5;
   margin-left: -5px;
 }
+/* modal ==================================================================== */
+.modal{
+  transform: translate3d(0,0,0);
+  overflow:hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  height: 80%;
+  max-width: 800px;
+  background: #333;
+  z-index: 99;
+  padding: 2em;
+}
+.modal .header{margin-top: 0;}
+.modal .body{margin-bottom: 0;overflow: auto;height: calc(100% - 4.3em);}
+.modal .close,.modal .close:after{
+  background: transparent;
+  position: absolute;
+  cursor: pointer;
+  content: '×';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: .8;
+  height: 1em;
+  width: 1em;
+  color: red;
+  border: 0;
+  right: 0;
+  top: 0;
+}
 /* style override =========================================================== */
 #nprogress .bar {
   height: 3px;
@@ -247,6 +279,7 @@ header *{min-height: 60px;}
     top: 0;
   }
 }
+#contact form.recently-submitted [type="submit"]::before{content: '🛇  ';}
 #contact form button,
 #contact form input,
 #contact form textarea {
