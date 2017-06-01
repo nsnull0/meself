@@ -8,9 +8,7 @@ var loadDeferredStyles = function() {
   on(document, 'keydown', function(e) {
     e = e || window.event;
     var isEscape = (e.keyCode == 27) || false;
-    if (isEscape) {
-      window.location.href = '#!/_';
-    }
+    if (isEscape) { }
   });
 
   // parallax
@@ -30,8 +28,11 @@ var loadDeferredStyles = function() {
       '_iOS___',
       '__iOS__',
       '___iOS_',
-      '__iOS__',
-      '_iOS___',
+      '____iOS',
+      '___iOS',
+      '__iOS',
+      '_iOS',
+      'iOS'
     ];
     data = e.type=='mouseover' ? data.reverse() : data;
     function ani(el){
@@ -61,6 +62,9 @@ var loadDeferredStyles = function() {
       var img = JSON.parse(this.parentNode.dataset.img);
       var idx = 1*this.parentNode.dataset.idx || 0;
       idx = (idx + inc < 0) ? img.length-1 : (idx + inc > img.length-1) ? 0 : idx + inc;
+      on(one('img', this.parentNode), 'load', function (data) { this.style.opacity='1'; });
+      addClass(one('img', this.parentNode), 'ease');
+      one('img', this.parentNode).style.opacity='.3';
       one('img', this.parentNode).src = img[idx];
       this.parentNode.dataset.idx = idx;
     });
@@ -73,7 +77,6 @@ var loadDeferredStyles = function() {
       mapboxgl.accessToken = 'pk.eyJ1IjoiZ3VuYXdhbndpamF5YSIsImEiOiJjajM2Zm54cngwNTM3MzNxNjdqOXcxNTZ2In0.U2aHrmrL5HEht8hX2I4FzA';
       lnlt = [139.7242792, 35.5942238];
       map = new mapboxgl.Map({
-        // scrollZoom :false,
         container: 'map',
         center: lnlt,
         zoom: 15,

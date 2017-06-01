@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en" class="ease"><head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6,16 +6,15 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
   </noscript>
-  <style>.jsload{opacity: 0} html,body{background: #232323}</style>
+  <style>.jsload{opacity: 0} html,body{background: #333333;color:#FAFAFA;min-height:100%;max-width:100%;}body{overflow-y:scroll;}</style>
   <link rel="stylesheet" type="text/css" href="assets/css/lib.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="assets/js/lib.js"></script>
 </head><body>
 <main>
   <header>
-    <nav data-gumshoe-header class="menu fixed">
-      <ul data-gumshoe class="inline-menu no-print">
-        <li><a class="btn ease menu-toggle" href="#_"></a></li>
+    <nav data-gumshoe-header class="menu fixed no-print">
+      <ul data-gumshoe class="inline-menu">
         <li><a data-scroll class="btn ease menu-item" href="#me">me.self</a></li>
         <li><a data-scroll class="btn ease menu-item" href="#project">project</a></li>
         <li><a data-scroll class="btn ease menu-item" href="#contact">contact</a></li>
@@ -25,7 +24,7 @@
   <section id="me">
     <div class="clear hero"><div class="flex-view ratio-1-2"><div>
       <img class="cover" src="assets/images/cover.jpg"/>
-      <h1 class="title"><span class="ease center">ME.SELF</span></h1>
+      <h1 class="title"><span class="ease">ME.SELF</span></h1>
     </div></div></div>
     <div class="clear container">
     <p>
@@ -54,34 +53,50 @@
     <h2>project</h2>
     <div class="row clear">
       <div class="half">
-        <div class="gallery" data-img='["http://via.placeholder.com/320x568","https://placeimg.com/320/568/any","http://lorempixel.com/320/568"]'>
+        <div class="gallery" data-img='[
+          "https://unsplash.it/320/568?random",
+          "https://via.placeholder.com/320x568",
+          "https://placeimg.com/320/568/any",
+          "https://lorempixel.com/320/568"
+        ]'>
           <div class="flex-view ratio-1775">
             <img src="https://unsplash.it/320/568?random"/>
           </div>
-          <button class="prev"></button>
-          <button class="next"></button>
-        </div>
+          <button class="prev no-print"></button>
+          <button class="next no-print"></button>
+        </div><p></p>
       </div>
       <div class="half">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
     </div>
     <div class="row clear">
       <div class="half">
-        <div class="gallery" data-img='["http://via.placeholder.com/320x568","https://placeimg.com/320/568/any","http://lorempixel.com/320/568"]'>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div class="half">
+        <div class="gallery" data-img='[
+          "https://unsplash.it/320/568?random",
+          "https://via.placeholder.com/320x568",
+          "https://placeimg.com/320/568/any",
+          "https://lorempixel.com/320/568"
+        ]'>
           <div class="flex-view ratio-1775">
             <img src="https://unsplash.it/320/568?random"/>
           </div>
-          <button class="prev"></button>
-          <button class="next"></button>
-        </div>
-      </div>
-      <div class="half">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button class="prev no-print"></button>
+          <button class="next no-print"></button>
+        </div><p></p>
       </div>
     </div>
   </div></section>
@@ -106,21 +121,20 @@
           <a href="mailto:info@yoseph.ws">info@yoseph.ws</a><br>
           <a href="tel:+81 80 9588 1639">+81 80 9588 1639</a><br>
           <a href="tel:+62 857 5522 1155">+62 857 5522 1155</a>
-
         </address>
       </div>
-      <div class="half">
+      <div class="half no-print">
         <form>
           <p style="margin-top:0;"><input type="text" name="name" placeholder="Name"></p>
-          <p><input type="email" name="email" placeholder="Email"></p>
+          <p><input type="email" name="email" placeholder="Email (required)" required="required"></p>
           <p><input type="text" name="job" placeholder="Job"></p>
-          <textarea name="msg" rows="4" placeholder="Message" required="required"></textarea >
+          <textarea name="msg" rows="4" placeholder="Message (required)" required="required"></textarea >
           <p style="margin-bottom:0;"><button type="submit" class="ease btn">Send</button></p>
         </form>
       </div>
     </div>
   </div></section>
-  <footer><div class="clear container">
+  <footer><div class="clear container no-print">
     <small>© Copyright 2017 <a href="http://yoseph.ws">yoseph.ws</a> — in collaboration with <a href="http://wijaya.cc">wijaya.cc</a></small>
   </div></footer>
 </main>
