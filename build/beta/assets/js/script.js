@@ -60,10 +60,10 @@ var loadDeferredStyles = function() {
       '__iOS__',
       '___iOS_',
       '____iOS',
-      '___iOS',
-      '__iOS',
-      '_iOS',
-      'iOS'
+      // '___iOS_',
+      // '__iOS__',
+      // '_iOS___',
+      // 'iOS____'
     ];
     data = e.type=='mouseover' ? data.reverse() : data;
     function ani(el){
