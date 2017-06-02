@@ -89,7 +89,7 @@ var loadDeferredStyles = function() {
   i = btn.length;
   while (i--) {
     on(btn[i], 'click', function(e) {
-      var inc = (this.className=='prev') ? -1 : 1 ;
+      var inc = (hasClass(this, 'prev')) ? -1 : 1 ;
       var gallery = this.parentNode;
       var img = JSON.parse(gallery.dataset.img);
       var idx = 1*gallery.dataset.idx || 0;
