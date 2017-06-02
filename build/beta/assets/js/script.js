@@ -90,13 +90,14 @@ var loadDeferredStyles = function() {
   while (i--) {
     on(btn[i], 'click', function(e) {
       var inc = (this.className=='prev') ? -1 : 1 ;
-      var img = JSON.parse(this.parentNode.dataset.img);
-      var idx = 1*this.parentNode.dataset.idx || 0;
+      var gallery = this.parentNode;
+      var img = JSON.parse(gallery.dataset.img);
+      var idx = 1*gallery.dataset.idx || 0;
       idx = (idx + inc < 0) ? img.length-1 : (idx + inc > img.length-1) ? 0 : idx + inc;
-      on(one('img', this.parentNode), 'load', function (data) { this.style.opacity='1'; });
-      addClass(one('img', this.parentNode), 'ease');
-      one('img', this.parentNode).style.opacity='.3';
-      one('img', this.parentNode).src = img[idx];
+      addClass(one('img', gallery), 'ease');
+      on(one('img', gallery), 'load', function (data) { this.style.opacity='1'; });
+      one('img', gallery).style.opacity='.3';
+      setTimeout(function(){ one('img', gallery).src = img[idx]; },200);
       this.parentNode.dataset.idx = idx;
     });
   };
