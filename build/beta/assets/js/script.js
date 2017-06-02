@@ -5,6 +5,18 @@ var loadDeferredStyles = function() {
   smoothScroll.init({selectorHeader: '[data-gumshoe]'});
   NProgress.done();
 
+  // scrollspy
+  var lastScrollTop = 0;
+  on(window, 'scroll', function(){
+    var st = getScroll().y;
+    if (st > lastScrollTop){ // downscroll code
+      addClass(one('.menu'),'folded');
+    } else { // upscroll code
+      removeClass(one('.menu'),'folded');
+    } lastScrollTop = st;
+  })
+  // scrollspy
+
   // modal
   w.modal = {
     close: function () {
