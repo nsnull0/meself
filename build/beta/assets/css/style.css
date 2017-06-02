@@ -97,33 +97,30 @@
   ;float:left
   ;box-sizing:border-box
 }
-.full,.half,.third{
+.full,
+.half,
+.third,
+.fifth{
   ;width:100%
 }
 .half .content,
-.third .content{
+.third .content,
+.fifth .content{
   ;padding:.5em 0
 }
 .half:first-child .content,
-.third:first-child .content{
+.third:first-child .content,
+.fifth:first-child .content{
   ;padding:0 0 .5em 0
 }
 .half:last-child .content,
-.third:last-child .content{
+.third:last-child .content,
+.fifth:last-child .content{
   ;padding:.5em 0 0 0
 }
 @media(min-width:640px){
   .half{
     ;width:50%
-  }
-  .half .content{
-    ;padding:0 .5em
-  }
-  .half:first-child .content{
-    ;padding:0 .5em 0 0
-  }
-  .half:last-child .content{
-    ;padding:0 0 0 .5em
   }
   .third{
     ;width:33.3333%
@@ -131,23 +128,41 @@
   .third.x2{
     ;width:66.6666%
   }
-  .third .content{
+  .fifth{
+    ;width:20%
+  }
+  .fifth.x2{
+    ;width:40%
+  }
+  .fifth.x3{
+    ;width:60%
+  }
+  .fifth.x4{
+    ;width:80%
+  }
+  .half .content,
+  .third .content,
+  .fifth .content{
     ;padding:0 .5em
   }
-  .third:first-child .content{
+  .half:first-child .content,
+  .third:first-child .content,
+  .fifth:first-child .content{
     ;padding:0 .5em 0 0
   }
-  .third:last-child .content{
+  .half:last-child .content,
+  .third:last-child .content,
+  .fifth:last-child .content{
     ;padding:0 0 0 .5em
   }
 }
 /* responsive menu ========================================================== */
 .menu,
 .inline-menu{
-  ;min-height:62px;
+  ;min-height:62px
 }
 .folded .inline-menu{
-  ;margin-top:-60px;
+  ;margin-top:-60px
 }
 .fixed .inline-menu{
   ;position:fixed
@@ -406,18 +421,24 @@ body:after,
 #project .gallery .next:after{
   ;content:"▶︎"
 }
-#project div:target{
+#project .modal-wrapper{
+  ;position: absolute
+  ;overflow: hidden
+  ;height: 0
+}
+#project .modal-wrapper:target{
   ;background:inherit
   ;position:fixed
   ;top:0
   ;left:0
   ;right:0
   ;bottom:0
+  ;height: 100%
   ;z-index:99999
   ;margin:auto
   ;overflow:auto
 }
-#project div:target .target-modal{
+#project .modal-wrapper:target .target-modal{
   ;background:inherit
   ;position:absolute
   ;max-width:800px
@@ -430,14 +451,14 @@ body:after,
   ;right:0
   ;bottom:0
 }
-#project div:target .target-modal::-webkit-scrollbar{
+#project .modal-wrapper:target .target-modal::-webkit-scrollbar{
   ;width:0
 }
-#project div:target .target-modal h3{
+#project .modal-wrapper:target .target-modal h3{
   ;margin-top:0
 }
-#project div:target .close,
-#project div:target .close:after{
+#project .modal-wrapper:target .close,
+#project .modal-wrapper:target .close:after{
   ;content:'×'
   ;line-height:0.8em
   ;font-size:40px
@@ -449,7 +470,7 @@ body:after,
   ;right:0
   ;top:0
 }
-#project div:target .close{
+#project .modal-wrapper:target .close{
   ;width:100%
   ;height:100%
 }
