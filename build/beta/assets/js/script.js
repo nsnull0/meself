@@ -112,6 +112,8 @@ var loadDeferredStyles = function() {
         container: 'map',
         center: lnlt,
         zoom: 15,
+        attributionControl: false,
+        logoPosition: 'bottom-right',
         style: 'mapbox://styles/mapbox/streets-v9'
       });
       marker = new mapboxgl.Marker().setLngLat(lnlt).addTo(map);
