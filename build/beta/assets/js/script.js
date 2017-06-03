@@ -10,12 +10,12 @@ var loadDeferredStyles = function() {
   w.el['#contact form'] = one('#contact form');
   w.el['.menu'] = one('.menu');
 
-  // scrollspy
+  // scrollspy + parallax
   var lastScrollTop = 0;
-  on(window, 'scroll', function(){
+  function scrollax(e){
+    var st = getScroll().y;
     if (getViewport().w<640) {
-      var st = getScroll().y;
-      if (st > lastScrollTop){
+      if (st > lastScrollTop && getViewport().w/(st) < 2){
         addClass(w.el['.menu'],'folded');  // scroll down
       } else {
         removeClass(w.el['.menu'],'folded');  // scroll up
@@ -23,8 +23,11 @@ var loadDeferredStyles = function() {
     } else {
       removeClass(w.el['.menu'],'folded');
     }
-  })
-  // scrollspy
+    w.el['.hero .title span'].style.top = Math.floor(st/2)+'px';
+  }
+  on(window, 'scroll', scrollax);
+  on(window, 'resize', scrollax);
+  // scrollspy + parallax
 
   // modal
   w.modal = {
@@ -62,13 +65,6 @@ var loadDeferredStyles = function() {
     }
   };
   // modal
-
-  // parallax
-  on(window, 'scroll', function(e) {
-    w.el['.hero .cover'].style.marginTop = Math.floor(getScroll().y/3)+'px';
-    w.el['.hero .title span'].style.top = Math.floor(getScroll().y/2)+'px';
-  });
-  // parallax
 
   // hero animation
   function mouseTrigger_HeroAni(e) {
