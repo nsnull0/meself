@@ -20,10 +20,10 @@ function toggleClass(s,e){hasClass(s,e)?removeClass(s,e):addClass(s,e)}
 function setCookie(e,t,n){var o,i=new Date;n?(i.setTime(i.getTime()+24*n*60*60*1e3),o="; expires="+i.toGMTString()):o="",document.cookie=encodeURIComponent(e)+"="+t+o+"; path=/"}
 function getCookie(e){var t,n=e+"=",o=document.cookie.split(";");for(i=0;i<o.length;i++){for(t=o[i];" "===t.charAt(0);)t=t.substring(1,t.length);if(0===t.indexOf(n))return decodeURIComponent(t.substring(n.length,t.length))}return null}
 function eraseCookie(e){setCookie(e,"",-1)}
-function off(d,t,n){var i,j,t=t.split(" "),d=d.push?d:[d];j=d.length; while(j--){ i=t.length; while(i--){if(t[i]!="")d[j].removeEventListener?d[j].removeEventListener(t[i],n):d[j].detachEvent?d[j].detachEvent("on"+t[i],n):0;}}}
-function on(d,t,n){var i,j,t=t.split(" "),d=d.push?d:[d];j=d.length; while(j--){ i=t.length; while(i--){if(t[i]!="")d[j].addEventListener?d[j].addEventListener(t[i],n):d[j].attachEvent?d[j].attachEvent("on"+t[i],n):0;}}}
-function one(a,d){;return (d||document).querySelector(a);}
-function all(a,d){;return (d||document).querySelectorAll(a);}
+function off(d,t,n){var i,j,t=t.split(" "),d=d.push?d:[d];j=d.length;while(j--){ i=t.length;while(i--){if(t[i]!="")d[j].removeEventListener?d[j].removeEventListener(t[i],n):d[j].detachEvent?d[j].detachEvent("on"+t[i],n):0;}}}
+function on(d,t,n){var i,j,t=t.split(" "),d=d.push?d:[d];j=d.length;while(j--){ i=t.length;while(i--){if(t[i]!="")d[j].addEventListener?d[j].addEventListener(t[i],n):d[j].attachEvent?d[j].attachEvent("on"+t[i],n):0;}}}
+function one(a,d){return (d||document).querySelector(a);}
+function all(a,d){d=(d||document).querySelectorAll(a),i=d.length,v=new Array(i);while(i--){v[i]=d[i];}return v;}
 function getScroll(){return{x:window.scrollX||window.scrollLeft||0,y:window.scrollY||window.scrollTop||0}}
 function getViewport(){return{w:window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0,h:window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0}}
 function get(s,e,n,t,h,p){var a=new XMLHttpRequest;a.onerror=function(){t&&t()},a.onload=function(){a.status>=200&&a.status<400&&e?e(a.responseText,p):n&&n()};a.open("GET",s,!0);for(var k in h){if(h.hasOwnProperty(k))a.setRequestHeader(k,h[k])};a.send()}
