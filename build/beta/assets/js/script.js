@@ -15,7 +15,7 @@ var loadDeferredStyles = function() {
   function scrollax(e){
     var st = getScroll().y;
     if (getViewport().w<640) {
-      if (st > lastScrollTop && getViewport().w/(st) < 2){
+      if (st > lastScrollTop && st > 0 && getViewport().w/(st) < 2){
         addClass(w.el['.menu'],'folded');  // scroll down
       } else {
         removeClass(w.el['.menu'],'folded');  // scroll up
