@@ -4,6 +4,11 @@ var loadDeferredStyles = function() {
   gumshoe.init({selectorHeader: '[data-gumshoe]'});
   smoothScroll.init({selectorHeader: '[data-gumshoe]'});
   NProgress.done();
+  w.el = [];
+  w.el['.hero .title span'] = one('.hero .title span');
+  w.el['.hero .cover'] = one('.hero .cover');
+  w.el['#contact form'] = one('#contact form');
+  w.el['.menu'] = one('.menu');
 
   // scrollspy
   var lastScrollTop = 0;
@@ -11,12 +16,12 @@ var loadDeferredStyles = function() {
     if (getViewport().w<640) {
       var st = getScroll().y;
       if (st > lastScrollTop){
-        addClass(one('.menu'),'folded');  // scroll down
+        addClass(w.el['.menu'],'folded');  // scroll down
       } else {
-        removeClass(one('.menu'),'folded');  // scroll up
+        removeClass(w.el['.menu'],'folded');  // scroll up
       } lastScrollTop = st;
     } else {
-      removeClass(one('.menu'),'folded');
+      removeClass(w.el['.menu'],'folded');
     }
   })
   // scrollspy
@@ -60,8 +65,8 @@ var loadDeferredStyles = function() {
 
   // parallax
   on(window, 'scroll', function(e) {
-    one('.hero .cover').style.marginTop = Math.floor(getScroll().y/2)+'px';
-    one('.hero .title').style.marginTop = Math.floor(getScroll().y/-1)+'px';
+    w.el['.hero .cover'].style.marginTop = Math.floor(getScroll().y/3)+'px';
+    w.el['.hero .title span'].style.top = Math.floor(getScroll().y/2)+'px';
   });
   // parallax
 
@@ -89,15 +94,15 @@ var loadDeferredStyles = function() {
       }
     }
     if (w.stackOf_HeroAni.length<1) {
-      w.stackOf_HeroAni = data; ani(one('.hero .title span'));
+      w.stackOf_HeroAni = data; ani(w.el['.hero .title span']);
     } else {
       w.stackOf_HeroAni = data.splice(0,w.stackOf_HeroAni.length);
     }
   }
   w.stackOf_HeroAni = [];
-  on(one('.hero .title span'), 'mouseover', mouseTrigger_HeroAni);
-  on(one('.hero .title span'), 'mouseout', mouseTrigger_HeroAni);
-  on(one('.hero .title span'), 'mouseout', mouseTrigger_HeroAni);
+  on(w.el['.hero .title span'], 'mouseover', mouseTrigger_HeroAni);
+  on(w.el['.hero .title span'], 'mouseout', mouseTrigger_HeroAni);
+  on(w.el['.hero .title span'], 'mouseout', mouseTrigger_HeroAni);
   // hero animation
 
   // gallery
@@ -107,13 +112,14 @@ var loadDeferredStyles = function() {
     on(btn[i], 'click', function(e) {
       var inc = (hasClass(this, 'prev')) ? -1 : 1 ;
       var gallery = this.parentNode;
-      var img = JSON.parse(gallery.dataset.img);
+      var list = JSON.parse(gallery.dataset.img);
       var idx = 1*gallery.dataset.idx || 0;
+      var img = one('img', gallery);
       idx = (idx + inc < 0) ? img.length-1 : (idx + inc > img.length-1) ? 0 : idx + inc;
-      addClass(one('img', gallery), 'ease');
-      on(one('img', gallery), 'load', function (data) { this.style.opacity='1'; });
-      one('img', gallery).style.opacity='.3';
-      setTimeout(function(){ one('img', gallery).src = img[idx]; },200);
+      addClass(img, 'ease');
+      on(img, 'load', function (data) { this.style.opacity='1'; });
+      img.style.opacity='.3';
+      setTimeout(function(){ img.src = list[idx]; },200);
       this.parentNode.dataset.idx = idx;
     });
   };
@@ -167,8 +173,8 @@ var loadDeferredStyles = function() {
       body:'Unable to sent your message, probably network connection issue.'
     }
     if (w.recentlySubmitted) {
-      modal.invoke(SUBMIT_RECENTLY,0,function() {
-        removeClass(one('#contact form'), 'recently-submitted');
+      modal.invoke(SUBMIT_RECENTLY,function() {
+        removeClass(w.el['#contact form'], 'recently-submitted');
         w.recentlySubmitted = !1;
       });
     } else {
@@ -203,7 +209,8 @@ var loadDeferredStyles = function() {
         'https://hooks.slack.com/services/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',
         function(data){console.log(data);
           if (data=='ok') {
-            addClass(one('#contact form'), 'recently-submitted');
+            addClass(w.el['#contact form'], 'recently-submitted');
+            w.el['#contact form'].reset();
             w.recentlySubmitted = true;
             modal.invoke(SUBMIT_SENT);
           } else {
@@ -218,7 +225,7 @@ var loadDeferredStyles = function() {
     }
     return false;
   }
-  on(one('#contact form'), 'submit', submitContactForm);
+  on(w.el['#contact form'], 'submit', submitContactForm);
   // slack webhook
 
   defer = one('#deferred-styles');
