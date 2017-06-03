@@ -1,14 +1,29 @@
 var loadDeferredStyles = function() {
-  var defer, tmp, i, w = window, d=document;
-  removeClass(document.documentElement, 'jsload');
-  gumshoe.init({selectorHeader: '[data-gumshoe]'});
-  smoothScroll.init({selectorHeader: '[data-gumshoe]'});
-  NProgress.done();
+  var defer, tmp, i, w = window, d=document,
+  GEO = {
+    center:{
+      lat:35.5942238,
+      long:139.7242792,
+      zoom:15,
+    },
+  },
+  TOKEN_MAPBOX = 'pk.eyJ1IjoiZ3VuYXdhbndpamF5YSIsImEiOiJjajM2Zm54cngwNTM3MzNxNjdqOXcxNTZ2In0.U2aHrmrL5HEht8hX2I4FzA',
+  URL_GOOGLE_MAPS = 'https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/',
+  URL_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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';
   w.el = [];
   w.el['.hero .title span'] = one('.hero .title span');
   w.el['.hero .cover'] = one('.hero .cover');
   w.el['#contact form'] = one('#contact form');
   w.el['.menu'] = one('.menu');
+  w.el['#map'] = one('#map');
+  w.el['.gallery'] = all('.gallery')
+  isLoaded = {};
+  isLoaded.Mapbox = 0;
+
+  gumshoe.init({selectorHeader: '[data-gumshoe]'});
+  smoothScroll.init({selectorHeader: '[data-gumshoe]'});
+  NProgress.done();
+  removeClass(one('html'), 'jsload');
 
   // scrollspy + parallax
   var lastScrollTop = 0;
@@ -24,9 +39,9 @@ var loadDeferredStyles = function() {
       removeClass(w.el['.menu'],'folded');
     }
     w.el['.hero .title span'].style.top = Math.floor(st/2)+'px';
+    tryMapbox();
   }
-  on(window, 'scroll', scrollax);
-  on(window, 'resize', scrollax);
+  on(w, 'scroll resize', scrollax);
   // scrollspy + parallax
 
   // modal
@@ -46,12 +61,12 @@ var loadDeferredStyles = function() {
         modal.className+= 'modal ' + (data.className?data.className:tmp.className);
         d.body.appendChild(modal);
         on(one('.modal .close'), 'click', function() {
-          w.modal.close(); onClose?onClose():0;
+          w.modal.close(); (typeof onClose=='function')?onClose():0;
         });
         on(document, 'keydown', function(e) {
           e = e || w.event; var isEscape = (e.keyCode == 27) || false;
           if (isEscape) {
-            w.modal.close(); onClose?onClose():0;
+            w.modal.close(); (typeof onClose=='function')?onClose():0;
           }
         });
       } tmp = {}
@@ -77,10 +92,6 @@ var loadDeferredStyles = function() {
       '__iOS__',
       '___iOS_',
       '____iOS',
-      // '___iOS_',
-      // '__iOS__',
-      // '_iOS___',
-      // 'iOS____'
     ];
     data = e.type=='mouseover' ? data.reverse() : data;
     function ani(el){
@@ -102,47 +113,53 @@ var loadDeferredStyles = function() {
   // hero animation
 
   // gallery
-  var btn = all('.gallery .prev, .gallery .next');
-  i = btn.length;
-  while (i--) {
-    on(btn[i], 'click', function(e) {
-      var inc = (hasClass(this, 'prev')) ? -1 : 1 ;
-      var gallery = this.parentNode;
-      var list = JSON.parse(gallery.dataset.img);
-      var idx = 1*gallery.dataset.idx || 0;
-      var img = one('img', gallery);
-      idx = (idx + inc < 0) ? img.length-1 : (idx + inc > img.length-1) ? 0 : idx + inc;
-      addClass(img, 'ease');
-      on(img, 'load', function (data) { this.style.opacity='1'; });
-      img.style.opacity='.3';
-      setTimeout(function(){ img.src = list[idx]; },200);
-      this.parentNode.dataset.idx = idx;
-    });
-  };
+  on(all('.gallery .prev, .gallery .next'), 'click', function(e) {
+    var inc = (hasClass(this, 'prev')) ? -1 : 1 ;
+    var gallery = this.parentNode;
+    var list = JSON.parse(gallery.dataset.img);
+    var idx = 1*gallery.dataset.idx || 0;
+    var img = one('img', gallery);
+    idx = (idx + inc < 0) ? img.length-1 : (idx + inc > img.length-1) ? 0 : idx + inc;
+    addClass(img, 'ease');
+    on(img, 'load', function (data) { this.style.opacity='1'; });
+    img.style.opacity='.3';
+    setTimeout(function(){ img.src = list[idx]; },200);
+    this.parentNode.dataset.idx = idx;
+  });
   // gallery
 
   // mapbox
   function tryMapbox() {
-    try {
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZ3VuYXdhbndpamF5YSIsImEiOiJjajM2Zm54cngwNTM3MzNxNjdqOXcxNTZ2In0.U2aHrmrL5HEht8hX2I4FzA';
-      lnlt = [139.7242792, 35.5942238];
+    if (!isLoaded.Mapbox && isElementInViewport(w.el['#map'])) {
+      mapboxgl.accessToken = TOKEN_MAPBOX;
+      lnlt = [GEO.center.long, GEO.center.lat];
       map = new mapboxgl.Map({
         container: 'map',
         center: lnlt,
-        zoom: 15,
+        zoom: GEO.center.zoom,
         attributionControl: false,
         logoPosition: 'bottom-right',
         style: 'mapbox://styles/mapbox/streets-v9'
       });
       marker = new mapboxgl.Marker().setLngLat(lnlt).addTo(map);
-    } catch (e) { setTimeout(tryMapbox, 500); }
+      on(one('.mapboxgl-marker'), 'click', function(e) {
+        w.open(URL_GOOGLE_MAPS, '_blank').focus();
+      }); isLoaded.Mapbox = 1;
+    }
   }tryMapbox();
-  function openGMaps(e) {
-    var url = 'https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@35.5942238,139.7242792,17z/';
-    w.open(url, '_blank').focus();
-  }
-  on(one('.mapboxgl-marker'), 'click', openGMaps);
   // mapbox
+
+  // lazyload gallery
+  function lazyGallery() {
+    var g = w.el['.gallery']; i = g.length;
+    while (i--) {
+      tmp = one('img',g[i]);
+      if(tmp.width>0){
+        tmp.src = (tmp.src.indexOf('data:image')==0) ? tmp.src = JSON.parse(g[i].dataset.img)[0] : tmp.src;
+      }
+    }
+  }lazyGallery(); on(w,'hashchange',lazyGallery);
+  // lazyload gallery
 
   // slack webhook
   function submitContactForm(e) {
@@ -202,7 +219,7 @@ var loadDeferredStyles = function() {
             }
           ]
         }),
-        'https://hooks.slack.com/services/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',
+        URL_SLACK_WEBHOOK,
         function(data){console.log(data);
           if (data=='ok') {
             addClass(w.el['#contact form'], 'recently-submitted');

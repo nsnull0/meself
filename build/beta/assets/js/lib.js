@@ -20,8 +20,8 @@ function toggleClass(s,e){hasClass(s,e)?removeClass(s,e):addClass(s,e)}
 function setCookie(e,t,n){var o,i=new Date;n?(i.setTime(i.getTime()+24*n*60*60*1e3),o="; expires="+i.toGMTString()):o="",document.cookie=encodeURIComponent(e)+"="+t+o+"; path=/"}
 function getCookie(e){var t,n=e+"=",o=document.cookie.split(";");for(i=0;i<o.length;i++){for(t=o[i];" "===t.charAt(0);)t=t.substring(1,t.length);if(0===t.indexOf(n))return decodeURIComponent(t.substring(n.length,t.length))}return null}
 function eraseCookie(e){setCookie(e,"",-1)}
-function off(e,t,n){e.removeEventListener(t,n)}
-function on(e,t,n){e.addEventListener(t,n)}
+function off(d,t,n){var i,j,d=d.length?d:[d];j=d.length;while(j--){t=typeof t=="object"?t:t.split(" ");i=t.length;while(i--){e=d[j];if(t[i]!="")e.removeEventListener?e.removeEventListener(t[i],n):e.detachEvent?e.detachEvent("on"+t[i],n):0;}}}
+function on(d,t,n){var i,j,d=d.length?d:[d];j=d.length;while(j--){t=typeof t=="object"?t:t.split(" ");i=t.length;while(i--){e=d[j];if(t[i]!="")e.addEventListener?e.addEventListener(t[i],n):e.attachEvent?e.attachEvent("on"+t[i],n):0;}}}
 function one(a,d){;return (d||document).querySelector(a);}
 function all(a,d){;return (d||document).querySelectorAll(a);}
 function getScroll(){return{x:window.scrollX||window.scrollLeft||0,y:window.scrollY||window.scrollTop||0}}
@@ -29,10 +29,11 @@ function getViewport(){return{w:window.innerWidth||document.documentElement.clie
 function get(s,e,n,t,h,p){var a=new XMLHttpRequest;a.onerror=function(){t&&t()},a.onload=function(){a.status>=200&&a.status<400&&e?e(a.responseText,p):n&&n()};a.open("GET",s,!0);for(var k in h){if(h.hasOwnProperty(k))a.setRequestHeader(k,h[k])};a.send()}
 function post(d,s,e,n,t,h,p){var a=new XMLHttpRequest;a.onerror=function(){t&&t()},a.onload=function(){a.status>=200&&a.status<400&&e?e(a.responseText,p):n&&n()};a.open("POST",s,!0);for(var k in h){if(h.hasOwnProperty(k))a.setRequestHeader(k,h[k])};a.send(d)}
 function json2qs(j){return "?" + Object.keys(j).map(function(k) {return encodeURIComponent(k) + "=" +encodeURIComponent(j[k]);}).join("&");}
-function jsonp(src,e){e = document.createElement('script');document.head.appendChild(e);e.src = src;e.parentNode.removeChild(e);}
+function jsonp(src,e){e = document.createElement("script");document.head.appendChild(e);e.src = src;e.parentNode.removeChild(e);}
 function injectCSS(e,t,n){n=document,t=n.createElement("style"),n.head.appendChild(t),t.appendChild(n.createTextNode(e))}
-function stringToDOM(a){return new DOMParser().parseFromString(a,'text/html');}
+function stringToDOM(a){return new DOMParser().parseFromString(a,"text/html");}
 var qs = (function(q,v,k,p,i){k=q.split("&");for(i=0;i<k.length;i++){p=k[i].split("=");v[p[0]]=p[1];}return v;}(window.location.search.substring(1),{}));
 function first(e,t,n){for(n in e)if(e.hasOwnProperty(n))return t?n:e[n]}
 function arrayToObject(e,t,n){for(t={},n=0;n<e.length;++n)void 0!==e[n]&&(t[e[n].id||n]=e[n]);return t}
 function objectToArray(e){return Object.keys(e).map(function(t){return e[t]})}
+function isElementInViewport(el){var r=el.getBoundingClientRect();return(r.top>=0&&r.left>=0&&r.bottom<=getViewport().h&&r.right<=getViewport().w);}

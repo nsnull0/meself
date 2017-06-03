@@ -323,6 +323,23 @@ body:after,
   ;background:#fff
   ;line-height:0
 }
+.ios-btn,
+.and-btn,
+.ios-btn img,
+.and-btn img{
+  ;font-size:40px
+  ;height:1em
+  ;line-height:1em
+  ;overflow:hidden
+}
+.and-btn img{
+  ;margin:-.25em -.167em
+  ;max-width:none
+  ;font-size:60px
+}
+.apps-marketing{
+  ;line-height:0
+}
 /* section style ============================================================ */
 #me{
   ;background-color:#FAFAFA
@@ -428,21 +445,29 @@ body:after,
   ;content:"▶︎"
 }
 #project .modal-wrapper{
-  ;position:absolute
-  ;overflow:hidden
-  ;height:0
-}
-#project .modal-wrapper:target{
   ;background:inherit
   ;position:fixed
-  ;top:0
+  ;top:-100%
   ;left:0
   ;right:0
-  ;bottom:0
-  ;height:100%
+  ;bottom:100%
+  ;height:0
   ;z-index:99999
   ;margin:auto
   ;overflow:auto
+  ;opacity:0
+}
+#project .modal-wrapper:target{
+  ;top:0
+  ;bottom:0
+  ;height:100%
+  ;opacity:1
+}
+#project .modal-wrapper .gallery{
+  ;width:0
+}
+#project .modal-wrapper:target .gallery{
+  ;width:inherit
 }
 #project .modal-wrapper:target .target-modal{
   ;background:inherit
@@ -468,7 +493,7 @@ body:after,
   ;height:1em
   ;width:1em
   ;text-align:center
-  ;position:fixed
+  ;position:absolute
   ;display:block
   ;right:0
   ;top:0
