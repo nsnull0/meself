@@ -8,12 +8,16 @@ var loadDeferredStyles = function() {
   // scrollspy
   var lastScrollTop = 0;
   on(window, 'scroll', function(){
-    var st = getScroll().y;
-    if (st > lastScrollTop){ // downscroll code
-      addClass(one('.menu'),'folded');
-    } else { // upscroll code
+    if (getViewport().w<640) {
+      var st = getScroll().y;
+      if (st > lastScrollTop){
+        addClass(one('.menu'),'folded');  // scroll down
+      } else {
+        removeClass(one('.menu'),'folded');  // scroll up
+      } lastScrollTop = st;
+    } else {
       removeClass(one('.menu'),'folded');
-    } lastScrollTop = st;
+    }
   })
   // scrollspy
 

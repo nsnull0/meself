@@ -159,10 +159,10 @@
 /* responsive menu ========================================================== */
 .menu,
 .inline-menu{
-  ;min-height:62px
+  ;min-height:60px
 }
 .folded .inline-menu{
-  ;margin-top:-60px
+  ;margin-top:-58px
 }
 .fixed .inline-menu{
   ;position:fixed
@@ -317,6 +317,12 @@ body:after,
   ;margin:auto
   ;width:90%
 }
+.ios-apps-icon{
+  ;border-radius:1em
+  ;overflow:hidden
+  ;background:#fff
+  ;line-height:0
+}
 /* section style ============================================================ */
 #me{
   ;background-color:#FAFAFA
@@ -422,9 +428,9 @@ body:after,
   ;content:"▶︎"
 }
 #project .modal-wrapper{
-  ;position: absolute
-  ;overflow: hidden
-  ;height: 0
+  ;position:absolute
+  ;overflow:hidden
+  ;height:0
 }
 #project .modal-wrapper:target{
   ;background:inherit
@@ -433,7 +439,7 @@ body:after,
   ;left:0
   ;right:0
   ;bottom:0
-  ;height: 100%
+  ;height:100%
   ;z-index:99999
   ;margin:auto
   ;overflow:auto
