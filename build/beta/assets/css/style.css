@@ -240,10 +240,10 @@
   ;content:'×'
   ;font-weight:700
   ;font-size:40px
-  ;line-height:.8
+  ;line-height:1
   ;height:1em
   ;width:1em
-  ;color:red
+  ;color:#CC0033
   ;border:0
   ;right:0
   ;top:0
@@ -488,8 +488,9 @@ body:after,
 #project .modal-wrapper:target .close,
 #project .modal-wrapper:target .close:after{
   ;content:'×'
-  ;line-height:0.8em
+  ;font-weight:700
   ;font-size:40px
+  ;line-height:1
   ;height:1em
   ;width:1em
   ;text-align:center

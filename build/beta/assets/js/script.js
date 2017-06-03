@@ -6,6 +6,26 @@ var loadDeferredStyles = function() {
       long:139.7242792,
       zoom:15,
     },
+  }, SUBMIT_RECENTLY = {
+    show:1,
+    header:'Ooops',
+    body:'It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message.'
+  }, SUBMIT_SENDING = {
+    show:1,
+    header:'Sending Message',
+    body:'Did you know, that your message is travelling via Internet to my slack channel in less than a second!'
+  }, SUBMIT_INVALID = {
+    show:1,
+    header:'Invalid Response',
+    body:'Invalid response from server, in case of emergency you can call my number.'
+  }, SUBMIT_SENT = {
+    show:1,
+    header:'Message Sent',
+    body:'Your message has been sent, please wait for the next reply.'
+  }, SUBMIT_FAILED = {
+    show:1,
+    header:'Failed',
+    body:'Unable to sent your message, probably network connection issue.'
   },
   TOKEN_MAPBOX = 'pk.eyJ1IjoiZ3VuYXdhbndpamF5YSIsImEiOiJjajM2Zm54cngwNTM3MzNxNjdqOXcxNTZ2In0.U2aHrmrL5HEht8hX2I4FzA',
   URL_GOOGLE_MAPS = 'https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/',
@@ -107,9 +127,7 @@ var loadDeferredStyles = function() {
     }
   }
   w.stackOf_HeroAni = [];
-  on(w.el['.hero .title span'], 'mouseover', mouseTrigger_HeroAni);
-  on(w.el['.hero .title span'], 'mouseout', mouseTrigger_HeroAni);
-  on(w.el['.hero .title span'], 'mouseout', mouseTrigger_HeroAni);
+  on(w.el['.hero .title span'], 'mouseover mouseout', mouseTrigger_HeroAni);
   // hero animation
 
   // gallery
@@ -164,27 +182,6 @@ var loadDeferredStyles = function() {
   // slack webhook
   function submitContactForm(e) {
     e.preventDefault();
-    var SUBMIT_RECENTLY = {
-      show:1,
-      header:'Ooops',
-      body:'It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message.'
-    },  SUBMIT_SENDING = {
-      show:1,
-      header:'Sending Message',
-      body:'Did you know, that your message is travelling via Internet to my slack channel in less than a second!'
-    },  SUBMIT_INVALID = {
-      show:1,
-      header:'Invalid Response',
-      body:'Invalid response from server, in case of emergency you can call my number.'
-    },  SUBMIT_SENT = {
-      show:1,
-      header:'Message Sent',
-      body:'Your message has been sent, please wait for the next reply.'
-    },  SUBMIT_FAILED = {
-      show:1,
-      header:'Failed',
-      body:'Unable to sent your message, probably network connection issue.'
-    }
     if (w.recentlySubmitted) {
       modal.invoke(SUBMIT_RECENTLY,function() {
         removeClass(w.el['#contact form'], 'recently-submitted');
@@ -230,8 +227,12 @@ var loadDeferredStyles = function() {
             modal.invoke(SUBMIT_INVALID);
           }
         },
-        function(idata){console.log(idata);modal.invoke(SUBMIT_INVALID);},
-        function(error){console.log(error);modal.invoke(SUBMIT_FAILED);},
+        function(idata){console.log(idata);
+          modal.invoke(SUBMIT_INVALID);
+        },
+        function(error){console.log(error);
+          modal.invoke(SUBMIT_FAILED);
+        },
         {},
         0
       );
