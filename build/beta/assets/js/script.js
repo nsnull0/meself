@@ -210,7 +210,7 @@ var loadDeferredStyles = function() {
                 }
               ],
               "text": "", "image_url": "", "thumb_url": "",
-              "footer": "yoseph.ws",
+              "footer": location.href,
               "footer_icon": "https://slack.com/favicon.ico",
               "ts": Date.now()/1000
             }
