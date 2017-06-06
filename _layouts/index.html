@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<header class="site-header" role="banner">
+  <div class="container">
+    <nav data-gumshoe-header class="menu fixed no-print">
+      <ul data-gumshoe class="inline-menu ease font-montserrat">
+        <li><a data-scroll class="btn ease menu-item" href="#me">me.self</a></li>
+        <li><a data-scroll class="btn ease menu-item" href="#project">project</a></li>
+        <li><a data-scroll class="btn ease menu-item" href="#contact">contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section id="me">
+  <div class="hero"><div class="ratio ratio-2-1"><div>
+    <img alt="Cover image" class="cover checkered" src="assets/images/cover.jpg"/>
+    <h1 class="title"><span class="ease font-monospace">ME.SELF</span></h1>
+  </div></div></div>
+  <div class="container">
+    {% include content-about.html %}
+  </div>
+</section>
+<section id="project">
+  <div class="container">
+    <h2>project</h2>
+    {% include content-project.html %}
+  </div>
+</section>
+<section id="contact">
+  <div class="container">
+    <h2>contact</h2>
+    {% include content-contact.html %}
+  </div>
+</section>

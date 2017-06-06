@@ -1,0 +1,265 @@
+/* Basic styling
+  =========================================================================== */
+*{
+   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  position: relative;
+}
+*,*:active,*:focus{
+  -webkit-tap-highlight-color: transparent;
+           -moz-outline-width: 0;
+                outline-width: 0;
+                outline-style: none;
+                      outline: 0;
+}
+body {
+  font: 400 #{$base-font-size}/#{$base-line-height} $base-font-family;
+  background-color: $dark-color;
+  color: $light-color;
+  overflow-y: scroll;
+  // -webkit-text-size-adjust: 100%;
+  // -webkit-font-feature-settings: "kern" 1;
+  //    -moz-font-feature-settings: "kern" 1;
+  //      -o-font-feature-settings: "kern" 1;
+  //         font-feature-settings: "kern" 1;
+  // font-kerning: normal;
+}
+main {
+  background-color: $light-color;
+  color: $dark-color;
+  @extend %ease;
+}
+
+footer {
+  font-weight: 600;
+  background-color: $dark-color;
+  color: $light-color;
+  & a {
+    color: $accent-light-color;
+  }
+}
+
+
+/* Set `margin-top-bottom` to maintain vertical rhythm
+  =========================================================================== */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin: $spacing-unit 0;
+  .row > * & {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Images
+  =========================================================================== */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* Figures
+  =========================================================================== */
+figure > img {
+  display: block;
+}
+figcaption {
+  @include relative-font-size(0.875);
+}
+
+/* Lists
+  =========================================================================== */
+ul, ol {
+  margin-left: $spacing-unit;
+}
+li {
+  > ul,
+  > ol {
+    margin: 0;
+  }
+}
+
+/* Headings
+  =========================================================================== */
+h1, h2 { font-weight: 100; font-family: $web-font-family;}
+h3, h4 { font-weight: 400; font-family: $web-font-family;}
+h5, h6 { font-weight: 600; font-family: $web-font-family;}
+
+/* Links
+  =========================================================================== */
+a {
+  display:inline-block;
+  color: $accent-color;
+  text-decoration: none;
+  @extend %ease;
+}
+
+/* Blockquotes
+  =========================================================================== */
+blockquote {
+  color: $dark-alt-color;
+  border-left: 4px solid $accent-color;
+  padding-left: $spacing-unit;
+  font-style: italic;
+  margin: 0;
+  margin-right: ($spacing-unit*-.5);
+  margin-left: ($spacing-unit*-.5);
+  @include relative-font-size(1.25);
+  @include media-query($on-md) {
+    margin: $spacing-unit;
+  }
+}
+
+/* Code formatting
+  =========================================================================== */
+pre,
+code {
+  @include relative-font-size(0.875);
+  font-family: $monospace-family;
+  border: 1px solid $light-alt-color;
+  background-color: #eef;
+  border-radius: 3px;
+}
+
+code {
+  padding: 1px;
+  padding-right: ($base-font-size / 4);
+  padding-left: ($base-font-size / 4);
+}
+
+pre {
+  padding: ($spacing-unit*.5) ($spacing-unit*.75);
+  overflow-x: auto;
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/* Container
+  =========================================================================== */
+.container {
+  max-width: $content-width;
+  margin: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+  @extend %clearfix;
+  @include media-query($on-lg) {
+
+  }
+}
+
+/* a11y
+  =========================================================================== */
+.screen-reader{
+  background: $light-color;
+  color: $dark-color;
+  position: absolute;
+  right: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Apps marketing
+  =========================================================================== */
+.apps-marketing {
+  line-height: 0;
+}
+.ios-apps-icon {
+  border-radius: 20%;
+  background: #FFFFFF;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+}
+.ios-btn,
+.and-btn {
+  overflow: hidden;
+  & img {
+    font-size: 40px;
+    max-height: 1em;
+    line-height: 1em;
+  }
+}
+.and-btn img {
+  margin: -.167em;
+  max-width: none;
+  font-size: 60px;
+}
+
+/* Gallery
+  =========================================================================== */
+.gallery {
+  position: relative;
+  & .prev,
+  & .next {
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    margin: auto;
+    background: $dark-color;
+    color: $light-color;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px;
+    line-height: $spacing-unit * 3;
+    height: $spacing-unit * 3;
+    width: $spacing-unit * 3;
+    opacity: .3;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    &:hover {
+      opacity: .7;
+    }
+  }
+  & .prev {
+    left: $spacing-unit;
+    &:after {
+      content: "◀︎";
+    }
+  }
+  & .next {
+    right: $spacing-unit;
+    &:after {
+      content: "▶︎";
+    }
+  }
+}
+
+/* Clearfix
+  =========================================================================== */
+%clearfix:before,
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Easing
+  =========================================================================== */
+.ease,
+%ease {
+  -webkit-transition: ease all .3s;
+          transition: ease all .3s;
+}
+
+/* Checkered
+  =========================================================================== */
+.checkered,
+%checkered {
+  background-color: #fff;
+  background-position: 0 0,10px 10px;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+  border: 0;
+  background-image: -webkit-linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%,#eee),
+                    -webkit-linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%,#eee);
+}

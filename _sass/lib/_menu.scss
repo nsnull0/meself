@@ -1,0 +1,56 @@
+/* Responsive inline menu
+  =========================================================================== */
+.menu,
+.inline-menu{
+  min-height:60px;
+}
+.inline-menu{
+  margin:0;
+  padding:0;
+  list-style:none;
+  text-align:center;
+  background-color:#FAFAFA;
+  border-bottom:solid 2px;
+  color:#CC0033;
+  .folded &{
+    margin-top:-58px;
+  }
+  .fixed &{
+    position:fixed;
+    width:100%;
+    z-index:3;
+    left: 0;
+  }
+  & li{
+    display:inline;
+    & .btn{
+      border:0;
+      color:#CC0033;
+      border-top:solid 2px transparent;
+      font-weight:bold;
+      padding:16px 8px;
+      @media screen and (min-width: 480px) {
+        padding:16px 32px;
+      }
+      &:active,
+      &:focus,
+      &:hover{
+        background:#CC0033;
+        color:#FAFAFA;
+      }
+    }
+  }
+
+  & .active .btn{
+    border-color:#CC0033;
+    position: relative;
+    &:after{
+      content:'▼';
+      position:absolute;
+      top:0;
+      left:50%;
+      line-height:0.5;
+      margin-left:-5px;
+    }
+  }
+}

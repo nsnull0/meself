@@ -1,0 +1,20 @@
+{% if page.custom-header %}{% else %}
+<header class="site-header" role="banner">
+  <div class="container">
+    <nav data-gumshoe-header class="menu fixed no-print">
+      <ul data-gumshoe class="inline-menu ease font-montserrat">
+      {% assign sorted_pages = site.pages | sort:"menu-index","last" %}
+      {% for _page in sorted_pages %}
+      {% if _page.title %}
+        <li {% if _page.url == page.url %}class="active"{% endif %}>
+          <a data-scroll class="btn ease menu-item" href="{{ _page.url | absolute_url }}">
+            {{ _page.title | escape }}
+          </a>
+        </li>
+      {% endif %}
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+{% endif %}
