@@ -1,0 +1,41 @@
+/* Grid layout
+  =========================================================================== */
+@mixin col-row($mq,$col,$row) {
+  .col-#{$mq}-#{$col}-#{$row} { width: ($col / $row) * 100%;}
+}
+@mixin grid-on($mq) {
+  .col-#{$mq}-0 { width: 0; padding: 0; }
+  .col-#{$mq}-1 { width: 100%; }
+  @include col-row($mq,1,2);
+  @include col-row($mq,1,3);
+  @include col-row($mq,2,3);
+  @include col-row($mq,1,4);
+  @include col-row($mq,2,4);
+  @include col-row($mq,3,4);
+  @include col-row($mq,1,5);
+  @include col-row($mq,2,5);
+  @include col-row($mq,3,5);
+  @include col-row($mq,4,5);
+  @include col-row($mq,1,6);
+  @include col-row($mq,2,6);
+  @include col-row($mq,3,6);
+  @include col-row($mq,4,6);
+  @include col-row($mq,5,6);
+}
+.row {
+  display:inline-block;
+  width:100%;
+  width:calc(100% + #{$spacing-unit});
+  margin:($spacing-unit/-2);
+  margin-bottom:-6px;
+  & > [class^=col-] {
+    float:left;
+    width:100%;
+    overflow: hidden;
+    padding:($spacing-unit/2);
+    box-sizing:border-box;
+  }
+  @include grid-on(sm);
+  @include media-query($on-md) { @include grid-on(md); }
+  @include media-query($on-lg) { @include grid-on(lg); }
+}

@@ -3,11 +3,6 @@
  */
 .highlight {
   background: #fff;
-  margin: 0 ($spacing-unit / -2);
-  @include media-query($on-palm) {
-    margin: $spacing-unit;
-  }
-  @extend %vertical-rhythm;
 
   .highlighter-rouge & {
     background: #eef;

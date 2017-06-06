@@ -1,142 +1,142 @@
-/**
- * Basic styling
- */
+/* Basic styling
+  =========================================================================== */
+*{
+   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  position: relative;
+}
+*,*:active,*:focus{
+  -webkit-tap-highlight-color: transparent;
+           -moz-outline-width: 0;
+                outline-width: 0;
+                outline-style: none;
+                      outline: 0;
+}
 body {
-  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-  color: $text-color;
-  background-color: $background-color;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: "kern" 1;
-     -moz-font-feature-settings: "kern" 1;
-       -o-font-feature-settings: "kern" 1;
-          font-feature-settings: "kern" 1;
-  font-kerning: normal;
+  font: 400 #{$base-font-size}/#{$base-line-height} $base-font-family;
+  background-color: $dark-color;
+  color: $light-color;
+  overflow-y: scroll;
+  // -webkit-text-size-adjust: 100%;
+  // -webkit-font-feature-settings: "kern" 1;
+  //    -moz-font-feature-settings: "kern" 1;
+  //      -o-font-feature-settings: "kern" 1;
+  //         font-feature-settings: "kern" 1;
+  // font-kerning: normal;
+}
+main {
+  background-color: $light-color;
+  color: $dark-color;
+  @extend %ease;
+}
+
+footer {
+  font-weight: 600;
+  background-color: $dark-color;
+  color: $light-color;
+  & a {
+    color: $accent-light-color;
+  }
 }
 
 
-
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
+/* Set `margin-top-bottom` to maintain vertical rhythm
+  =========================================================================== */
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
   margin: $spacing-unit 0;
+  .row > * & {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
-
-
-/**
- * Images
- */
+/* Images
+  =========================================================================== */
 img {
   max-width: 100%;
   vertical-align: middle;
 }
 
-
-
-/**
- * Figures
- */
+/* Figures
+  =========================================================================== */
 figure > img {
   display: block;
 }
-
 figcaption {
-  font-size: $small-font-size;
+  @include relative-font-size(0.875);
 }
 
-
-
-/**
- * Lists
- */
+/* Lists
+  =========================================================================== */
 ul, ol {
   margin-left: $spacing-unit;
 }
-
 li {
   > ul,
   > ol {
-    margin-bottom: 0;
+    margin: 0;
   }
 }
 
+/* Headings
+  =========================================================================== */
+h1, h2 { font-weight: 100; font-family: $web-font-family;}
+h3, h4 { font-weight: 400; font-family: $web-font-family;}
+h5, h6 { font-weight: 600; font-family: $web-font-family;}
 
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: $base-font-weight;
-}
-
-
-
-/**
- * Links
- */
+/* Links
+  =========================================================================== */
 a {
-  color: $brand-color;
+  display:inline-block;
+  color: $accent-color;
   text-decoration: none;
-
-  &:visited {
-    color: darken($brand-color, 15%);
-  }
-
-  &:hover {
-    color: $text-color;
-    text-decoration: underline;
-  }
-
-  .social-media-list &:hover {
-    text-decoration: none;
-
-    .username {
-      text-decoration: underline;
-    }
-  }
+  @extend %ease;
 }
 
-
-/**
- * Blockquotes
- */
+/* Blockquotes
+  =========================================================================== */
 blockquote {
-  color: $grey-color;
-  border-left: 4px solid $grey-color-light;
-  padding-left: $base-font-size;
-  @include relative-font-size(1.125);
+  color: $dark-alt-color;
+  border-left: 4px solid $accent-color;
+  padding-left: $spacing-unit;
   font-style: italic;
-  margin: 0 ($spacing-unit / -2);
-  @include media-query($on-palm) {
+  margin: 0;
+  margin-right: ($spacing-unit*-.5);
+  margin-left: ($spacing-unit*-.5);
+  @include relative-font-size(1.25);
+  @include media-query($on-md) {
     margin: $spacing-unit;
   }
 }
 
-
-
-/**
- * Code formatting
- */
+/* Code formatting
+  =========================================================================== */
 pre,
 code {
   @include relative-font-size(0.875);
-  border: 1px solid $grey-color-light;
-  border-radius: 3px;
+  font-family: $monospace-family;
+  border: 1px solid $light-alt-color;
   background-color: #eef;
+  border-radius: 3px;
 }
 
 code {
-  padding: 1px ($base-font-size / 4);
+  padding: 1px;
+  padding-right: ($base-font-size / 4);
+  padding-left: ($base-font-size / 4);
 }
 
 pre {
-  padding: 8px 12px;
+  padding: ($spacing-unit*.5) ($spacing-unit*.75);
   overflow-x: auto;
-
   > code {
     border: 0;
     padding-right: 0;
@@ -144,64 +144,122 @@ pre {
   }
 }
 
-
-
-/**
- * Wrapper
- */
-.wrapper {
-  // width: $content-width;
-  // max-width: 100%;
-
-  // max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  // max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+/* Container
+  =========================================================================== */
+.container {
   max-width: $content-width;
   margin: auto;
-  // padding-right: $spacing-unit;
-  // padding-left: $spacing-unit;
-  padding: 0 $base-font-size;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
   @extend %clearfix;
+  @include media-query($on-lg) {
 
-  @include media-query($on-laptop) {
-    // max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    // max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    // max-width: $content-width;
-    // padding-right: $spacing-unit / 2;
-    // padding-left: $spacing-unit / 2;
   }
 }
 
+/* a11y
+  =========================================================================== */
+.screen-reader{
+  background: $light-color;
+  color: $dark-color;
+  position: absolute;
+  right: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
 
+/* Apps marketing
+  =========================================================================== */
+.apps-marketing {
+  line-height: 0;
+}
+.ios-apps-icon {
+  border-radius: 20%;
+  background: #FFFFFF;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+}
+.ios-btn,
+.and-btn {
+  overflow: hidden;
+  & img {
+    font-size: 40px;
+    max-height: 1em;
+    line-height: 1em;
+  }
+}
+.and-btn img {
+  margin: -.167em;
+  max-width: none;
+  font-size: 60px;
+}
 
-/**
- * Clearfix
- */
+/* Gallery
+  =========================================================================== */
+.gallery {
+  position: relative;
+  & .prev,
+  & .next {
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    margin: auto;
+    background: $dark-color;
+    color: $light-color;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px;
+    line-height: $spacing-unit * 3;
+    height: $spacing-unit * 3;
+    width: $spacing-unit * 3;
+    opacity: .3;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    &:hover {
+      opacity: .7;
+    }
+  }
+  & .prev {
+    left: $spacing-unit;
+    &:after {
+      content: "◀︎";
+    }
+  }
+  & .next {
+    right: $spacing-unit;
+    &:after {
+      content: "▶︎";
+    }
+  }
+}
+
+/* Clearfix
+  =========================================================================== */
+%clearfix:before,
 %clearfix:after {
   content: "";
   display: table;
   clear: both;
 }
 
-
-
-/**
- * Icons
- */
-.icon > svg {
-  display: inline-block;
-  vertical-align: middle;
-
-  path {
-    fill: $grey-color;
-  }
+/* Easing
+  =========================================================================== */
+.ease,
+%ease {
+  -webkit-transition: ease all .3s;
+          transition: ease all .3s;
 }
 
-.social-media-list {
-  .icon {
-    padding-right: 5px;
-  }
-
-  li + li {
-    padding-top: 5px;
-  }
+/* Checkered
+  =========================================================================== */
+.checkered,
+%checkered {
+  background-color: #fff;
+  background-position: 0 0,10px 10px;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+  border: 0;
+  background-image: -webkit-linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%,#eee),
+                    -webkit-linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%,#eee);
 }

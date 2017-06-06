@@ -13,12 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Your awesome title
-email: your-email@domain.com
+title: Yoseph Wijaya Savianto
+email: info@yoseph.ws
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Hello my name is Yoseph Wijaya Savianto, Very introvert person but love to
+  share everything for unique and original people, to know more about me you
+  can add and drop me chat on whatsapp.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 copyright: > #
@@ -26,21 +26,30 @@ copyright: > #
   — Collaboration with [wijaya.cc](https://wijaya.cc)
 twitter_username: jekyllrb
 github_username:  jekyll
+repository: nsnull0/meself
 
 # Build settings
-markdown: kramdown
 # theme: minima
+sass:
+  style: compressed
+markdown: kramdown
 gems:
   - jekyll-feed
+  - jekyll-github-metadata
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jemoji
 exclude:
   - Gemfile
   - Gemfile.lock
-
 webrick:
   headers:
     My-Header: My-Value
     My-Other-Header: My-Other-Value
-show_drafts: true
-future: true
-unpublished: true
+#
 limit_posts: 12
+permalink: pretty
+show_drafts: true
+unpublished: true
+future: true
