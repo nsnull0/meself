@@ -34,6 +34,7 @@ function polyfillsAreLoaded(){if(f)return;f=1;
   w.el = [];
   w.el['.hero .title span'] = one('.hero .title span');
   w.el['.hero .cover'] = one('.hero .cover');
+  w.el['.hero .ratio'] = one('.hero .ratio');
   w.el['#contact form'] = one('#contact form');
   w.el['.menu'] = one('.menu');
   w.el['#map'] = one('#map');
@@ -50,7 +51,7 @@ function polyfillsAreLoaded(){if(f)return;f=1;
   var lastScrollTop = 0;
   function scrollax(e){
     var st = getScroll().y;
-    if (getViewport().w<640) {
+    if (getViewport().w < 480) {
       if (st > lastScrollTop && st > 0 && getViewport().w/(st) < 2){
         addClass(w.el['.menu'],'folded');  // scroll down
       } else {
@@ -59,8 +60,10 @@ function polyfillsAreLoaded(){if(f)return;f=1;
     } else {
       removeClass(w.el['.menu'],'folded');
     }
+
     w.el['.hero .title span'] ? w.el['.hero .title span'].style.top = Math.floor(st/2)+'px' : 0;
     tryMapbox();
+    lazyLoad();
   }
   on(w, 'scroll resize', scrollax);
   // scrollspy + parallax
@@ -140,7 +143,7 @@ function polyfillsAreLoaded(){if(f)return;f=1;
       window.scroll({ top: window.latestScroll, left: 0, behavior: 'smooth' });
       setTimeout(function(){
         addClass(all('.icon-rows'),'open');
-        removeClass(all('.sliding .modal-wrapper'),'open')
+        removeClass(all('.sliding .modal-wrapper'),'open');
       },300);
     }else{
       if (!hasClass(one(dest),'open')) {
@@ -148,7 +151,14 @@ function polyfillsAreLoaded(){if(f)return;f=1;
         removeClass(all('.sliding .modal-wrapper'),'open');
         setTimeout(function(){
           removeClass(all('.icon-rows'),'open');
-          addClass(one(dest),'open')
+          addClass(one(dest),'open');
+          // skip lazyload on this particular img
+          tmp = one(dest + ' .gallery .ratio img.lazyload');
+          if (tmp && tmp.dataset.src) {
+            tmp.src = tmp.dataset.src;
+            delete tmp.dataset.src;
+            removeClass(tmp, 'lazyload');
+          }
         },300);
       }
     }
@@ -175,7 +185,7 @@ function polyfillsAreLoaded(){if(f)return;f=1;
 
   // mapbox
   function tryMapbox() {
-    if (!qs2json().nomap && !isLoaded.Mapbox && w.el['#map'] && isElementInViewport(w.el['#map'])) {
+    if (w.mapboxgl && !qs2json().nomap && !isLoaded.Mapbox && w.el['#map'] && isElementInViewport(w.el['#map'])) {
       mapboxgl.accessToken = TOKEN_MAPBOX;
       lnlt = [GEO.center.long, GEO.center.lat];
       map = new mapboxgl.Map({
@@ -194,17 +204,18 @@ function polyfillsAreLoaded(){if(f)return;f=1;
   } tryMapbox();
   // mapbox
 
-  // lazyload gallery
-  function lazyGallery() {
-    var g = w.el['.gallery']; i = g.length;
+  // lazyload image + gallery
+  function lazyLoad() {
+    var g = all('img.lazyload'); i = g.length;
     while (i--) {
-      tmp = one('img',g[i]);
-      if(tmp.width>0){
-        tmp.src = (tmp.src.indexOf('data:image')==0) ? tmp.src = JSON.parse(g[i].dataset.img)[0] : tmp.src;
+      if(isElementInViewport(g[i]) && g[i].dataset.src && g[i].src.indexOf('data:image')==0){
+        g[i].src = g[i].dataset.src;
+        delete g[i].dataset.src;
+        removeClass(g[i], 'lazyload');
       }
     }
-  } lazyGallery(); on(w,'hashchange',lazyGallery);
-  // lazyload gallery
+  } lazyLoad(); on(w,'hashchange',lazyLoad);
+  // lazyload image + gallery
 
   // slack webhook
   function submitContactForm(e) {

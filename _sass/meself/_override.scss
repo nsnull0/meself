@@ -14,25 +14,25 @@
 /* Style override NProgress
   =========================================================================== */
 #nprogress {
-  & .bar{
+  & .bar {
     height: 3px;
     background: $accent-color;
   }
-  & .peg{
+  & .peg {
     box-shadow: 0 0 10px $accent-color, 0 0 5px $accent-color;
   }
-  & .spinner{
+  & .spinner {
     top: $spacing-unit;
     right: $spacing-unit;
   }
-  & .spinner-icon{
+  & .spinner-icon {
     width: $spacing-unit;
     height: $spacing-unit;
     border: solid 3px transparent;
     border-top-color: $accent-color;
     border-left-color: $accent-color;
   }
-  &:after{
+  &:after {
     content: 'Loading...';
     text-align: center;
     position: fixed;
@@ -47,21 +47,21 @@
     left: 0;
   }
 }
-.nprogress-busy main{
+.nprogress-busy main {
   opacity: 0;
 }
 
 /* Style override Mapbox
   =========================================================================== */
 .mapboxgl {
-  .ratio &-map{
+  .ratio &-map {
     position: absolute;
   }
-  &-control-container{
+  &-control-container {
     position: initial;
     color: $accent-color;
   }
-  &-marker{
+  &-marker {
     font-size: 2*$spacing-unit;
     margin: -$spacing-unit;
     color: #222222;
@@ -76,10 +76,10 @@
     -webkit-transition: ease color .3s;
             transition: ease color .3s;
   }
-  &-marker:hover{
+  &-marker:hover {
     color: $accent-color;
   }
-  &-marker:after{
+  &-marker:after {
     content: '◎';
   }
 }
@@ -88,24 +88,24 @@
   =========================================================================== */
 .sliding {
 
-  & .icon-rows{
+  & .icon-rows {
     max-height:0;
 
-    &.open{
+    &.open {
       max-height:15em;
     }
   }
 
-  & .modal-wrapper{
+  & .modal-wrapper {
     background:inherit;
     overflow:hidden;
     max-height:0;
 
-    &.open{
+    &.open {
       max-height:99em;
       margin: -1.5em 0 .5em 0;
 
-      & .close{
+      & .close {
         background: transparent;
         position: fixed;
         bottom: 0;
@@ -133,7 +133,7 @@
 
 
 .popup-modal {
-  & .modal-wrapper{
+  & .modal-wrapper {
     background:inherit;
     position:fixed;
     top:-100%;
@@ -146,21 +146,21 @@
     overflow:auto;
     opacity:0;
 
-    & .gallery{
+    & .gallery {
       width:0;
     }
 
-    &:target{
+    &:target {
       top:0;
       bottom:0;
       height:100%;
       opacity:1;
 
-      & .gallery{
+      & .gallery {
         width:100%;
       }
 
-      & .target-modal{
+      & .target-modal {
         background:inherit;
         position:absolute;
         max-width:800px;
@@ -173,13 +173,13 @@
         right:0;
         bottom:0;
 
-        & h3{
+        & h3 {
           margin-top:0;
         }
       }
 
       & .close,
-      & .close:after{
+      & .close:after {
         background:#222222;
         color:#cc0033;
         content:'×';
@@ -208,13 +208,20 @@
 #me {
   z-index: 1;
 }
-#me .hero{
-  overflow: hidden;
-  background: $dark-color;
-  @include media-query($on-md) { font-size: 1.5em; }
-  @include media-query($on-lg) { font-size: 2em; }
+#me .hero {
+  max-width: 2337px; // using image width to pervent unused space
+  margin: auto;
+  & .ratio { padding: 0 0 75%; }
+  @include media-query($on-md) {
+    font-size: 1.5em;
+    & .ratio { padding: 0 0 50%; }
+  }
+  @include media-query($on-lg) {
+    font-size: 2em;
+    & .ratio { padding: 0 0 33.33333%; }
+  }
   & .title,
-  & .cover{
+  & .cover {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -223,7 +230,7 @@
     max-width: none;
     margin: 0;
   }
-  & .title span{
+  & .title span {
     display: inline-block;
     font-weight: normal;
     padding: 15px;
@@ -239,9 +246,9 @@
 #project {
   background-color: $light-alt-color;
 }
-address{
+address {
   padding:1em 0 0;
-  & a{
+  & a {
     color:#FAFAFA;
     padding:2px 8px;
     margin:-2px -8px;
@@ -285,11 +292,11 @@ address{
 
 /* OVERRIDE Responsive inline menu
   =========================================================================== */
-.inline-menu{
+.inline-menu {
   background-color:$light-color;
   color:$accent-color;
-  & li{
-    & .btn{
+  & li {
+    & .btn {
       color:$accent-color;
       padding:($spacing-unit) ($spacing-unit * .5);
       @include media-query($on-md) {
@@ -304,7 +311,7 @@ address{
     }
   }
 
-  & .active .btn{
+  & .active .btn {
     border-color:$accent-color;
   }
 }
