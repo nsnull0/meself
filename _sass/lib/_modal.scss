@@ -1,6 +1,6 @@
 /* Modal
   =========================================================================== */
-.modal{
+.mModal{
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -15,54 +15,36 @@
   color: #FAFAFA;
   z-index: 99;
   padding: 1.5em;
-}
-.modal .header{
-  margin-top: 0;
-  overflow: hidden;
-  padding-right: 2em;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.modal .body{
-  margin-bottom: 0;
-  overflow: auto;
-  height: 85%;
-  padding: inherit;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  & div{
+  & .header{
+    margin-top: 0;
+    overflow: hidden;
+    padding-right: 1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  & .body{
+    margin-top: -4em;
+    padding-top: 4em;
+    overflow: hidden;
     height: 100%;
-    overflow: auto;
+    & div{
+      height: 100%;
+      overflow: auto;
+    }
   }
-}
-.modal .close{
-  background: transparent;
-  font-weight:700;
-  cursor:pointer;
-  color:#CC0033;
-  position:absolute;
-  font-size:40px;
-  line-height:1;
-  height:1.2em;
-  width:1.2em;
-  right:0;
-  top:0;
-  &:after{
-    content:'×';
-    position:absolute;
-    font-size:40px;
-    line-height:1;
-    height:1.2em;
-    width:1.2em;
-    right:0;
-    top:0;
-  }
-  &:hover,
-  &:focus,
-  &:active {
-    background: #222222;
+  & .close{
+    position: static;
+    font-size: 0;
+    padding: 0;
+    &:after{
+      content: '×';
+      color: #CC0033;
+      position: absolute;
+      font-size: 40px;
+      height: 1em;
+      width: 1em;
+      right: 0;
+      top: 0;
+    }
   }
 }

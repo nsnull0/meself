@@ -33,6 +33,11 @@ repository: nsnull0/meself
 sass:
   style: compressed
 markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  syntax_highlighter: rouge
 gems:
   - jekyll-feed
   - jekyll-github-metadata

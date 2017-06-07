@@ -38,3 +38,7 @@ function arr2json(z){var i=z.length,o={};while(i--){o[i]=z[i]}return o}
 function json2arr(z){return Object.keys(z).map(function(k){return z[k]})}
 function qs2json(z){z=z?z:window.location.search.substring(1);var o=z.split("&"),i=o.length,a={};while(i--){o[i]=o[i].split("=");a[o[i][0]]=o[i][1]||true}return a}
 function json2qs(z,n){return Object.keys(z).map(function(k){var t=n?n+"["+k+"]":k;return "object"==typeof z[k]?json2qs(z[k],t):t+"="+z[k]}).join("&")}
+// modal class
+var modal=function(){return M={"default":{show:0,status:0,className:"",header:"Header",body:"Body goes here"},id:"mModal",on:function(e,d,o){e&&""!=d&&(e.addEventListener?e.addEventListener(d,o):0)},one:function(e,d){return(d||document).getElementById(e)},close:function(){var e=M.one(M.id);e?e.parentNode.removeChild(e):0},invoke:function(e,d,o){var n,t,i;M.close(),n=M.default,e=e||{};for(t in e)n[t]=e[t];n.show&&!M.one(M.id)&&(i=document.createElement("div"),i.id=M.id,i.className+=M.id+" "+n.className,i.innerHTML+='<h1 id="'+M.id+'Header" class="header">'+n.header+'</h1><div id="'+M.id+'Body" class="body"><div>'+n.body+'</div></div><button id="'+M.id+'Close" class="close">×</button>',document.body.appendChild(i),M.on(M.one(M.id+"Close"),"click",function(){M.close(),d&&d()}),M.on(document,"keydown",function(e){var o=27==e.keyCode||!1;o&&(M.close(),d&&d())}),o&&o())}}}();
+// modal.invoke({show:1});
+var a=window.afterLib,i=a.length;while(i--){typeof a[i]==='function' && a[i]();}

@@ -20,7 +20,7 @@
     </address>
   </div>
   <div class="col-sm-1 col-md-1-2">
-    <form class="no-print">
+    <form class="no-print" id="cForm">
       <p><label>
         <input type="text" name="name" placeholder="Name">
       </label></p>
@@ -39,3 +39,114 @@
     </form>
   </div>
 </div>
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js" defer async></script>
+<script>
+afterLib.push(function () {
+  var GEO = {
+    center:{
+      lat:35.5942238,
+      long:139.7242792,
+      zoom:15,
+    },
+  },
+  SUBMIT_RECENTLY = {
+    show:1,
+    header:'Ooops',
+    body:'It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message.'
+  }, SUBMIT_SENDING = {
+    show:1,
+    header:'Sending Message',
+    body:'Did you know, that your message is travelling via Internet to my slack channel in less than a second!'
+  }, SUBMIT_INVALID = {
+    show:1,
+    header:'Invalid Response',
+    body:'Invalid response from server, in case of emergency you can call my number.'
+  }, SUBMIT_SENT = {
+    show:1,
+    header:'Message Sent',
+    body:'Your message has been sent, please wait for the next reply.'
+  }, SUBMIT_FAILED = {
+    show:1,
+    header:'Failed',
+    body:'Unable to sent your message, probably network connection issue.'
+  },
+  TOKEN_MAPBOX = 'pk.eyJ1IjoiZ3VuYXdhbndpamF5YSIsImEiOiJjajM2Zm54cngwNTM3MzNxNjdqOXcxNTZ2In0.U2aHrmrL5HEht8hX2I4FzA',
+  URL_GOOGLE_MAPS = 'https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/',
+  URL_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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';
+
+  // mapbox
+  var isMapboxLoaded;
+  function tryMapbox() { if (isMapboxLoaded || qs2json().nomap) return;
+    if (isElementInViewport(one('#map')) && mapboxgl) {
+      mapboxgl.accessToken = TOKEN_MAPBOX;
+      lnlt = [GEO.center.long, GEO.center.lat];
+      map = new mapboxgl.Map({
+        container: 'map',
+        center: lnlt,
+        zoom: GEO.center.zoom,
+        attributionControl: false,
+        logoPosition: 'bottom-right',
+        style: 'mapbox://styles/mapbox/streets-v9'
+      });
+      marker = new mapboxgl.Marker().setLngLat(lnlt).addTo(map);
+      on(one('.mapboxgl-marker'), 'click', function(e) {
+        open(URL_GOOGLE_MAPS, '_blank').focus();
+      }); isMapboxLoaded = 1;
+    }
+  } tryMapbox(); on(window, 'scroll resize', tryMapbox);
+  // mapbox
+
+  // contact form
+  var recentlySubmitted, cForm = one('#cForm');
+  function submitCForm(e) {
+    e.preventDefault();
+    if (recentlySubmitted) {
+      modal.invoke(SUBMIT_RECENTLY,function() {
+        removeClass(cForm, 'recently-submitted');
+        recentlySubmitted = !1;
+      });
+    } else {
+      modal.invoke(SUBMIT_SENDING);
+      var el = e.target.elements;
+      fetch(URL_SLACK_WEBHOOK, {
+        method: "POST",
+        body: JSON.stringify({
+          "attachments": [{
+            "fallback": "New message from — " + el.name.value + "\nJOB — " + el.job.value + "\nEMAIL — "+ el.email.value + "\nMessage — "+ el.msg.value,
+            "color": "#36a64f",
+            "pretext": "New message",
+            "author_name": el.name.value,
+            "author_link": "mailto:" + el.email.value + "",
+            "author_icon": "https://www.gravatar.com/avatar/" + md5((el.email.value).trim().toLowerCase()),
+            "title": "JOB — " + el.job.value + "",
+            "title_link": "mailto:" + el.email.value+ "",
+            "fields": [{
+              "title": "Message",
+              "value": el.msg.value,
+              "short": false
+            }],
+            "text": "", "image_url": "", "thumb_url": "",
+            "footer_icon": "https://slack.com/favicon.ico",
+            "footer": location.href,
+            "ts": Date.now()/1000
+          }]
+        }),
+      }).then(function(response) {console.log(response);
+        if (response.ok) {
+          addClass(cForm, 'recently-submitted');
+          cForm.reset();
+          recentlySubmitted = !0;
+          modal.invoke(SUBMIT_SENT);
+        } else {
+          modal.invoke(SUBMIT_INVALID);
+        }
+        return response.text()
+      }, function(error) {console.log(error);
+        modal.invoke(SUBMIT_FAILED);
+      })
+    }
+    return false;
+  } cForm ? on(cForm, 'submit', submitCForm) : 0 ;
+  // contact form
+});
+</script>
