@@ -199,9 +199,6 @@ address {
       top: 0;
     }
     & .before {
-      &:before {
-        content: '△';
-      }
       color: #cc0033;
       font-weight: 700;
       font-size: 76px;
@@ -213,6 +210,19 @@ address {
       margin: auto;
       @extend %ease;
       transform: rotateZ(180deg);
+      padding: 8px 0 0;
+      &:before {
+        content: '△';
+        display: block;
+        box-sizing: border-box;
+        @extend %ease;
+        @keyframes example {
+          0%   {margin: 0;}
+          50%  {margin: -8px 0 0;}
+          100% {margin: 0;}
+        }
+        animation: example .5s linear .5s infinite;
+      }
     }
 
     &.open {
