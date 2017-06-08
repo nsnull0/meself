@@ -209,7 +209,7 @@ address {
       display: block;
       margin: auto;
       @extend %ease;
-      // transform: rotateZ(180deg);
+      transform: rotateZ(180deg);
       padding: 8px 0 0;
       &:before {
         content: '△';
@@ -224,8 +224,9 @@ address {
         animation: example .5s linear .5s infinite;
       }
     }
-
+    opacity: .2;
     &.open {
+      opacity: 1;
       max-height:1500px;
       & .before {
         transform: rotateZ(0deg);
