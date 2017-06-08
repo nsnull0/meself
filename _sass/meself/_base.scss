@@ -252,8 +252,13 @@ button {
   =========================================================================== */
 .ease,
 %ease {
-  -webkit-transition: ease all .3s;
-          transition: ease all .3s;
+  -webkit-transition: ease-in-out .3s;
+          transition: ease-in-out .3s;
+}
+.ease-slow,
+%ease-slow {
+  -webkit-transition: ease-in-out .7s;
+          transition: ease-in-out .7s;
 }
 
 /* Checkered

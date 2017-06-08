@@ -17,7 +17,7 @@
   <div class="col-sm-1"></div>
 </div>
 {% for project in site.data.projects %}
-<div class="modal-wrapper" id="project-{{ project.id }}">
+<div class="modal-wrapper ease-slow" id="project-{{ project.id }}">
   <span class="before"></span>
   <a class="btn close" href="#project"><span class="screen-reader">× close</span></a>
   <div class="target-modal">
@@ -58,23 +58,26 @@ afterLib.push(function(){
   on(all('.sliding .modal-wrapper .close, .sliding a.ios-apps-icon'), 'click', function(e) {
     e.preventDefault();
     var dest = '#'+this.href.split('#')[1];
+    var selected = this.parentNode;
+    var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0; // ease-slow(ms) + 100
     if (hasClass(this,'close')) {
       // ONCLOSE
-         addClass(all('.sliding .modal-wrapper'),'ease');
       removeClass(all('.sliding .modal-wrapper'),'open');
-      removeClass(all('.sliding .ios-apps-list'),'active');
-      removeClass(all('.sliding .ios-apps-list'),'blur');
+      setTimeout(function(){
+        removeClass(all('.sliding .ios-apps-list'),'active');
+        removeClass(all('.sliding .ios-apps-list'),'blur');
+      },tmp);
     }else{
       // ONOPEN
       if (!hasClass(one(dest),'open')) {
-        var selected = this.parentNode;
-        removeClass(all('.sliding .modal-wrapper'),'ease');
         removeClass(all('.sliding .modal-wrapper'),'open');
         removeClass(all('.sliding .ios-apps-list'),'active');
-           addClass(all('.sliding .ios-apps-list'),'blur');
+        addClass(all('.sliding .ios-apps-list'),'blur');
 
-           addClass(one(dest),'open');
-           addClass(selected,'active');
+        setTimeout(function(){
+          addClass(one(dest),'open');
+        },tmp);
+        addClass(selected,'active');
         removeClass(selected,'blur');
 
         // skip lazyload on this particular img
@@ -90,7 +93,7 @@ afterLib.push(function(){
     return false;
   });
   // apps icon clicked
-  
+
   // gallery nav clicked
   on(all('.gallery .prev, .gallery .next'), 'click', function(e) {
     e.preventDefault();
