@@ -101,31 +101,38 @@
     overflow:hidden;
     max-height:0;
 
-    &.open {
-      max-height:99em;
-      margin: -1.5em 0 .5em 0;
-
-      & .close {
-        background: transparent;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
-      }
-    }
-
     &:before {
       color: #cc0033;
       content: '△';
       font-weight: 700;
       font-size: 76px;
-      line-height: 1;
+      line-height: .75;
       height: 1em;
       width: 1em;
       text-align: center;
       display: block;
       margin: auto;
+      @extend %ease;
+      transform: rotateZ(180deg);
+    }
+
+    &.open {
+      max-height:99em;
+      margin: -1.5em 0 .5em 0;
+
+      &:before {
+        transform: rotateZ(0deg);
+      }
+
+      & .close {
+        background: transparent;
+        // position: fixed;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+      }
     }
   }
 

@@ -70,14 +70,14 @@ afterLib.push(function () {
     header:'Failed',
     body:'Unable to sent your message, probably network connection issue.'
   },
-  TOKEN_MAPBOX = 'pk.eyJ1IjoiZ3VuYXdhbndpamF5YSIsImEiOiJjajM2Zm54cngwNTM3MzNxNjdqOXcxNTZ2In0.U2aHrmrL5HEht8hX2I4FzA',
+  TOKEN_MAPBOX = 'pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g',
   URL_GOOGLE_MAPS = 'https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/',
   URL_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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';
 
   // mapbox
   var isMapboxLoaded;
   function tryMapbox() { if (isMapboxLoaded || qs2json().nomap) return;
-    if (isElementInViewport(one('#map')) && mapboxgl) {
+    if (isElementInViewport(one('#map')) && window.mapboxgl) {
       mapboxgl.accessToken = TOKEN_MAPBOX;
       lnlt = [GEO.center.long, GEO.center.lat];
       map = new mapboxgl.Map({
