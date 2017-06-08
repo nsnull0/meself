@@ -60,7 +60,7 @@ afterLib.push(function(){
     var dest = '#'+this.href.split('#')[1];
     var selected = this.parentNode;
     var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0; // ease-slow(ms) + 100
-    if (hasClass(this,'close')) {
+    if (hasClass(this,'close') || hasClass(one(dest),'open')) {
       // ONCLOSE
       removeClass(all('.sliding .modal-wrapper'),'open');
       setTimeout(function(){
