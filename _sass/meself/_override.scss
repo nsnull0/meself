@@ -209,7 +209,7 @@ address {
       display: block;
       margin: auto;
       @extend %ease;
-      transform: rotateZ(180deg);
+      // transform: rotateZ(180deg);
       padding: 8px 0 0;
       &:before {
         content: '△';

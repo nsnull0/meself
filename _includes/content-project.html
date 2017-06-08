@@ -17,7 +17,7 @@
   <div class="col-sm-1"></div>
 </div>
 {% for project in site.data.projects %}
-<div class="modal-wrapper ease" id="project-{{ project.id }}">
+<div class="modal-wrapper" id="project-{{ project.id }}">
   <span class="before"></span>
   <a class="btn close" href="#project"><span class="screen-reader">× close</span></a>
   <div class="target-modal">
@@ -60,22 +60,22 @@ afterLib.push(function(){
     var dest = '#'+this.href.split('#')[1];
     if (hasClass(this,'close')) {
       // ONCLOSE
-      console.log('close');
+         addClass(all('.sliding .modal-wrapper'),'ease');
       removeClass(all('.sliding .modal-wrapper'),'open');
       removeClass(all('.sliding .ios-apps-list'),'active');
       removeClass(all('.sliding .ios-apps-list'),'blur');
     }else{
       // ONOPEN
       if (!hasClass(one(dest),'open')) {
+        var selected = this.parentNode;
+        removeClass(all('.sliding .modal-wrapper'),'ease');
         removeClass(all('.sliding .modal-wrapper'),'open');
         removeClass(all('.sliding .ios-apps-list'),'active');
-        addClass(all('.sliding .ios-apps-list'),'blur');
+           addClass(all('.sliding .ios-apps-list'),'blur');
 
-        removeClass(this.parentNode,'blur');
-        addClass(this.parentNode,'active');
-        setTimeout(function(){
-          addClass(one(dest),'open');
-        },300);
+           addClass(one(dest),'open');
+           addClass(selected,'active');
+        removeClass(selected,'blur');
 
         // skip lazyload on this particular img
         tmp = one(dest + ' .gallery .ratio img.lazyload');
@@ -90,6 +90,7 @@ afterLib.push(function(){
     return false;
   });
   // apps icon clicked
+  
   // gallery nav clicked
   on(all('.gallery .prev, .gallery .next'), 'click', function(e) {
     e.preventDefault();
