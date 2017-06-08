@@ -200,36 +200,6 @@ button {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* Apps marketing
-  =========================================================================== */
-.apps-marketing {
-  line-height: 0;
-}
-.ios-apps-icon {
-  width: 100%;
-  max-width: 76px;
-  background: #FFFFFF;
-  display: inline-block;
-  border-radius: 20%;
-  overflow: hidden;
-  line-height: 0;
-  z-index: 2;
-}
-.ios-btn,
-.and-btn {
-  overflow: hidden;
-  & img {
-    font-size: 40px;
-    max-height: 1em;
-    line-height: 1em;
-  }
-}
-.and-btn img {
-  margin: -.167em;
-  max-width: none;
-  font-size: 60px;
-}
-
 /* Gallery
   =========================================================================== */
 .gallery {

@@ -1,3 +1,94 @@
+/* Style override Homepage Section
+  =========================================================================== */
+#me {
+  z-index: 1;
+  & .hero {
+    max-width: 2337px; // using image width to pervent unused space
+    margin: auto;
+    & .ratio { padding: 0 0 75%; }
+    @include media-query($on-md) {
+      font-size: 1.5em;
+      & .ratio { padding: 0 0 50%; }
+    }
+    @include media-query($on-lg) {
+      font-size: 2em;
+      & .ratio { padding: 0 0 33.33333%; }
+    }
+    & .title,
+    & .cover {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      max-height: 100%;
+      max-width: none;
+      margin: 0;
+    }
+    & .title span {
+      display: inline-block;
+      font-weight: normal;
+      padding: 15px;
+      opacity: .5;
+      color: $dark-color;
+      background: $light-color;
+      font-family: $monospace-family;
+      box-shadow: 0 0 0 5px $light-color;
+      border: solid 5px;
+    }
+  }
+}
+
+#project {
+  background-color: $light-alt-color;
+  & * {
+    background: inherit;
+  }
+
+}
+address {
+  padding:1em 0 0;
+  & a {
+    color:#FAFAFA;
+    padding:2px 8px;
+    margin:-2px -8px;
+    &:hover,
+    &:focus,
+    &:active {
+      color:#222222;
+      background:#FF9999;
+    }
+  }
+}
+
+#contact {
+  background-color: $accent-color;
+  color: $light-color;
+  font-weight: 600;
+  @include media-query($on-md) {
+    & .map-address{
+      color:#222222;
+      background:#FAFAFA;
+      & address {
+        text-shadow:
+        -1px -1px 0 #FAFAFA,
+        1px -1px 0 #FAFAFA,
+        -1px 1px 0 #FAFAFA,
+        1px 1px 0 #FAFAFA;
+        pointer-events:none;
+        position:absolute;
+        padding:.4em .8em;
+        line-height:1.25;
+        z-index:1;
+        margin:0;
+        top:0;
+      }
+    }
+  }
+  & form.recently-submitted [type="submit"]:before {
+    content:'🛇  ';
+  }
+}
+
 /* Style override Highlight
   =========================================================================== */
 .highlight {
@@ -87,23 +178,31 @@
 /* Style override Sliding + Popup
   =========================================================================== */
 .sliding {
-
   & .icon-rows {
     max-height:0;
-
     &.open {
       max-height:15em;
     }
   }
-
   & .modal-wrapper {
     background:inherit;
     overflow:hidden;
     max-height:0;
-
-    &:before {
+    margin: -.5em 0 .5em 0;
+    & .close {
+      background: transparent !important;
+      // position: fixed;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+    }
+    & .before {
+      &:before {
+        content: '△';
+      }
       color: #cc0033;
-      content: '△';
       font-weight: 700;
       font-size: 76px;
       line-height: .75;
@@ -118,20 +217,8 @@
 
     &.open {
       max-height:99em;
-      margin: -1.5em 0 .5em 0;
-
-      &:before {
+      & .before {
         transform: rotateZ(0deg);
-      }
-
-      & .close {
-        background: transparent;
-        // position: fixed;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
       }
     }
   }
@@ -210,93 +297,6 @@
   }
 }
 
-/* Style override Homepage Section
-  =========================================================================== */
-#me {
-  z-index: 1;
-}
-#me .hero {
-  max-width: 2337px; // using image width to pervent unused space
-  margin: auto;
-  & .ratio { padding: 0 0 75%; }
-  @include media-query($on-md) {
-    font-size: 1.5em;
-    & .ratio { padding: 0 0 50%; }
-  }
-  @include media-query($on-lg) {
-    font-size: 2em;
-    & .ratio { padding: 0 0 33.33333%; }
-  }
-  & .title,
-  & .cover {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    max-height: 100%;
-    max-width: none;
-    margin: 0;
-  }
-  & .title span {
-    display: inline-block;
-    font-weight: normal;
-    padding: 15px;
-    opacity: .5;
-    color: $dark-color;
-    background: $light-color;
-    font-family: $monospace-family;
-    box-shadow: 0 0 0 5px $light-color;
-    border: solid 5px;
-  }
-}
-
-#project {
-  background-color: $light-alt-color;
-}
-address {
-  padding:1em 0 0;
-  & a {
-    color:#FAFAFA;
-    padding:2px 8px;
-    margin:-2px -8px;
-    &:hover,
-    &:focus,
-    &:active {
-      color:#222222;
-      background:#FF9999;
-    }
-  }
-}
-
-#contact {
-  background-color: $accent-color;
-  color: $light-color;
-  font-weight: 600;
-  @include media-query($on-md) {
-    & .map-address{
-      color:#222222;
-      background:#FAFAFA;
-      & address {
-        text-shadow:
-        -1px -1px 0 #FAFAFA,
-        1px -1px 0 #FAFAFA,
-        -1px 1px 0 #FAFAFA,
-        1px 1px 0 #FAFAFA;
-        pointer-events:none;
-        position:absolute;
-        padding:.4em .8em;
-        line-height:1.25;
-        z-index:1;
-        margin:0;
-        top:0;
-      }
-    }
-  }
-  & form.recently-submitted [type="submit"]:before {
-    content:'🛇  ';
-  }
-}
-
 /* OVERRIDE Responsive inline menu
   =========================================================================== */
 .inline-menu {
@@ -321,4 +321,47 @@ address {
   & .active .btn {
     border-color:$accent-color;
   }
+}
+
+/* Apps marketing
+  =========================================================================== */
+.apps-marketing {
+  line-height: 0;
+}
+.ios-apps-list {
+  &.blur {
+    opacity: .2;
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: .6
+    }
+  }
+  &.active {
+    opacity: 1;
+  }
+}
+.ios-apps-icon {
+  width: 100%;
+  max-width: 76px;
+  background: #FFFFFF!important;
+  display: inline-block;
+  border-radius: 20%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+}
+.ios-btn,
+.and-btn {
+  overflow: hidden;
+  & img {
+    font-size: 40px;
+    max-height: 1em;
+    line-height: 1em;
+  }
+}
+.and-btn img {
+  margin: -.167em;
+  max-width: none;
+  font-size: 60px;
 }

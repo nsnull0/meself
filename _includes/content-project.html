@@ -1,7 +1,7 @@
 <div class="popup-modalx sliding">
 <div class="row icon-rows open ease" style="text-align: center; overflow: hidden">
   {% for project in site.data.projects %}
-  <div class="col-sm-1-3 col-md-1-6">
+  <div class="col-sm-1-3 col-md-1-6 ios-apps-list ease">
     <a class="ios-apps-icon" href="#project-{{ project.id }}">
       <img class="ios-apps-icon lazyload" alt="Apps icon" data-src="{{ project.icon }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
       <span class="screen-reader">🔗 open</span>
@@ -18,6 +18,7 @@
 </div>
 {% for project in site.data.projects %}
 <div class="modal-wrapper ease" id="project-{{ project.id }}">
+  <span class="before"></span>
   <a class="btn close" href="#project"><span class="screen-reader">× close</span></a>
   <div class="target-modal">
     <h3>{{ project.name }}</h3>
@@ -59,22 +60,23 @@ afterLib.push(function(){
     var dest = '#'+this.href.split('#')[1];
     if (hasClass(this,'close')) {
       // ONCLOSE
+      console.log('close');
       removeClass(all('.sliding .modal-wrapper'),'open');
-      setTimeout(function(){
-        addClass(all('.icon-rows'),'open');
-      },300);
-      // setTimeout(function(){
-      // },300);
+      removeClass(all('.sliding .ios-apps-list'),'active');
+      removeClass(all('.sliding .ios-apps-list'),'blur');
     }else{
       // ONOPEN
       if (!hasClass(one(dest),'open')) {
         removeClass(all('.sliding .modal-wrapper'),'open');
-        removeClass(all('.icon-rows'),'open');
+        removeClass(all('.sliding .ios-apps-list'),'active');
+        addClass(all('.sliding .ios-apps-list'),'blur');
+
+        removeClass(this.parentNode,'blur');
+        addClass(this.parentNode,'active');
         setTimeout(function(){
           addClass(one(dest),'open');
         },300);
-        // setTimeout(function(){
-        // },300);
+
         // skip lazyload on this particular img
         tmp = one(dest + ' .gallery .ratio img.lazyload');
         if (tmp && tmp.dataset.src) {
