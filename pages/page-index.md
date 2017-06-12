@@ -43,7 +43,7 @@ defer:          |
 </section>
 <section id="project">
   <div class="container">
-    <h2>project</h2>
+    <h2>project-list</h2>
     <div class="popup-modalx sliding">
     <div class="row" style="text-align: center;">
       {% for project in site.data.projects %}
