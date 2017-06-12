@@ -1,3 +1,13 @@
+/* Extend Grid layout with margin - padding
+  =========================================================================== */
+.row {
+  width:calc(100% + #{$spacing-unit});
+  margin:($spacing-unit/-2);
+  > [class^=col-] {
+    padding:($spacing-unit/2);
+  }
+}
+
 /* Style override Homepage Section
   =========================================================================== */
 .index {

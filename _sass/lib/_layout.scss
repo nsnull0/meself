@@ -25,14 +25,11 @@
 .row {
   display:inline-block;
   width:100%;
-  width:calc(100% + #{$spacing-unit});
-  margin:($spacing-unit/-2);
   margin-bottom:-6px;
-  & > [class^=col-] {
+  > [class^=col-] {
     float:left;
     width:100%;
     overflow: hidden;
-    padding:($spacing-unit/2);
     box-sizing:border-box;
   }
   @include grid-on(sm);
