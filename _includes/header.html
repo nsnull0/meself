@@ -1,17 +1,17 @@
-{% if page.custom-header %}{% else %}
+{% if page.custom_header %}{% else %}
 <header class="site-header" role="banner">
   <div class="container">
     <nav data-gumshoe-header class="menu fixed no-print">
       <ul data-gumshoe class="inline-menu ease font-montserrat">
-      {% assign sorted_pages = site.pages | sort:"menu-index","last" %}
+      {% assign sorted_pages = site.pages | sort:"menu_index","last" %}
       {% for _page in sorted_pages %}
-      {% if _page.title %} {% if _page.url != "/404.html" or _page.permalink != "/404.html" %}
+      {% if _page.title and _page.menu_index >= 0 %}
         <li {% if _page.url == page.url %}class="active"{% endif %}>
           <a data-scroll class="btn ease menu-item" href="{{ _page.url | absolute_url }}">
             {{ _page.title | escape }}
           </a>
         </li>
-      {% endif %}{% endif %}
+      {% endif %}
       {% endfor %}
       </ul>
     </nav>

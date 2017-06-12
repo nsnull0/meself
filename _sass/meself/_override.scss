@@ -1,7 +1,11 @@
 /* Style override Homepage Section
   =========================================================================== */
+.index {
+  background: $accent-color;
+}
 #me {
   z-index: 1;
+  color: $light-color;
   & .hero {
     max-width: 2337px; // using image width to pervent unused space
     margin: auto;
@@ -39,41 +43,42 @@
 }
 
 #project {
-  background-color: $light-alt-color;
+  // background-color: $light-alt-color;
+  color: $light-color;
   & * {
     background: inherit;
   }
 
 }
 address {
-  padding:1em 0 0;
+  padding: $spacing-unit 0 0;
   & a {
-    color:#FAFAFA;
-    padding:2px 8px;
-    margin:-2px -8px;
+    color: $light-color;
+    padding: 2px $spacing-unit/2;
+    margin: -2px $spacing-unit/-2;
     &:hover,
     &:focus,
     &:active {
-      color:#222222;
-      background:#FF9999;
+      color: $dark-color;
+      background: $accent-light-color;
     }
   }
 }
 
 #contact {
-  background-color: $accent-color;
+  // background-color: $accent-color;
   color: $light-color;
   font-weight: 600;
   @include media-query($on-md) {
     & .map-address{
-      color:#222222;
-      background:#FAFAFA;
+      color:$dark-color;
+      background:$light-color;
       & address {
         text-shadow:
-        -1px -1px 0 #FAFAFA,
-        1px -1px 0 #FAFAFA,
-        -1px 1px 0 #FAFAFA,
-        1px 1px 0 #FAFAFA;
+        -1px -1px 0 $light-color,
+        1px -1px 0 $light-color,
+        -1px 1px 0 $light-color,
+        1px 1px 0 $light-color;
         pointer-events:none;
         position:absolute;
         padding:.4em .8em;
@@ -353,10 +358,10 @@ address {
     opacity: 1;
   }
 }
+img.ios-apps-icon { background: #FFFFFF!important; }
 .ios-apps-icon {
   width: 100%;
   max-width: 76px;
-  background: #FFFFFF!important;
   display: inline-block;
   border-radius: 20%;
   overflow: hidden;
@@ -373,7 +378,7 @@ address {
   }
 }
 .and-btn img {
-  margin: -.167em;
+  margin: -.166em;
   max-width: none;
   font-size: 60px;
 }

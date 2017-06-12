@@ -1,6 +1,10 @@
 ---
-layout:         page
+menu_index:     2
+permalink:      /posts/
+title:          posts
 ---
+# posts
+
 {% for post in site.posts %}
 <div>
   <h2><a class="post-link" href="{{ post.url | absolute_url }}">

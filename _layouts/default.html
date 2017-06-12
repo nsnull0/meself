@@ -1,3 +1,6 @@
+---
+# layout: compress
+---
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {% include head.html %}
@@ -7,9 +10,12 @@
       {{ content }}
       {% include footer.html %}
     </main>
-    {% include service-google-analytics.html %}
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?callback=polyfillsAreLoaded" defer async></script>
-    <script src="{{ "/assets/js/lib.js" | absolute_url }}"></script><script>NProgress.start();</script>
-    <script src="{{ "/assets/js/script.js" | absolute_url }}"></script>
+    <div>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?callback=polyfillsAreLoaded" defer async></script>
+      <script src="{{ "/assets/js/lib.js" | absolute_url }}"></script><script>NProgress.start();</script>
+      <script src="{{ "/assets/js/script.js" | absolute_url }}"></script>
+      {{ page.defer }}
+    </div>
   </body>
 </html>

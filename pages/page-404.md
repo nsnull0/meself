@@ -1,10 +1,10 @@
 ---
-layout:         a404
+menu_index:     -1
 permalink:      /404.html
 title:          404 - page not found
-custom-header:  true
+custom_header:  true
 ---
-# {{ page.title }}
+# 404 - page not found
 
 oops - it seems you're a little lost here little fellas
 back to [home]({{ "/" | absolute_url }}) ?

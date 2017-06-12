@@ -1,0 +1,70 @@
+GEO:
+  center:
+    lat: 35.5942238
+    long: 139.7242792
+    zoom: 15
+########################################
+TOKEN_MAPBOX: pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g
+URL_GOOGLE_MAPS: https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/
+URL_SLACK_WEBHOOK: https://hooks.slack.com/services/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
+########################################
+about:
+  ######################################
+  quote: |
+    ## quote of the day
+
+    > "I never lose. I either win or learn."
+    >
+    > Nelson Mandela.
+
+    Be Resilience, don't lose to bug, error, etc.<br>
+    Be thankful because if you found it, <br>
+    that will make you learn more and gain great experience.
+
+    Take your time to solve it because hard work would never betray you <br>
+    Happy Coding!!!
+  ######################################
+  text: |
+    Hello my name is Yoseph Wijaya Savianto,
+    Very introvert person but love to share everything for unique and original people,
+    to know more about me you can add and drop me chat on whatsapp.
+
+    Currently there's a lot of idea that i want to build in iOS apps environment,
+    if you want to chat a little bit about developing an Apps, please feel free to contact me.
+
+    Some of you might be wondering, am i jobless guy? fraudsters? I am neither of that,
+    I am just very pure normal developer guy who love to code and hug.
+    Short stories currently working on some projects on-site in Japan company that
+    required me to give most of the time to the projects.
+
+    Share with me your dream apps if you like by message me on contact tabs for quick and serious responds.
+    Hopefully I can give you solution how to start it or maybe make it together.
+
+    Bless you,
+    Yoseph Wijaya Savianto.
+########################################
+anisequence:
+  - ME.SELF
+  - My.SElf
+  - _y.SEph
+  - _YOSEPH
+  - _iOS___
+  - __iOS__
+  - ___iOS_
+  - ____iOS
+########################################
+contact:
+  ######################################
+  address: |
+    Sannou 1-7<br>
+    Oomori 2<br>
+    Tokyo<br>
+    〒 143-0023<br>
+    Japan
+  ######################################
+  detail: |
+    Yoseph Wijaya Savianto<br>
+    <a class="ease" href="mailto:info@yoseph.ws">mailto: info@yoseph.ws</a><br>
+    <a class="ease" href="tel:+81 80 9588 1639">tel: +81 80 9588 1639</a><br>
+    <a class="ease" href="tel:+62 857 5522 1155">tel: +62 857 5522 1155</a>
+########################################

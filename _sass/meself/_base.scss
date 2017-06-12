@@ -104,16 +104,19 @@ a {
 /* Blockquotes
   =========================================================================== */
 blockquote {
-  color: $dark-alt-color;
-  border-left: 4px solid $accent-color;
-  padding-left: $spacing-unit;
+  padding: $spacing-unit/2;
+  padding-right: $spacing-unit/4*3;
+  border-left: $spacing-unit/4 solid $accent-color;
   font-style: italic;
-  margin: 0;
-  margin-right: ($spacing-unit*-.5);
-  margin-left: ($spacing-unit*-.5);
+  margin: $spacing-unit $spacing-unit/4*3*-1;
   @include relative-font-size(1.25);
-  @include media-query($on-md) {
-    margin: $spacing-unit;
+  @include media-query($on-md) { margin: $spacing-unit; }
+  p { font-weight: 100; &:last-child { margin-bottom: 0; } &:first-child { margin-top: 0; }
+    & + p:last-child {
+      font-weight: 700;
+      margin-left: $spacing-unit*2;
+      @include relative-font-size(.8125);
+    }
   }
 }
 

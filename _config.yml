@@ -1,43 +1,48 @@
 # Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Yoseph Wijaya Savianto
-email: info@yoseph.ws
-description: > # this means to ignore newlines until "baseurl:"
+#
+baseurl:      "" # the subpath of your site, e.g. /blog
+url:          "" # the base hostname & protocol for your site, e.g. http://example.com
+title:        Yoseph Wijaya Savianto
+email:        info@yoseph.ws
+description:  >
   Hello my name is Yoseph Wijaya Savianto, Very introvert person but love to
   share everything for unique and original people, to know more about me you
   can add and drop me chat on whatsapp.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-copyright: > #
+copyright:    >
   © Copyright 2017 [yoseph.ws](https://yoseph.ws)
   — Collaboration with [wijaya.cc](https://wijaya.cc)
-twitter_username: jekyllrb
-github_username:  jekyll
-repository: nsnull0/meself
-
-# Build settings
-# theme: minima
+repository:   nsnull0/meself
+########################################
+permalink:    pretty
+limit_posts:  12
+show_drafts:  true
+unpublished:  true
+future:       true
+########################################
+defaults:
+  - ####################################
+    scope: { path: "" }
+    values:
+      layout: page
+      author: Yoseph Wijaya Savianto
+  - ####################################
+    scope: { path: _posts }
+    values: { layout: post }
+  - ####################################
+    scope: { path: _drafts }
+    values: { layout: post }
+########################################
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+########################################
 sass:
   style: compressed
-markdown: kramdown
-kramdown:
-  input: GFM
-  auto_ids: true
-  hard_wrap: false
-  syntax_highlighter: rouge
+########################################
 gems:
   - jekyll-feed
   - jekyll-github-metadata
@@ -48,13 +53,4 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
-webrick:
-  headers:
-    My-Header: My-Value
-    My-Other-Header: My-Other-Value
-#
-limit_posts: 12
-permalink: pretty
-show_drafts: true
-unpublished: true
-future: true
+########################################

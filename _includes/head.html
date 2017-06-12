@@ -2,14 +2,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>html,body{background: #222222;color:#FAFAFA;min-height:100%;max-width:100%;}body{overflow-y:scroll;}</style>
+  <script>document.documentElement.className += " nprogress-busy";afterLib=[];</script>
   {% seo %}
   {% feed_meta %}
   <link type="application/rss+xml" rel="alternate" href="{{ "/feed.xml" | absolute_url }}" title="{{ site.title | escape }}">
-  <noscript id="deferred-styles">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-  </noscript>
-  <style>html,body{background: #222222;color:#FAFAFA;min-height:100%;max-width:100%;}body{overflow-y:scroll;}</style>
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/favicons/apple-touch-icon.png" | absolute_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/favicons/favicon-32x32.png" | absolute_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/favicons/favicon-16x16.png" | absolute_url }}">
@@ -19,5 +16,5 @@
   <meta name="msapplication-config" content="{{ "/assets/favicons/browserconfig.xml" | absolute_url }}">
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | absolute_url }}">
-  <script>document.documentElement.className += " nprogress-busy";afterLib=[];</script>
+  {% include service-google-analytics.html %}
 </head>
