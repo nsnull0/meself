@@ -138,7 +138,7 @@ defer:          |
 </div>
 <script>
 afterLib.push(function () {
-  // hero typing animation
+  /* hero typing animation */
   function mouseTrigger_HeroAni(e) {
     var data = {{ site.data.contents.anisequence | jsonify }};
     data = e.type=='mouseover' ? data.reverse() : data;
@@ -156,30 +156,31 @@ afterLib.push(function () {
   }
   var stackOf_HeroAni = [], el = one('.hero .title span');
   el ? on(el, 'mouseover mouseout', mouseTrigger_HeroAni) : 0;
-  // hero typing animation
+  /* hero typing animation */
 
-  // parallax
+  /* parallax */
   on(window, 'scroll resize', function (e){
     el ? el.style.top = Math.floor(getScroll().y/2)+'px' : 0;
   });
-  // parallax
+  /* parallax */
 });
 afterLib.push(function(){
-  // apps icon clicked
+  /* apps icon clicked */
   on(all('.sliding .modal-wrapper .close, .sliding a.ios-apps-icon'), 'click', function(e) {
     e.preventDefault();
     var dest = '#'+this.href.split('#')[1];
     var selected = this.parentNode;
-    var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0; // ease-slow(ms) + 100
+    /* ease-slow(ms) + 100 */ 
+    var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0;
     if (hasClass(this,'close') || hasClass(one(dest),'open')) {
-      // ONCLOSE
+      /* ONCLOSE */
       removeClass(all('.sliding .modal-wrapper'),'open');
       setTimeout(function(){
         removeClass(all('.sliding .ios-apps-list'),'active');
         removeClass(all('.sliding .ios-apps-list'),'blur');
       },tmp);
     }else{
-      // ONOPEN
+      /* ONOPEN */
       if (!hasClass(one(dest),'open')) {
         removeClass(all('.sliding .modal-wrapper'),'open');
         removeClass(all('.sliding .ios-apps-list'),'active');
@@ -191,21 +192,21 @@ afterLib.push(function(){
         addClass(selected,'active');
         removeClass(selected,'blur');
 
-        // skip lazyload on this particular img
+        /* skip lazyload on this particular img */
         tmp = one(dest + ' .gallery .ratio img.lazyload');
         if (tmp && tmp.dataset.src) {
           tmp.src = tmp.dataset.src;
           delete tmp.dataset.src;
           removeClass(tmp, 'lazyload');
         }
-        // skip lazyload on this particular img
+        /* skip lazyload on this particular img */
       }
     }
     return false;
   });
-  // apps icon clicked
+  /* apps icon clicked */
 
-  // gallery nav clicked
+  /* gallery nav clicked */
   on(all('.gallery .prev, .gallery .next'), 'click', function(e) {
     e.preventDefault();
     var idx = (hasClass(this, 'prev')) ? -1 : 1 ;
@@ -222,7 +223,7 @@ afterLib.push(function(){
     this.parentNode.dataset.idx = idx;
     return false;
   });
-  // gallery nav clicked
+  /* gallery nav clicked */
 });
 afterLib.push(function () {
   var GEO = {{ site.data.contents.GEO | jsonify }},
@@ -251,7 +252,7 @@ afterLib.push(function () {
     body:'Unable to sent your message, probably network connection issue.'
   };
 
-  // mapbox
+  /* mapbox */
   var isMapboxLoaded;
   function tryMapbox() { if (isMapboxLoaded || qs2obj().nomap) return;
     if (isElementInViewport(one('#map')) && window.mapboxgl) {
@@ -271,9 +272,9 @@ afterLib.push(function () {
       }); isMapboxLoaded = 1;
     }
   } tryMapbox(); on(window, 'scroll resize', tryMapbox);
-  // mapbox
+  /* mapbox */
 
-  // contact form
+  /* contact form */
   var recentlySubmitted, cForm = one('#cForm');
   function submitCForm(e) {
     e.preventDefault();
@@ -324,6 +325,6 @@ afterLib.push(function () {
     }
     return false;
   } cForm ? on(cForm, 'submit', submitCForm) : 0 ;
-  // contact form
+  /* contact form */
 });
 </script>
