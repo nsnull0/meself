@@ -1,0 +1,4 @@
+---
+layout:         compress
+---
+{{ site.data.projects | jsonify }}
