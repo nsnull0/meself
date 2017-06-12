@@ -204,7 +204,7 @@ address {
       top: 0;
     }
     & .before {
-      color: #cc0033;
+      color: $accent-light-color; // SEGITIGA
       font-weight: 700;
       font-size: 76px;
       line-height: .75;
