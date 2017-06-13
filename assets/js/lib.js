@@ -15,7 +15,7 @@
 
 !function(w,d) {
 var h=d.documentElement;
-w.eachNode=function(f,u){var r,i,f;if(f&&u){if(f.push)f=f;else if(f.length){for(i=f.length,r=[];i--;)r[i]=f[i];f=r}else f=[f];for(r=f.length;r--;)(f[r].nodeName||f[r]===window)&&u&&u(f[r])}}
+w.eachNode=function(f,u){var r,i;if(f&&u){if(f.nodeName||f===window)f=[f];else if(f.push)f=f;else if(f.length){for(i=f.length,r=[];i--;)r[i]=f[i];f=r}else f=[f];for(r=f.length;r--;)u&&u(f[r])}}
 w.eachString=function(f,u,n){if(f&&u){var r,n=n||" ",f=f.join?f.join(n):f;for(f=f.split(n),r=f.length;r--;)""!==f[r]&&u&&u(f[r])}}
 /* Node & DOM */
 w.fadeout=function(f,u){u=u||40;eachNode(f,function(f){""==f.style.opacity?f.style.opacity=1:0;f.style.opacity>0?setTimeout(function(){f.style.opacity-=.1;fadeout(f)},u):f.style.opacity=0;});}
