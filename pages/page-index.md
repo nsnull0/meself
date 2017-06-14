@@ -170,7 +170,7 @@ afterLib.push(function(){
     e.preventDefault();
     var dest = '#'+this.href.split('#')[1];
     var selected = this.parentNode;
-    /* ease-slow(ms) + 100 */ 
+    /* ease-slow(ms) + 100 */
     var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0;
     if (hasClass(this,'close') || hasClass(one(dest),'open')) {
       /* ONCLOSE */
@@ -231,23 +231,18 @@ afterLib.push(function () {
   URL_GOOGLE_MAPS = {{ site.data.contents.URL_GOOGLE_MAPS | jsonify }},
   URL_SLACK_WEBHOOK = {{ site.data.contents.URL_SLACK_WEBHOOK | jsonify }},
   SUBMIT_RECENTLY = {
-    show:1,
     header:'Ooops',
     body:'It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message.'
   }, SUBMIT_SENDING = {
-    show:1,
     header:'Sending Message',
     body:'Did you know, that your message is travelling via Internet to my slack channel in less than a second!'
   }, SUBMIT_INVALID = {
-    show:1,
     header:'Invalid Response',
     body:'Invalid response from server, in case of emergency you can call my number.'
   }, SUBMIT_SENT = {
-    show:1,
     header:'Message Sent',
     body:'Your message has been sent, please wait for the next reply.'
   }, SUBMIT_FAILED = {
-    show:1,
     header:'Failed',
     body:'Unable to sent your message, probably network connection issue.'
   };
