@@ -87,7 +87,7 @@ defer:          |
           <div class="col-sm-1 col-md-1-2">
             <div class="gallery" data-img='{{ project.gallery | jsonify }}'>
               <div class="ratio ratio-9-16">
-                <img alt="Gallery image" class="ease lazyload" data-src="{{ project.gallery[0] }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                <img alt="Gallery image" class="ease unload lazyload" data-src="{{ project.gallery[0] }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
               </div>
               <span class="prev ease no-print"></span>
               <span class="next ease no-print"></span>
