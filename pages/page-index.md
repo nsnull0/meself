@@ -199,6 +199,7 @@ afterLib.push(function(){
           tmp.src = tmp.dataset.src;
           delete tmp.dataset.src;
           removeClass(tmp, 'lazyload');
+          on(tmp, 'load', function (data) { removeClass(this,'unload'); });
         }
         /*= skip lazyload on this particular img =*/
       }
