@@ -141,6 +141,23 @@ pre {
   }
 }
 
+/* Address
+  =========================================================================== */
+address {
+  padding: $spacing-unit 0 0;
+  & a {
+    color: $light-color;
+    padding: 2px $spacing-unit/2;
+    margin: -2px $spacing-unit/-2;
+    &:hover,
+    &:focus,
+    &:active {
+      color: $dark-color;
+      background: $accent-light-color;
+    }
+  }
+}
+
 /* Form
   =========================================================================== */
 button,
@@ -195,45 +212,6 @@ button {
   right: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
-}
-
-/* Gallery
-  =========================================================================== */
-.gallery {
-  position: relative;
-  & .prev,
-  & .next {
-    text-align: center;
-    position: absolute;
-    cursor: pointer;
-    margin: auto;
-    background: $dark-color;
-    color: $light-color;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 3px;
-    line-height: $spacing-unit * 3;
-    height: $spacing-unit * 3;
-    width: $spacing-unit * 3;
-    opacity: .3;
-    z-index: 1;
-    bottom: 0;
-    top: 0;
-    &:hover {
-      opacity: .7;
-    }
-  }
-  & .prev {
-    left: $spacing-unit;
-    &:after {
-      content: "◀︎";
-    }
-  }
-  & .next {
-    right: $spacing-unit;
-    &:after {
-      content: "▶︎";
-    }
-  }
 }
 
 /* Clearfix

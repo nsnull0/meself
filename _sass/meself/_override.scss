@@ -53,31 +53,11 @@
 }
 
 #project {
-  // background-color: $light-alt-color;
-  color: $light-color;
-  & * {
-    background: inherit;
-  }
-
-}
-address {
-  padding: $spacing-unit 0 0;
-  & a {
-    color: $light-color;
-    padding: 2px $spacing-unit/2;
-    margin: -2px $spacing-unit/-2;
-    &:hover,
-    &:focus,
-    &:active {
-      color: $dark-color;
-      background: $accent-light-color;
-    }
-  }
+  color: $light-color; // background-color: $light-alt-color;
 }
 
 #contact {
-  // background-color: $accent-color;
-  color: $light-color;
+  color: $light-color; // background-color: $accent-color;
   font-weight: 600;
   @include media-query($on-md) {
     & .map-address{
@@ -320,6 +300,39 @@ address {
         height:100%;
       }
     }
+  }
+}
+
+/* Gallery
+  =========================================================================== */
+.gallery {
+  position: relative;
+  .waitload { opacity: .5; }
+  .unload { opacity: 0; pointer-events: none; }
+  .prev,
+  .next {
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    margin: auto;
+    background: $dark-color;
+    color: $light-color;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px;
+    line-height: $spacing-unit * 3;
+    height: $spacing-unit * 3;
+    width: $spacing-unit * 3;
+    opacity: .5;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    &:hover { opacity: 1; }
+  }
+  .prev { left: $spacing-unit;
+    &:after { content: "◀︎"; }
+  }
+  .next { right: $spacing-unit;
+    &:after { content: "▶︎"; }
   }
 }
 

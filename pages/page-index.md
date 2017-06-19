@@ -44,7 +44,7 @@ defer:          |
 <section id="project">
   <div class="container">
     <p><h2>project-list</h2><small>(tap icon apps to see detail)</small><br/></p><br/>
-    
+
     <div class="popup-modalx sliding">
     <div class="row" style="text-align: center;">
       {% for project in site.data.projects %}
@@ -72,12 +72,12 @@ defer:          |
         {% if project.ios-store or project.and-store %}
         <p class="apps-marketing">
           {% if project.ios-store %}
-          <a class="ios-btn" target="_blank" href="{{ project.ios-store }}">
+          <a class="ios-btn" target="_blank =_" href="{{ project.ios-store }}">
             <img class="lazyload" data-src="https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
           </a>
           {% endif %}
           {% if project.and-store %}
-          <a class="and-btn" target="_blank" href="{{ project.and-store }}">
+          <a class="and-btn" target="_blank =_" href="{{ project.and-store }}">
             <img class="lazyload" data-src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
           </a>
           {% endif %}
@@ -87,7 +87,7 @@ defer:          |
           <div class="col-sm-1 col-md-1-2">
             <div class="gallery" data-img='{{ project.gallery | jsonify }}'>
               <div class="ratio ratio-9-16">
-                <img alt="Gallery image" class="lazyload" data-src="{{ project.gallery[0] }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                <img alt="Gallery image" class="ease lazyload" data-src="{{ project.gallery[0] }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
               </div>
               <span class="prev ease no-print"></span>
               <span class="next ease no-print"></span>
@@ -139,7 +139,7 @@ defer:          |
 </div>
 <script>
 afterLib.push(function () {
-  /* hero typing animation */
+  /*= hero typing animation =*/
   function mouseTrigger_HeroAni(e) {
     var data = {{ site.data.contents.anisequence | jsonify }};
     data = e.type=='mouseover' ? data.reverse() : data;
@@ -157,31 +157,31 @@ afterLib.push(function () {
   }
   var stackOf_HeroAni = [], el = one('.hero .title span');
   el ? on(el, 'mouseover mouseout', mouseTrigger_HeroAni) : 0;
-  /* hero typing animation */
+  /*= hero typing animation =*/
 
-  /* parallax */
+  /*= parallax =*/
   on(window, 'scroll resize', function (e){
     el ? el.style.top = Math.floor(getScroll().y/2)+'px' : 0;
   });
-  /* parallax */
+  /*= parallax =*/
 });
 afterLib.push(function(){
-  /* apps icon clicked */
+  /*= apps icon clicked =*/
   on(all('.sliding .modal-wrapper .close, .sliding a.ios-apps-icon'), 'click', function(e) {
     e.preventDefault();
     var dest = '#'+this.href.split('#')[1];
     var selected = this.parentNode;
-    /* ease-slow(ms) + 100 */
+    /*= ease-slow(ms) + 100 =*/
     var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0;
     if (hasClass(this,'close') || hasClass(one(dest),'open')) {
-      /* ONCLOSE */
+      /*= ONCLOSE =*/
       removeClass(all('.sliding .modal-wrapper'),'open');
       setTimeout(function(){
         removeClass(all('.sliding .ios-apps-list'),'active');
         removeClass(all('.sliding .ios-apps-list'),'blur');
       },tmp);
     }else{
-      /* ONOPEN */
+      /*= ONOPEN =*/
       if (!hasClass(one(dest),'open')) {
         removeClass(all('.sliding .modal-wrapper'),'open');
         removeClass(all('.sliding .ios-apps-list'),'active');
@@ -193,38 +193,51 @@ afterLib.push(function(){
         addClass(selected,'active');
         removeClass(selected,'blur');
 
-        /* skip lazyload on this particular img */
+        /*= skip lazyload on this particular img =*/
         tmp = one(dest + ' .gallery .ratio img.lazyload');
         if (tmp && tmp.dataset.src) {
           tmp.src = tmp.dataset.src;
           delete tmp.dataset.src;
           removeClass(tmp, 'lazyload');
         }
-        /* skip lazyload on this particular img */
+        /*= skip lazyload on this particular img =*/
       }
     }
     return false;
   });
-  /* apps icon clicked */
+  /*= apps icon clicked =*/
 
-  /* gallery nav clicked */
+  /*= gallery nav clicked =*/
+  on(one('.gallery .unload'), 'load', function (data) { removeClass(this,'unload'); });
   on(all('.gallery .prev, .gallery .next'), 'click', function(e) {
     e.preventDefault();
     var idx = (hasClass(this, 'prev')) ? -1 : 1 ;
     var gallery = this.parentNode;
     var list = JSON.parse(gallery.dataset.img);
     var last = list.length-1;
-    var img = one('img', gallery);
-    idx += 1*gallery.dataset.idx || 0;
+    var activeIdx = 1*gallery.dataset.idx || 0;
+    idx += activeIdx;
     idx = (idx < 0) ? last : (idx>last) ? 0 : idx;
-    addClass(img, 'ease');
-    on(img, 'load', function (data) { this.style.opacity='1'; });
-    img.style.opacity='.3';
-    setTimeout(function(){ img.src = list[idx]; },200);
-    this.parentNode.dataset.idx = idx;
+
+    var img = one('img[src="'+list[activeIdx]+'"]', gallery);
+    var newImg = one('img[src="'+list[idx]+'"]', gallery);
+    if (!newImg) {
+      newImg = str2DOM(`<img alt="Gallery image" class="ease unload">`);
+      newImg.src = list[idx];
+      img.parentNode.appendChild(newImg);
+      addClass(img,'waitload');
+      on(newImg, 'load', function (data) {
+        removeClass(img,'waitload');
+        removeClass(newImg,'unload'); addClass(img,'unload');
+      });
+    } else {
+      removeClass(newImg,'unload'); addClass(img,'unload');
+    }
+
+    gallery.dataset.idx = idx;
     return false;
   });
-  /* gallery nav clicked */
+  /*= gallery nav clicked =*/
 });
 afterLib.push(function () {
   var GEO = {{ site.data.contents.GEO | jsonify }},
@@ -248,7 +261,7 @@ afterLib.push(function () {
     body:'Unable to sent your message, probably network connection issue.'
   };
 
-  /* mapbox */
+  /*= mapbox =*/
   var isMapboxLoaded;
   function tryMapbox() { if (isMapboxLoaded || qs2obj().nomap) return;
     if (isElementInViewport(one('#map')) && window.mapboxgl) {
@@ -264,13 +277,13 @@ afterLib.push(function () {
       });
       marker = new mapboxgl.Marker().setLngLat(lnlt).addTo(map);
       on(one('.mapboxgl-marker'), 'click', function(e) {
-        open(URL_GOOGLE_MAPS, '_blank').focus();
+        open(URL_GOOGLE_MAPS, '_blank =_').focus();
       }); isMapboxLoaded = 1;
     }
   } tryMapbox(); on(window, 'scroll resize', tryMapbox);
-  /* mapbox */
+  /*= mapbox =*/
 
-  /* contact form */
+  /*= contact form =*/
   var recentlySubmitted, cForm = one('#cForm');
   function submitCForm(e) {
     e.preventDefault();
@@ -321,6 +334,6 @@ afterLib.push(function () {
     }
     return false;
   } cForm ? on(cForm, 'submit', submitCForm) : 0 ;
-  /* contact form */
+  /*= contact form =*/
 });
 </script>
