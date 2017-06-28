@@ -1,4 +1,6 @@
 # meself
 profile web
 
-https://nsnull0.github.io/meself/
+# Credit
+- Colaborator Gunawan Wijaya ([@wijayacc](https://github.com/gunawanwijaya))
+- Creator Yoseph Wijaya ([@meself](http://yoseph.ws))
