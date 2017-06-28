@@ -1,7 +1,7 @@
 GEO:
   center:
-    lat: 35.5942238
-    long: 139.7242792
+    lat: 35.5901148
+    long: 139.728117
     zoom: 15
 ########################################
 TOKEN_MAPBOX: pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g
@@ -65,6 +65,7 @@ contact:
   detail: |
     Yoseph Wijaya Savianto<br>
     <a class="ease" href="mailto:info@yoseph.ws">mailto: info@yoseph.ws</a><br>
+    <a class="ease" href="https://github.com/nsnull0">Github: nsnull0</a><br>
     <a class="ease" href="tel:+81 80 9588 1639">tel: +81 80 9588 1639</a><br>
     <a class="ease" href="tel:+62 857 5522 1155">tel: +62 857 5522 1155</a>
 ########################################
