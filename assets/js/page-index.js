@@ -34,9 +34,8 @@ window.defer.push(() => {
         },
 
         /* = hero typing animation = */
-        mouseTrigger_HeroAni = (e) => {
+        mouseTrigger_HeroAni = () => {
             const ani = (hero) => {
-                console.log(e.type, stackOf_HeroAni);
                 if (stackOf_HeroAni && stackOf_HeroAni.length) {
                     hero.innerHTML = stackOf_HeroAni.pop();
                     w.timeout_HeroAni = w.setTimeout(() => {
