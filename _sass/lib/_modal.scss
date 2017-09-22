@@ -1,6 +1,6 @@
 /* Modal
   =========================================================================== */
-.mModal{
+.Modal{
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -16,11 +16,18 @@
   z-index: 99;
   padding: 1.5em;
   & .header{
+    z-index: 2;
     margin-top: 0;
     overflow: hidden;
-    padding-right: 1em;
+    padding-right: 40px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    a {
+      display: inherit;
+      overflow: inherit;
+      white-space: inherit;
+      text-overflow: inherit;
+    }
   }
   & .body{
     margin-top: -4em;
@@ -33,13 +40,18 @@
     }
   }
   & .close{
-    position: static;
+    z-index: 3;
+    position: absolute;
     font-size: 0;
     padding: 0;
+    border: 0;
+    right: 0;
+    top: 0;
     &:after{
-      content: '×';
+      content: '\00D7';
       color: #CC0033;
       position: absolute;
+      line-height: .8;
       font-size: 40px;
       height: 1em;
       width: 1em;

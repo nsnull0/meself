@@ -10,12 +10,11 @@ layout: compress
       {{ content }}
       {% include footer.html %}
     </main>
-    <div>
-      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?callback=polyfillsAreLoaded" defer async></script>
-      <script src="{{ "/assets/js/lib.js" | absolute_url }}"></script><script>NProgress.start();</script>
-      <script src="{{ "/assets/js/script.js" | absolute_url }}"></script>
+    <div class="hide" defer-script-and-style>
       {{ page.defer }}
+      <script async="" defer="" src="{{ "/assets/js/script.js" | absolute_url }}"></script>
+      <script async="" defer="" src="https://gunawan.wijaya.cc/assets/js/lib.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700">
     </div>
   </body>
 </html>

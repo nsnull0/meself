@@ -7,7 +7,11 @@ redirect_from:  /home
 className:      index
 defer:          |
   <link href="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js" defer async></script>
+  <script async="" defer="" src="https://unpkg.com/nprogress"></script>
+  <script async="" defer="" src="https://unpkg.com/smooth-scroll"></script>
+  <script async="" defer="" src="https://unpkg.com/gumshoejs"></script>
+  <script async="" defer="" src="https://unpkg.com/blueimp-md5/js/md5.min.js"></script>
+  <script async="" defer="" src="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js"></script>
 ---
 <header class="site-header" role="banner">
   <div class="container">
@@ -44,7 +48,6 @@ defer:          |
 <section id="project">
   <div class="container">
     <p><h2>project-list</h2><small>(tap icon apps to see detail)</small><br/></p><br/>
-
     <div class="popup-modalx sliding">
     <div class="row" style="text-align: center;">
       {% for project in site.data.projects %}
@@ -138,203 +141,10 @@ defer:          |
 </section>
 </div>
 <script>
-afterLib.push(function () {
-  /*= hero typing animation =*/
-  function mouseTrigger_HeroAni(e) {
-    var data = {{ site.data.contents.anisequence | jsonify }};
-    data = e.type=='mouseover' ? data.reverse() : data;
-    function ani(el){
-      if (stackOf_HeroAni && stackOf_HeroAni.length) {
-        el.innerHTML = stackOf_HeroAni.pop();
-        setTimeout(function(){ ani(el); },200);
-      }
-    }
-    if (stackOf_HeroAni.length<1) {
-      stackOf_HeroAni = data; ani(el);
-    } else {
-      stackOf_HeroAni = data.splice(0,stackOf_HeroAni.length);
-    }
-  }
-  var stackOf_HeroAni = [], el = one('.hero .title span');
-  el ? on(el, 'mouseover mouseout', mouseTrigger_HeroAni) : 0;
-  /*= hero typing animation =*/
-
-  /*= parallax =*/
-  on(window, 'scroll resize', function (e){
-    el ? el.style.top = Math.floor(getScroll().y/2)+'px' : 0;
-  });
-  /*= parallax =*/
-});
-afterLib.push(function(){
-  /*= apps icon clicked =*/
-  on(all('.sliding .modal-wrapper .close, .sliding a.ios-apps-icon'), 'click', function(e) {
-    e.preventDefault();
-    var dest = '#'+this.href.split('#')[1];
-    var selected = this.parentNode;
-    /*= ease-slow(ms) + 100 =*/
-    var tmp = (one('.sliding .modal-wrapper.open')) ? 800 : 0;
-    if (hasClass(this,'close') || hasClass(one(dest),'open')) {
-      /*= ONCLOSE =*/
-      removeClass(all('.sliding .modal-wrapper'),'open');
-      setTimeout(function(){
-        removeClass(all('.sliding .ios-apps-list'),'active');
-        removeClass(all('.sliding .ios-apps-list'),'blur');
-      },tmp);
-    }else{
-      /*= ONOPEN =*/
-      if (!hasClass(one(dest),'open')) {
-        removeClass(all('.sliding .modal-wrapper'),'open');
-        removeClass(all('.sliding .ios-apps-list'),'active');
-        addClass(all('.sliding .ios-apps-list'),'blur');
-
-        setTimeout(function(){
-          addClass(one(dest),'open');
-        },tmp);
-        addClass(selected,'active');
-        removeClass(selected,'blur');
-
-        /*= skip lazyload on this particular img =*/
-        tmp = one(dest + ' .gallery .ratio img.lazyload');
-        if (tmp && tmp.dataset.src) {
-          tmp.src = tmp.dataset.src;
-          delete tmp.dataset.src;
-          removeClass(tmp, 'lazyload');
-          on(tmp, 'load', function (data) { removeClass(this,'unload'); });
-        }
-        /*= skip lazyload on this particular img =*/
-      }
-    }
-    return false;
-  });
-  /*= apps icon clicked =*/
-
-  /*= gallery nav clicked =*/
-  on(one('.gallery .unload'), 'load', function (data) { removeClass(this,'unload'); });
-  on(all('.gallery .prev, .gallery .next'), 'click', function(e) {
-    e.preventDefault();
-    var idx = (hasClass(this, 'prev')) ? -1 : 1 ;
-    var gallery = this.parentNode;
-    var list = JSON.parse(gallery.dataset.img);
-    var last = list.length-1;
-    var activeIdx = 1*gallery.dataset.idx || 0;
-    idx += activeIdx;
-    idx = (idx < 0) ? last : (idx>last) ? 0 : idx;
-
-    var img = one('img[src="'+list[activeIdx]+'"]', gallery);
-    var newImg = one('img[src="'+list[idx]+'"]', gallery);
-    if (!newImg) {
-      newImg = str2DOM(`<img alt="Gallery image" class="ease unload">`);
-      newImg.src = list[idx];
-      img.parentNode.appendChild(newImg);
-      addClass(img,'waitload');
-      on(newImg, 'load', function (data) {
-        removeClass(img,'waitload');
-        removeClass(newImg,'unload'); addClass(img,'unload');
-      });
-    } else {
-      removeClass(newImg,'unload'); addClass(img,'unload');
-    }
-
-    gallery.dataset.idx = idx;
-    return false;
-  });
-  /*= gallery nav clicked =*/
-});
-afterLib.push(function () {
-  var GEO = {{ site.data.contents.GEO | jsonify }},
-  TOKEN_MAPBOX = {{ site.data.contents.TOKEN_MAPBOX | jsonify }},
-  URL_GOOGLE_MAPS = {{ site.data.contents.URL_GOOGLE_MAPS | jsonify }},
-  URL_SLACK_WEBHOOK = {{ site.data.contents.URL_SLACK_WEBHOOK | jsonify }},
-  SUBMIT_RECENTLY = {
-    header:'Ooops',
-    body:'It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message.'
-  }, SUBMIT_SENDING = {
-    header:'Sending Message',
-    body:'Did you know, that your message is travelling via Internet to my slack channel in less than a second!'
-  }, SUBMIT_INVALID = {
-    header:'Invalid Response',
-    body:'Invalid response from server, in case of emergency you can call my number.'
-  }, SUBMIT_SENT = {
-    header:'Message Sent',
-    body:'Your message has been sent, please wait for the next reply.'
-  }, SUBMIT_FAILED = {
-    header:'Failed',
-    body:'Unable to sent your message, probably network connection issue.'
-  };
-
-  /*= mapbox =*/
-  var isMapboxLoaded;
-  function tryMapbox() { if (isMapboxLoaded || qs2obj().nomap) return;
-    if (isElementInViewport(one('#map')) && window.mapboxgl) {
-      mapboxgl.accessToken = TOKEN_MAPBOX;
-      lnlt = [GEO.center.long, GEO.center.lat];
-      map = new mapboxgl.Map({
-        container: 'map',
-        center: lnlt,
-        zoom: GEO.center.zoom,
-        attributionControl: false,
-        logoPosition: 'bottom-right',
-        style: 'mapbox://styles/mapbox/streets-v9'
-      });
-      marker = new mapboxgl.Marker().setLngLat(lnlt).addTo(map);
-      on(one('.mapboxgl-marker'), 'click', function(e) {
-        open(URL_GOOGLE_MAPS, '_blank =_').focus();
-      }); isMapboxLoaded = 1;
-    }
-  } tryMapbox(); on(window, 'scroll resize', tryMapbox);
-  /*= mapbox =*/
-
-  /*= contact form =*/
-  var recentlySubmitted, cForm = one('#cForm');
-  function submitCForm(e) {
-    e.preventDefault();
-    if (recentlySubmitted) {
-      modal.invoke(SUBMIT_RECENTLY,function() {
-        removeClass(cForm, 'recently-submitted');
-        recentlySubmitted = !1;
-      });
-    } else {
-      modal.invoke(SUBMIT_SENDING);
-      var el = e.target.elements;
-      fetch(URL_SLACK_WEBHOOK, {
-        method: "POST",
-        body: JSON.stringify({
-          "attachments": [{
-            "fallback": "New message from — " + el.name.value + "\nJOB — " + el.job.value + "\nEMAIL — "+ el.email.value + "\nMessage — "+ el.msg.value,
-            "color": "#36a64f",
-            "pretext": "New message",
-            "author_name": el.name.value,
-            "author_link": "mailto:" + el.email.value + "",
-            "author_icon": "https://www.gravatar.com/avatar/" + md5((el.email.value).trim().toLowerCase()),
-            "title": "JOB — " + el.job.value + "",
-            "title_link": "mailto:" + el.email.value+ "",
-            "fields": [{
-              "title": "Message",
-              "value": el.msg.value,
-              "short": false
-            }],
-            "text": "", "image_url": "", "thumb_url": "",
-            "footer_icon": "https://slack.com/favicon.ico",
-            "footer": location.href,
-            "ts": Date.now()/1000
-          }]
-        }),
-      }).then(function(response) {console.log(response);
-        if (response.ok) {
-          addClass(cForm, 'recently-submitted');
-          cForm.reset();
-          recentlySubmitted = !0;
-          modal.invoke(SUBMIT_SENT);
-        } else {
-          modal.invoke(SUBMIT_INVALID);
-        }
-        return response.text()
-      }, function(error) {console.log(error);
-        modal.invoke(SUBMIT_FAILED);
-      })
-    }
-    return false;
-  } cForm ? on(cForm, 'submit', submitCForm) : 0 ;
-  /*= contact form =*/
-});
+window.anisequence = {{ site.data.contents.anisequence | jsonify }};
+window.GEO = {{ site.data.contents.GEO | jsonify }};
+window.TOKEN_MAPBOX = {{ site.data.contents.TOKEN_MAPBOX | jsonify }};
+window.URL_GOOGLE_MAPS = {{ site.data.contents.URL_GOOGLE_MAPS | jsonify }};
+window.URL_SLACK_WEBHOOK = {{ site.data.contents.URL_SLACK_WEBHOOK | jsonify }};
 </script>
+<script async="" defer="" src="{{ "/assets/js/page-index.js" | absolute_url }}"></script>
