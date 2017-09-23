@@ -167,8 +167,8 @@ window.defer.push(() => {
             w.addClass(selected, "active");
             w.removeClass(selected, "blur");
 
-            /* = skip lazyload on this particular img = */
-            tmp = w.one(`${dest} .gallery .ratio img.lazyload`);
+            /* = skip lazyload & remove unload on this particular img = */
+            tmp = w.one(`${dest} .gallery .ratio img`);
             if (tmp && tmp.dataset.src) {
                 tmp.src = tmp.dataset.src;
                 w.Reflect.deleteProperty(tmp.dataset, "src");
