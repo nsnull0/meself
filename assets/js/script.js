@@ -42,4 +42,5 @@ window.defer.push(() => {
     w.interactiveMD();
     w.NProgress.done();
 });
-window.runDefer = window.runDefer ? window.runDefer() : () => { };
+window.tmp = window.runDefer ? window.runDefer() : () => { };
+window.Reflect.deleteProperty(window, "tmp");
