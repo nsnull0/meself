@@ -107,7 +107,7 @@ window.defer.push(() => {
                             "thumb_url": "",
                             "footer_icon": "https://slack.com/favicon.ico",
                             "footer": location.href,
-                            "ts": Date.now() / 1000
+                            "ts": 1e-3 * Date.now()
                         }]
                     }),
                 }).then((response) => {
