@@ -169,13 +169,11 @@ window.defer.push(() => {
 
             /* = skip lazyload & remove unload on this particular img = */
             tmp = w.one(`${dest} .gallery .ratio img`);
+            w.removeClass(tmp, "unload");
             if (tmp && tmp.dataset.src) {
                 tmp.src = tmp.dataset.src;
                 w.Reflect.deleteProperty(tmp.dataset, "src");
                 w.removeClass(tmp, "lazyload");
-                w.on(tmp, "load", () => {
-                    w.removeClass(tmp, "unload");
-                });
             }
         }
 
