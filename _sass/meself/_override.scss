@@ -1,3 +1,10 @@
+.align {
+  &-left { text-align: left; }
+  &-right { text-align: right; }
+  &-center { text-align: center; }
+  &-justify { text-align: justify; }
+}
+
 /* Extend Grid layout with margin - padding
   =========================================================================== */
 .row {
@@ -16,20 +23,20 @@
 #me {
   z-index: 1;
   color: $light-color;
-  & .hero {
+  .hero {
     max-width: 2337px; // using image width to pervent unused space
     margin: auto;
-    & .ratio { padding: 0 0 75%; }
+    .ratio { padding: 0 0 75%; }
     @include media-query($on-md) {
       font-size: 1.5em;
-      & .ratio { padding: 0 0 50%; }
+      .ratio { padding: 0 0 50%; }
     }
     @include media-query($on-lg) {
       font-size: 2em;
-      & .ratio { padding: 0 0 33.33333%; }
+      .ratio { padding: 0 0 33.33333%; }
     }
-    & .title,
-    & .cover {
+    .title,
+    .cover {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -38,7 +45,7 @@
       max-width: none;
       margin: 0;
     }
-    & .title span {
+    .title span {
       display: inline-block;
       font-weight: normal;
       padding: 15px;
@@ -50,6 +57,7 @@
       border: solid 5px;
     }
   }
+  .container.quote{ max-width:600px; }
 }
 
 #project {
@@ -60,10 +68,10 @@
   color: $light-color; // background-color: $accent-color;
   font-weight: 600;
   @include media-query($on-md) {
-    & .map-address{
+    .map-address{
       color:$dark-color;
       background:$light-color;
-      & address {
+      address {
         text-shadow:
         -1px -1px 0 $light-color,
         1px -1px 0 $light-color,
@@ -79,7 +87,7 @@
       }
     }
   }
-  & form.recently-submitted [type="submit"]:before {
+  form.recently-submitted [type="submit"]:before {
     content:'🛇  ';
   }
 }
@@ -100,18 +108,18 @@
 /* Style override NProgress
   =========================================================================== */
 #nprogress {
-  & .bar {
+  .bar {
     height: 3px;
     background: $accent-color;
   }
-  & .peg {
+  .peg {
     box-shadow: 0 0 10px $accent-color, 0 0 5px $accent-color;
   }
-  & .spinner {
+  .spinner {
     top: $spacing-unit;
     right: $spacing-unit;
   }
-  & .spinner-icon {
+  .spinner-icon {
     width: $spacing-unit;
     height: $spacing-unit;
     border: solid 3px transparent;
@@ -127,7 +135,8 @@
     padding: 50% 0;
     line-height: 0;
     font-size: $spacing-unit * 2;
-    opacity: .5;
+    // opacity: .5;
+    color: #666;
     width: 100%;
     top: 50%;
     left: 0;
@@ -173,18 +182,18 @@
 /* Style override Sliding + Popup
   =========================================================================== */
 .sliding {
-  & .icon-rows {
+  .icon-rows {
     max-height:0;
     &.open {
       max-height:15em;
     }
   }
-  & .modal-wrapper {
+  .modal-wrapper {
     background:inherit;
     overflow:hidden;
     max-height:0;
     margin: -.5em 0 .5em 0;
-    & .close {
+    .close {
       background: transparent !important;
       // position: fixed;
       position: absolute;
@@ -193,7 +202,7 @@
       left: 0;
       top: 0;
     }
-    & .before {
+    .before {
       color: $accent-light-color; // SEGITIGA
       font-weight: 700;
       font-size: 76px;
@@ -223,7 +232,7 @@
     &.open {
       opacity: 1;
       max-height:1500px;
-      & .before {
+      .before {
         transform: rotateZ(0deg);
       }
     }
@@ -233,7 +242,7 @@
 
 
 .popup-modal {
-  & .modal-wrapper {
+  .modal-wrapper {
     background:inherit;
     position:fixed;
     top:-100%;
@@ -246,7 +255,7 @@
     overflow:auto;
     opacity:0;
 
-    & .gallery {
+    .gallery {
       width:0;
     }
 
@@ -256,11 +265,11 @@
       height:100%;
       opacity:1;
 
-      & .gallery {
+      .gallery {
         width:100%;
       }
 
-      & .target-modal {
+      .target-modal {
         background:inherit;
         position:absolute;
         max-width:800px;
@@ -273,13 +282,13 @@
         right:0;
         bottom:0;
 
-        & h3 {
+        h3 {
           margin-top:0;
         }
       }
 
-      & .close,
-      & .close:after {
+      .close,
+      .close:after {
         background:#222222;
         color:#cc0033;
         content:'×';
@@ -295,7 +304,7 @@
         top:0;
       }
 
-      & .close{
+      .close{
         width:100%;
         height:100%;
       }
@@ -341,8 +350,8 @@
 .inline-menu {
   background-color:$light-color;
   color:$accent-color;
-  & li {
-    & .btn {
+  li {
+    .btn {
       color:$accent-color;
       padding:($spacing-unit) ($spacing-unit * .5);
       @include media-query($on-md) {
@@ -357,51 +366,59 @@
     }
   }
 
-  & .active .btn {
+  .active .btn {
     border-color:$accent-color;
   }
 }
 
 /* Apps marketing
   =========================================================================== */
-.apps-marketing {
-  line-height: 0;
-}
-.ios-apps-list {
-  &.blur {
-    pointer-events: none;
-    opacity: .2;
-    &:hover,
-    &:focus,
-    &:active {
-      opacity: .6
+  .app-list {
+    &.blur {
+      pointer-events: none;
+      opacity: .2;
+      &:hover,
+      &:focus,
+      &:active {
+        opacity: .6
+      }
+    }
+    &.active {
+      opacity: 1;
+    }
+    .app-icon {
+      width: 100%;
+      max-width: 76px;
+      display: inline-block;
+      border-radius: 20%;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 2;
+    }
+    .app-name{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: small;
+    }
+    &.project-debune .app-icon {
+      background: #FFFFFF!important;
     }
   }
-  &.active {
-    opacity: 1;
-  }
-}
-img.ios-apps-icon { background: #FFFFFF!important; }
-.ios-apps-icon {
-  width: 100%;
-  max-width: 76px;
-  display: inline-block;
-  border-radius: 20%;
-  overflow: hidden;
+.apps-marketing {
   line-height: 0;
-  z-index: 2;
-}
-.ios-btn,
-.and-btn {
-  overflow: hidden;
-  & img {
-    font-size: 40px;
-    max-height: 1em;
-    line-height: 1em;
+  .ios-btn,
+  .and-btn {
+    overflow: hidden;
+    img {
+      font-size: 40px;
+      max-height: 1em;
+      line-height: 1em;
+    }
   }
-}
-.and-btn img {
-  margin: -.166em;
-  max-width: none;
-  font-size: 60px;
+  .and-btn img {
+    margin: -.166em;
+    max-width: none;
+    font-size: 60px;
+  }
 }

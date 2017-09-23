@@ -64,8 +64,8 @@ contact:
   ######################################
   detail: |
     Yoseph Wijaya Savianto<br>
-    <a class="ease" href="mailto:info@yoseph.ws">mailto: info@yoseph.ws</a><br>
-    <a class="ease" href="https://github.com/nsnull0">Github: nsnull0</a><br>
-    <a class="ease" href="tel:+81 80 9588 1639">tel: +81 80 9588 1639</a><br>
-    <a class="ease" href="tel:+62 857 5522 1155">tel: +62 857 5522 1155</a>
+    <a class="ease" target="_blank" href="mailto:info@yoseph.ws">mailto: info@yoseph.ws</a><br>
+    <a class="ease" target="_blank" href="https://github.com/nsnull0">GitHub: @nsnull0</a><br>
+    <a class="ease" target="_blank" href="tel:+81 80 9588 1639">tel: +81 80 9588 1639</a><br>
+    <a class="ease" target="_blank" href="tel:+62 857 5522 1155">tel: +62 857 5522 1155</a>
 ########################################

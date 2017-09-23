@@ -137,8 +137,8 @@ window.defer.push(() => {
         hero.style.top = `${Math.floor(w.getScroll().y / 2)}px`;
     });
 
-    /* = apps icon clicked = */
-    w.on(w.all(".sliding .modal-wrapper .close, .sliding a.ios-apps-icon"), "click", (e, $ = e.target) => {
+    /* = app icon clicked = */
+    w.on(w.all(".sliding .modal-wrapper .close, .sliding a.app-icon"), "click", (e, $ = e.target) => {
         e.preventDefault();
         while (!$.href) {
             $ = $.parentNode;
@@ -152,15 +152,15 @@ window.defer.push(() => {
             /* = ONCLOSE = */
             w.removeClass(w.all(".sliding .modal-wrapper"), "open");
             setTimeout(() => {
-                w.removeClass(w.all(".sliding .ios-apps-list"), "active");
-                w.removeClass(w.all(".sliding .ios-apps-list"), "blur");
+                w.removeClass(w.all(".sliding .app-list"), "active");
+                w.removeClass(w.all(".sliding .app-list"), "blur");
             }, delay);
         } else if (!w.hasClass(w.one(dest), "open")) {
 
             /* = ONOPEN = */
             w.removeClass(w.all(".sliding .modal-wrapper"), "open");
-            w.removeClass(w.all(".sliding .ios-apps-list"), "active");
-            w.addClass(w.all(".sliding .ios-apps-list"), "blur");
+            w.removeClass(w.all(".sliding .app-list"), "active");
+            w.addClass(w.all(".sliding .app-list"), "blur");
             setTimeout(() => {
                 w.addClass(w.one(dest), "open");
             }, delay);
