@@ -222,3 +222,4 @@ window.defer.push(() => {
     w.on(window, "scroll resize", tryMapbox);
     tmp = cForm ? w.on(cForm, "submit", submitCForm) : 0;
 });
+window.runDefer = window.runDefer ? window.runDefer() : () => { };

@@ -42,3 +42,4 @@ window.defer.push(() => {
     w.interactiveMD();
     w.NProgress.done();
 });
+window.runDefer = window.runDefer ? window.runDefer() : () => { };
