@@ -176,9 +176,10 @@ window.defer.push(() => {
                 w.removeClass(tmp, "lazyload");
             }
         }
+        w.lazyLoad();
 
         return false;
-    });
+    }, false);
 
     /* = gallery nav clicked = */
     w.on(w.one(".gallery .unload"), "load", (e, $ = e.target) => {
@@ -203,7 +204,7 @@ window.defer.push(() => {
             w.removeClass(newImg, "unload");
             w.addClass(img, "unload");
         } else {
-            newImg = w.str2DOM("<img alt='Gallery image' class='ease unload'>");
+            newImg = w.stringToDOM("<img alt='Gallery image' class='ease unload'>");
             newImg.src = list[idx];
             img.parentNode.appendChild(newImg);
             w.addClass(img, "waitload");
@@ -220,7 +221,7 @@ window.defer.push(() => {
 
     tryMapbox();
     w.on(window, "scroll resize", tryMapbox);
-    tmp = cForm ? w.on(cForm, "submit", submitCForm) : 0;
+    w.on(cForm, "submit", submitCForm, false);
 });
 window.tmp = window.runDefer ? window.runDefer() : () => { };
 window.Reflect.deleteProperty(window, "tmp");

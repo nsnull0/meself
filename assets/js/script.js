@@ -25,12 +25,12 @@ window.defer.push(() => {
     scroll = new w.SmoothScroll();
     (($ = "[data-scroll]", opts = {}) => {
         w.on(w, "click", (e) => {
+            e.preventDefault();
             toggle = e.target.closest($);
             anchor = toggle ? w.one(toggle.hash) : false;
             if (!anchor || !toggle || toggle.tagName.toLowerCase() !== "a") {
                 return;
             }
-            e.preventDefault();
             scroll.animateScroll(anchor, toggle, opts);
         }, false);
     })();
@@ -38,7 +38,6 @@ window.defer.push(() => {
     w.on(w, "scroll resize", scrollSpy);
     w.on(w.all(".row,.flex"), "scroll", scrollSpy);
     w.lazyLoad();
-    w.on(w, "hashchange", w.lazyLoad);
     w.interactiveMD();
     w.NProgress.done();
 });
