@@ -6,7 +6,7 @@ custom_header:  true
 redirect_from:  /home
 className:      index
 defer:          |
-  <link href="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css" rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css" rel="stylesheet"/>
   <script async="" defer="" src="https://unpkg.com/nprogress"></script>
   <script async="" defer="" src="https://unpkg.com/smooth-scroll"></script>
   <script async="" defer="" src="https://unpkg.com/gumshoejs"></script>

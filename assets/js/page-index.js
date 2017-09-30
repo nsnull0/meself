@@ -51,7 +51,7 @@ window.defer.push(() => {
 
         /* = mapbox = */
         tryMapbox = () => {
-            if (isMapboxLoaded || w.qs2obj().nomap) {
+            if (isMapboxLoaded || w.queryStringToJSON().nomap) {
                 return;
             }
             if (w.isElementInViewport(w.one("#map")) && window.mapboxgl) {
