@@ -1,5 +1,4 @@
 window.defer.push(() => {
-
     let tmp = 0,
         isMapboxLoaded = 0,
         stackOf_HeroAni = [],
@@ -78,6 +77,7 @@ window.defer.push(() => {
         /* = contact form = */
         submitCForm = (e, $ = e.target.elements) => {
             e.preventDefault();
+            console.log(e, $);
             if (recentlySubmitted) {
                 tmp = new w.Modal(SUBMIT_RECENTLY, () => {
                     w.removeClass(cForm, "recently-submitted");
@@ -128,6 +128,85 @@ window.defer.push(() => {
             }
 
             return false;
+        },
+
+        /* = app icon clicked = */
+        appIconClicked = (e, $ = e.target) => {
+            e.preventDefault();
+            while (!$.href) {
+                $ = $.parentNode;
+            }
+            const dest = `#${$.href.split("#")[1]}`,
+                selected = $.parentNode,
+                delay = w.one(".sliding .modal-wrapper.open") ? 800 : 0;
+
+            if (w.hasClass($, "close") || w.hasClass(w.one(dest), "open")) {
+
+                /* = ONCLOSE = */
+                w.removeClass(w.all(".sliding .modal-wrapper"), "open");
+                setTimeout(() => {
+                    w.removeClass(w.all(".sliding .app-list"), "active");
+                    w.removeClass(w.all(".sliding .app-list"), "blur");
+                }, delay);
+            } else if (!w.hasClass(w.one(dest), "open")) {
+
+                /* = ONOPEN = */
+                w.removeClass(w.all(".sliding .modal-wrapper"), "open");
+                w.removeClass(w.all(".sliding .app-list"), "active");
+                w.addClass(w.all(".sliding .app-list"), "blur");
+                setTimeout(() => {
+                    w.addClass(w.one(dest), "open");
+                }, delay);
+                w.addClass(selected, "active");
+                w.removeClass(selected, "blur");
+
+                /* = skip lazyload & remove unload on this particular img = */
+                tmp = w.one(`${dest} .gallery .ratio img`);
+                w.removeClass(tmp, "unload");
+                if (tmp && tmp.dataset.src) {
+                    tmp.src = tmp.dataset.src;
+                    w.Reflect.deleteProperty(tmp.dataset, "src");
+                    w.removeClass(tmp, "lazyload");
+                }
+            }
+            w.lazyLoad();
+
+            return false;
+        },
+
+        /* = gallery nav clicked = */
+        galleryNavClicked = (e, $ = e.target) => {
+            e.preventDefault();
+            let idx = w.hasClass($, "prev") ? -1 : 1,
+                newImg = $,
+                img = $;
+            const gallery = $.parentNode,
+                list = JSON.parse(gallery.dataset.img),
+                last = list.length - 1,
+                activeIdx = Number(gallery.dataset.idx) || 0;
+
+            idx += activeIdx;
+            idx = idx < 0 ? last : idx;
+            idx = idx > last ? 0 : idx;
+            img = w.one(`img[src='${list[activeIdx]}']`, gallery);
+            newImg = w.one(`img[src='${list[idx]}']`, gallery);
+            if (newImg) {
+                w.removeClass(newImg, "unload");
+                w.addClass(img, "unload");
+            } else {
+                newImg = w.stringToDOM("<img alt='Gallery image' class='ease unload'>");
+                newImg.src = list[idx];
+                img.parentNode.appendChild(newImg);
+                w.addClass(img, "waitload");
+                w.on(newImg, "load", () => {
+                    w.removeClass(img, "waitload");
+                    w.removeClass(newImg, "unload");
+                    w.addClass(img, "unload");
+                });
+            }
+            gallery.dataset.idx = idx;
+
+            return false;
         };
 
     w.on(hero, "mouseover mouseout", mouseTrigger_HeroAni);
@@ -137,90 +216,18 @@ window.defer.push(() => {
         hero.style.top = `${Math.floor(w.getScroll().y / 2)}px`;
     });
 
-    /* = app icon clicked = */
-    w.on(w.all(".sliding .modal-wrapper .close, .sliding a.app-icon"), "click", (e, $ = e.target) => {
-        e.preventDefault();
-        while (!$.href) {
-            $ = $.parentNode;
-        }
-        const dest = `#${$.href.split("#")[1]}`,
-            selected = $.parentNode,
-            delay = w.one(".sliding .modal-wrapper.open") ? 800 : 0;
+    w.on(w.all(".sliding .modal-wrapper .close, .sliding a.app-icon"), "click", appIconClicked, false);
 
-        if (w.hasClass($, "close") || w.hasClass(w.one(dest), "open")) {
+    w.on(w.all(".gallery .prev, .gallery .next"), "click", galleryNavClicked, false);
 
-            /* = ONCLOSE = */
-            w.removeClass(w.all(".sliding .modal-wrapper"), "open");
-            setTimeout(() => {
-                w.removeClass(w.all(".sliding .app-list"), "active");
-                w.removeClass(w.all(".sliding .app-list"), "blur");
-            }, delay);
-        } else if (!w.hasClass(w.one(dest), "open")) {
-
-            /* = ONOPEN = */
-            w.removeClass(w.all(".sliding .modal-wrapper"), "open");
-            w.removeClass(w.all(".sliding .app-list"), "active");
-            w.addClass(w.all(".sliding .app-list"), "blur");
-            setTimeout(() => {
-                w.addClass(w.one(dest), "open");
-            }, delay);
-            w.addClass(selected, "active");
-            w.removeClass(selected, "blur");
-
-            /* = skip lazyload & remove unload on this particular img = */
-            tmp = w.one(`${dest} .gallery .ratio img`);
-            w.removeClass(tmp, "unload");
-            if (tmp && tmp.dataset.src) {
-                tmp.src = tmp.dataset.src;
-                w.Reflect.deleteProperty(tmp.dataset, "src");
-                w.removeClass(tmp, "lazyload");
-            }
-        }
-        w.lazyLoad();
-
-        return false;
-    }, false);
-
-    /* = gallery nav clicked = */
     w.on(w.one(".gallery .unload"), "load", (e, $ = e.target) => {
         w.removeClass($, "unload");
     });
-    w.on(w.all(".gallery .prev, .gallery .next"), "click", (e, $ = e.target) => {
-        e.preventDefault();
-        let idx = w.hasClass($, "prev") ? -1 : 1,
-            newImg = $,
-            img = $;
-        const gallery = $.parentNode,
-            list = JSON.parse(gallery.dataset.img),
-            last = list.length - 1,
-            activeIdx = Number(gallery.dataset.idx) || 0;
-
-        idx += activeIdx;
-        idx = idx < 0 ? last : idx;
-        idx = idx > last ? 0 : idx;
-        img = w.one(`img[src='${list[activeIdx]}']`, gallery);
-        newImg = w.one(`img[src='${list[idx]}']`, gallery);
-        if (newImg) {
-            w.removeClass(newImg, "unload");
-            w.addClass(img, "unload");
-        } else {
-            newImg = w.stringToDOM("<img alt='Gallery image' class='ease unload'>");
-            newImg.src = list[idx];
-            img.parentNode.appendChild(newImg);
-            w.addClass(img, "waitload");
-            w.on(newImg, "load", () => {
-                w.removeClass(img, "waitload");
-                w.removeClass(newImg, "unload");
-                w.addClass(img, "unload");
-            });
-        }
-        gallery.dataset.idx = idx;
-
-        return false;
-    });
 
     tryMapbox();
+
     w.on(window, "scroll resize", tryMapbox);
+
     w.on(cForm, "submit", submitCForm, false);
 });
 window.tmp = window.runDefer ? window.runDefer() : () => { };

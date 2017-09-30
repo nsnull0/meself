@@ -72,12 +72,12 @@ blank_gif:      data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAA
         <p class="apps-marketing">
           {% if project.ios-store %}
           <a class="ios-btn" target="_blank" href="{{ project.ios-store }}">
-            <img src="{{ page.blank_gif }}" class="lazyload" data-src="https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"/>
+            <img src="{{ page.blank_gif }}" class="lazyload" data-src="{{ "/assets/images/logo_apps/badge-ios.svg" | absolute_url }}"/>
           </a>
           {% endif %}
           {% if project.and-store %}
           <a class="and-btn" target="_blank" href="{{ project.and-store }}">
-            <img src="{{ page.blank_gif }}" class="lazyload" data-src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"/>
+            <img src="{{ page.blank_gif }}" class="lazyload" data-src="{{ "/assets/images/logo_apps/badge-and.png" | absolute_url }}"/>
           </a>
           {% endif %}
         </p>

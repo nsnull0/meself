@@ -23,17 +23,15 @@ window.defer.push(() => {
     w.NProgress.start();
     w.gumshoe.init({"selectorHeader": "[data-gumshoe]"});
     scroll = new w.SmoothScroll();
-    (($ = "[data-scroll]", opts = {}) => {
-        w.on(w, "click", (e) => {
-            e.preventDefault();
-            toggle = e.target.closest($);
-            anchor = toggle ? w.one(toggle.hash) : false;
-            if (!anchor || !toggle || toggle.tagName.toLowerCase() !== "a") {
-                return;
-            }
-            scroll.animateScroll(anchor, toggle, opts);
-        }, false);
-    })();
+    w.on(w.one("[data-gumshoe]"), "click", (e) => {
+        e.preventDefault();
+        toggle = e.target.closest("[data-scroll]");
+        anchor = toggle ? w.one(toggle.hash) : false;
+        if (!anchor || !toggle || toggle.tagName.toLowerCase() !== "a") {
+            return;
+        }
+        scroll.animateScroll(anchor, toggle, {});
+    }, false);
     scrollSpy();
     w.on(w, "scroll resize", scrollSpy);
     w.on(w.all(".row,.flex"), "scroll", scrollSpy);
