@@ -71,3 +71,38 @@
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Style override NProgress
+=========================================================================== */
+#nprogress {
+  .bar {
+      background-color: $accent-color;
+      .peg {
+          box-shadow: 0 0 $spacing-unit $accent-color, 0 0 $spacing-unit/2 $accent-color;
+      }
+  }
+  .spinner {
+      &-icon {
+          border: solid 2px transparent;
+          border-top-color: $accent-color;
+          border-left-color: $accent-color;
+      }
+  }
+  &:after {
+      content: 'Loading...';
+      text-align: center;
+      position: fixed;
+      display: block;
+      @include relative-font-size(2);
+      opacity: .5;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+      width: 100%;
+      top: 50%;
+      left: 0;
+  }
+}
+.nprogress-busy main {
+  opacity: 0;
+}

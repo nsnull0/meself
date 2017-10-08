@@ -21,7 +21,7 @@ defer:          |
     background: -o-linear-gradient(top,  rgba(51,51,51,1) 45%,rgba(255,255,255,0) 100%);
     background: -ms-linear-gradient(top,  rgba(51,51,51,1) 45%,rgba(255,255,255,0) 100%);
     background: linear-gradient(to bottom,  rgba(51,51,51,1) 45%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#00ffffff',GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#333333", endColorstr="#00ffffff",GradientType=0 );
   }
   </style>
 blank_gif:      data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7

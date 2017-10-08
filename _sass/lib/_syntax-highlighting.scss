@@ -2,12 +2,7 @@
  * Syntax highlighting styles
  */
 .highlight {
-  background: #fff;
-
-  .highlighter-rouge & {
-    background: #eef;
-  }
-
+  color: #333;
   .c     { color: #998; font-style: italic } // Comment
   .err   { color: #a61717; background-color: #e3d2d2 } // Error
   .k     { font-weight: bold } // Keyword
@@ -67,4 +62,25 @@
   .vg    { color: #008080 } // Name.Variable.Global
   .vi    { color: #008080 } // Name.Variable.Instance
   .il    { color: #099 } // Literal.Number.Integer.Long
+}
+/* Style override Highlight
+=========================================================================== */
+.highlight pre,
+pre.highlight {
+    margin: 0 -#{$spacing-unit};
+    border-radius: 0;
+    @include media-query($on-md) {
+        margin: $spacing-unit;
+        border-radius: 3px;
+    }
+    @extend %vertical-rhythm;
+}
+figure.highlight {
+    &,
+    &>*:first-child {
+        box-shadow: none;
+    }
+    background: transparent;
+    padding: 0;
+    margin: 0;
 }

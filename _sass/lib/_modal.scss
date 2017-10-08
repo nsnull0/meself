@@ -1,62 +1,110 @@
 /* Modal
   =========================================================================== */
-.Modal{
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 90%;
-  height: 80%;
-  margin: auto;
-  max-width: 800px;
-  background: #333;
-  color: #FAFAFA;
-  z-index: 99;
-  padding: 1.5em;
-  & .header{
-    z-index: 2;
-    margin-top: 0;
+.Modal {
     overflow: hidden;
-    padding-right: 40px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    a {
-      display: inherit;
-      overflow: inherit;
-      white-space: inherit;
-      text-overflow: inherit;
-    }
-  }
-  & .body{
-    margin-top: -4em;
-    padding-top: 4em;
-    overflow: hidden;
-    height: 100%;
-    & div{
-      height: 100%;
-      overflow: auto;
-    }
-  }
-  & .close{
-    z-index: 3;
-    position: absolute;
-    font-size: 0;
-    padding: 0;
-    border: 0;
-    right: 0;
+    position: fixed;
     top: 0;
-    &:after{
-      content: '\00D7';
-      color: #CC0033;
-      position: absolute;
-      line-height: .8;
-      font-size: 40px;
-      height: 1em;
-      width: 1em;
-      right: 0;
-      top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: $light-alt-color;
+    box-shadow: 0 0 #{$base-font-size*0.25} $dark-color;
+    color: $dark-color;
+    z-index: 99;
+    padding: 1em;
+    @include media-query($on-md) {
+        width: 90%;
+        height: 80%;
+        max-width: 800px;
+        max-height: 800px;
+        border-radius: $base-font-size*0.25;
     }
-  }
+    .header {
+        z-index: 2;
+        margin-top: 0;
+        overflow: hidden;
+        padding-right: $base-font-size*4;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        a {
+            display: inline-block;
+            overflow: inherit;
+            white-space: inherit;
+            text-overflow: inherit;
+            vertical-align: bottom;
+        }
+    }
+    .body {
+        margin-top: -5em;
+        padding-top: 5em;
+        overflow: hidden;
+        height: 100%;
+        div {
+            height: 100%;
+            overflow: auto;
+        }
+    }
+    .close {
+        z-index: 3;
+        position: absolute;
+        background-color: inherit;
+        width: $base-font-size*4;
+        height: $base-font-size*4;
+        font-size: 0;
+        padding: 0;
+        border: 0;
+        right: 0;
+        top: 0;
+        &:after {
+            content: '\00D7';
+            color: #CC0033;
+            @include relative-font-size(4);
+            background-color: inherit;
+            position: absolute;
+            line-height: .8;
+            height: 1em;
+            width: 1em;
+            right: 0;
+            top: 0;
+        }
+        &:active,
+        &:focus,
+        &:hover {
+            &:after {
+                background-color: #c03;
+                color: $light-alt-color;
+            }
+        }
+    }
+    &.noheader {
+        .header {
+            font-size: 0;
+            margin: 0;
+        }
+        .body {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+    &.sticky {
+        .header {
+            padding-right: 0;
+        }
+        .close {
+            width: $base-font-size*0;
+            height: $base-font-size*0;
+            &:after {
+                @include relative-font-size(0);
+            }
+        }
+    }
+    &.full {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        padding: $spacing-unit;
+    }
 }

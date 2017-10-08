@@ -177,34 +177,38 @@ window.defer.push(() => {
         /* = gallery nav clicked = */
         galleryNavClicked = (e, $ = e.target) => {
             e.preventDefault();
-            let idx = w.hasClass($, 'prev') ? -1 : 1,
-                newImg = $,
-                img = $;
-            const gallery = $.parentNode,
-                list = JSON.parse(gallery.dataset.img),
-                last = list.length - 1,
-                activeIdx = Number(gallery.dataset.idx) || 0;
+            try {
+                let idx = w.hasClass($, 'prev') ? -1 : 1,
+                    newImg = $,
+                    img = $;
+                const gallery = $.parentNode,
+                    list = JSON.parse(gallery.dataset.img),
+                    last = list.length - 1,
+                    activeIdx = Number(gallery.dataset.idx) || 0;
 
-            idx += activeIdx;
-            idx = idx < 0 ? last : idx;
-            idx = idx > last ? 0 : idx;
-            img = w.one(`img[src='${list[activeIdx]}']`, gallery);
-            newImg = w.one(`img[src='${list[idx]}']`, gallery);
-            if (newImg) {
-                w.removeClass(newImg, 'unload');
-                w.addClass(img, 'unload');
-            } else {
-                newImg = w.stringToDOM('<img alt="Gallery image" class="ease unload">');
-                newImg.src = list[idx];
-                img.parentNode.appendChild(newImg);
-                w.addClass(img, 'waitload');
-                w.on(newImg, 'load', () => {
-                    w.removeClass(img, 'waitload');
+                idx += activeIdx;
+                idx = idx < 0 ? last : idx;
+                idx = idx > last ? 0 : idx;
+                img = w.one(`img[src="${list[activeIdx]}"]`, gallery);
+                newImg = w.one(`img[src="${list[idx]}"]`, gallery);
+                if (newImg) {
                     w.removeClass(newImg, 'unload');
                     w.addClass(img, 'unload');
-                });
+                } else {
+                    newImg = w.stringToDOM('<img alt="Gallery image" class="ease unload">');
+                    newImg.src = list[idx];
+                    img.parentNode.appendChild(newImg);
+                    w.addClass(img, 'waitload');
+                    w.on(newImg, 'load', () => {
+                        w.removeClass(img, 'waitload');
+                        w.removeClass(newImg, 'unload');
+                        w.addClass(img, 'unload');
+                    });
+                }
+                gallery.dataset.idx = idx;
+            } catch (err) {
+                console.error(err);
             }
-            gallery.dataset.idx = idx;
 
             return false;
         };
