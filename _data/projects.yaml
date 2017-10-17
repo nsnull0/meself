@@ -43,7 +43,7 @@
     This project apps has been shutdown on 2014 by Omnia Media Pte. Ltd.
 - ######################################
   id: debune
-  name: Debune Exchange
+  name: DebuneXchange
   icon: assets/images/logo_apps/apple-touch-icon-76x76.debune.png
   ios-store:
   and-store:
@@ -85,7 +85,7 @@
     environment(facebook, instagram, twitter, whatsapp, google+, and share url link to BondFond web).
 - ######################################
   id: sushiro
-  name: スシロー (Sushiro)
+  name: スシロー
   icon: assets/images/logo_apps/apple-touch-icon-76x76.スシロー.png
   ios-store: https://itunes.apple.com/jp/app/id551682016
   and-store: https://play.google.com/store/apps/details?id=jp.co.akindo_sushiro.sushiroapp
@@ -107,9 +107,9 @@
     Just released renewal design V3.0,<br/>
     Available support for iOS 9.0+,<br/>
     <br/>
-    Updated new release V3.1.0,
+    Updated new release V3.1.0 (3.1.2 soon),
     3 August 2017 <br/>
     Milestone maintenance released by Yoseph Wijaya:<br/>
-      - V3.0.1 to V3.1.0<br /> 
-
+      - V3.0.1 to V3.1.0 (3.1.2 soon)<br /> 
 ########################################
+
