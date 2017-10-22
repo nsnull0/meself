@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 // Define defaults for each variable.
+$serif-font-family:   Georgia, Times, "Times New Roman", serif !default;
 $monospace-family:    "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !default;
 $base-font-family:    -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !default;
 $web-font-family:     "Montserrat", $base-font-family;

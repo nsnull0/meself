@@ -19,6 +19,21 @@ body {
   color: $light-color;
   overflow-y: scroll;
 }
+.font {
+    &-serif {font-family: $serif-font-family; }
+    &-mono {font-family: $monospace-family; }
+    &-web {font-family: $web-font-family; }
+    &-small {font-size: 87.5%; }
+    &-large {font-size: 112.5%; }
+    &-xsmall {font-size: 80%; }
+    &-xlarge {font-size: 120%; }
+}
+.align {
+    &-left { text-align: left; }
+    &-right { text-align: right; }
+    &-center { text-align: center; }
+    &-justify { text-align: justify; }
+}
 main {
   background-color: $light-color;
   color: $dark-color;
