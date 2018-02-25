@@ -26,6 +26,9 @@ defer:          |
   </style>
 blank_gif:      data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
 ---
+
+<!-- markdownlint-disable MD033 -->
+
 <header class="site-header" role="banner">
   <div class="container">
     <nav data-gumshoe-header class="menu fixed no-print">

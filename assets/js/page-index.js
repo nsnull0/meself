@@ -50,7 +50,7 @@ window.defer.push(() => {
 
         /* = mapbox = */
         tryMapbox = () => {
-            if (isMapboxLoaded || w.queryStringToJSON().nomap) {
+            if (isMapboxLoaded || w.queryStringToObject().nomap) {
                 return;
             }
             if (w.isElementInViewport(w.one('#map')) && window.mapboxgl) {
@@ -77,7 +77,6 @@ window.defer.push(() => {
         /* = contact form = */
         submitCForm = (e, $ = e.target.elements) => {
             e.preventDefault();
-            console.log(e, $);
             if (recentlySubmitted) {
                 tmp = new w.Modal(SUBMIT_RECENTLY, () => {
                     w.removeClass(cForm, 'recently-submitted');

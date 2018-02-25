@@ -42,7 +42,7 @@ compress_html:
 sass:
   style: compressed
 ########################################
-gems:
+plugins:
   - jekyll-feed
   - jekyll-github-metadata
   - jekyll-redirect-from
