@@ -1,6 +1,8 @@
 # meself
-profile web
 
-# Credit
-- Colaborator Gunawan Wijaya ([@wijayacc](https://github.com/gunawanwijaya))
-- Creator Yoseph Wijaya ([@meself](http://yoseph.ws))
+profile web - <https://yoseph.ws/>
+
+## Credit
+
+* Creator Yoseph Wijaya @nsnull0
+* Colaborator Gunawan Wijaya @gunawanwijaya
