@@ -5,8 +5,8 @@ window.defer.push(() => {
         stackOf_HeroAni = [],
         recentlySubmitted = 0;
     const w = window,
-        hero = w.one('.hero .title span'),
-        cForm = w.one('#cForm'),
+        hero = w.oneDOM('.hero .title span'),
+        cForm = w.oneDOM('#cForm'),
         SUBMIT_RECENTLY = {
             id: 'cFormModal',
             header: 'Ooops',
@@ -54,7 +54,7 @@ window.defer.push(() => {
             if (isMapboxLoaded || w.queryStringToObject().nomap) {
                 return;
             }
-            if (w.isElementInViewport(w.one('#map')) && window.mapboxgl) {
+            if (w.isDOMInViewport(w.oneDOM('#map')) && window.mapboxgl) {
                 w.mapboxgl.accessToken = w.TOKEN_MAPBOX;
                 const lnlt = [w.GEO.center.long, w.GEO.center.lat],
                     map = new w.mapboxgl.Map({
@@ -68,7 +68,7 @@ window.defer.push(() => {
 
                 tmp = new w.mapboxgl.Marker().setLngLat(lnlt).addTo(map);
 
-                w.on(w.one('.mapboxgl-marker'), 'click', () => {
+                w.on(w.oneDOM('.mapboxgl-marker'), 'click', () => {
                     open(w.URL_GOOGLE_MAPS, '_blank =_').focus();
                 });
                 isMapboxLoaded = 1;
@@ -138,30 +138,30 @@ window.defer.push(() => {
             }
             const dest = `#${$.href.split('#')[1]}`,
                 selected = $.parentNode,
-                delay = w.one('.sliding .modal-wrapper.open') ? 800 : 0;
+                delay = w.oneDOM('.sliding .modal-wrapper.open') ? 800 : 0;
 
-            if (w.hasClass($, 'close') || w.hasClass(w.one(dest), 'open')) {
+            if (w.hasClass($, 'close') || w.hasClass(w.oneDOM(dest), 'open')) {
 
                 /* = ONCLOSE = */
-                w.removeClass(w.all('.sliding .modal-wrapper'), 'open');
+                w.removeClass(w.allDOM('.sliding .modal-wrapper'), 'open');
                 setTimeout(() => {
-                    w.removeClass(w.all('.sliding .app-list'), 'active');
-                    w.removeClass(w.all('.sliding .app-list'), 'blur');
+                    w.removeClass(w.allDOM('.sliding .app-list'), 'active');
+                    w.removeClass(w.allDOM('.sliding .app-list'), 'blur');
                 }, delay);
-            } else if (!w.hasClass(w.one(dest), 'open')) {
+            } else if (!w.hasClass(w.oneDOM(dest), 'open')) {
 
                 /* = ONOPEN = */
-                w.removeClass(w.all('.sliding .modal-wrapper'), 'open');
-                w.removeClass(w.all('.sliding .app-list'), 'active');
-                w.addClass(w.all('.sliding .app-list'), 'blur');
+                w.removeClass(w.allDOM('.sliding .modal-wrapper'), 'open');
+                w.removeClass(w.allDOM('.sliding .app-list'), 'active');
+                w.addClass(w.allDOM('.sliding .app-list'), 'blur');
                 setTimeout(() => {
-                    w.addClass(w.one(dest), 'open');
+                    w.addClass(w.oneDOM(dest), 'open');
                 }, delay);
                 w.addClass(selected, 'active');
                 w.removeClass(selected, 'blur');
 
                 /* = skip lazyload & remove unload on this particular img = */
-                tmp = w.one(`${dest} .gallery .ratio img`);
+                tmp = w.oneDOM(`${dest} .gallery .ratio img`);
                 w.removeClass(tmp, 'unload');
                 if (tmp && tmp.dataset.src) {
                     tmp.src = tmp.dataset.src;
@@ -189,8 +189,8 @@ window.defer.push(() => {
                 idx += activeIdx;
                 idx = idx < 0 ? last : idx;
                 idx = idx > last ? 0 : idx;
-                img = w.one(`img[src="${list[activeIdx]}"]`, gallery);
-                newImg = w.one(`img[src="${list[idx]}"]`, gallery);
+                img = w.oneDOM(`img[src="${list[activeIdx]}"]`, gallery);
+                newImg = w.oneDOM(`img[src="${list[idx]}"]`, gallery);
                 if (newImg) {
                     w.removeClass(newImg, 'unload');
                     w.addClass(img, 'unload');
@@ -217,14 +217,14 @@ window.defer.push(() => {
 
     /* = parallax = */
     w.on(window, 'scroll resize', () => {
-        hero.style.top = `${Math.floor(w.getScroll().y / 2)}px`;
+        hero.style.top = `${Math.floor(w.getScrollPosition().y / 2)}px`;
     });
 
-    w.on(w.all('.sliding .modal-wrapper .close, .sliding a.app-icon'), 'click', appIconClicked, false);
+    w.on(w.allDOM('.sliding .modal-wrapper .close, .sliding a.app-icon'), 'click', appIconClicked, false);
 
-    w.on(w.all('.gallery .prev, .gallery .next'), 'click', galleryNavClicked, false);
+    w.on(w.allDOM('.gallery .prev, .gallery .next'), 'click', galleryNavClicked, false);
 
-    w.on(w.one('.gallery .unload'), 'load', (e, $ = e.target) => {
+    w.on(w.oneDOM('.gallery .unload'), 'load', (e, $ = e.target) => {
         w.removeClass($, 'unload');
     });
 
