@@ -1,4 +1,5 @@
 window.defer.push(() => {
+    window.NativeUtils.merge(window, window.NativeUtils);
     let tmp = 0,
         isMapboxLoaded = 0,
         stackOf_HeroAni = [],

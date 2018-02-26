@@ -1,4 +1,5 @@
 window.defer.push(() => {
+    window.NativeUtils.merge(window, window.NativeUtils);
     let lastScrollTop = 0,
         toggle = 0,
         anchor = 0,
