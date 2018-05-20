@@ -99,7 +99,7 @@
     It allow us to queue for reservation instead of waiting at the spot,
     do reservation all over the sushiro restaurant in Japan.<br/>
     <br/>
-    Currrently I developing this renewal design of sushiro apps as front-end developer of iOS and Android.
+    I was developing this renewal design of sushiro apps as front-end developer of iOS and Android.
     Implementing every intriguing design, animation, and consulting interface based on human guidelines apple.
     This application help me a lot to gain experience on Android platform as well, and hopefully this apps
     will gain more popularity and more usefull than before.<br/>
@@ -110,5 +110,45 @@
     Updated new release V3.1.2 on October 2017<br/>
     Milestone maintenance released by Yoseph Wijaya:<br/>
       - V3.0.0 to V3.1.2<br /> 
+
+- ######################################
+  id: terratalk
+  name: TerraTalk
+  icon: assets/images/logo_apps/terratalk_logo_2.png
+  ios-store: https://itunes.apple.com/jp/app/terratalk/id1114037031
+  and-store: https://play.google.com/store/apps/details?id=jp.co.joyz.terratalk
+  gallery:
+    - assets/images/terratalk/terra-ss-0.jpg
+    - assets/images/terratalk/terra-ss-1.jpg
+    - assets/images/terratalk/terra-ss-2.png
+    - assets/images/terratalk/terra-ss-3.png
+    - assets/images/terratalk/terra-ss-4.png
+    - assets/images/terratalk/terra-ss-5.png
+  description: |
+    TerraTalk((テラトーク))
+    <br/>
+    This apps is for Learning English with AI.
+    <br/>
+    Based on experience, when learning other foreign language, 
+    we need to be part of it in daily life in order to master it faster,
+    but since looking partner or people who talk other language everyday is hard, 
+    with AI inside of this apps, 
+    it simulate a situation in real life for you to deal, 
+    just like you having partner or people that speak other language for you to experience.
+    <br/>
+    <br/>
+    I am developing and maintenance the application as iOS dev.
+    <br/>
+    Troubleshooting some bug, improvement, and develop new Interface for TerraTalk apps.
+    <br/>
+    <br/>
+    Hopefully with this apps, you all can mastering English language faster than ussual and more fluent.
+    <br/>
+    <br/>
+    Released version 3.0.0 in Appstore<br/>
+    <br/>
+    Updated new release V3.0.0 on April 2018<br/>
+    Milestone maintenance and develped release by Yoseph Wijaya:<br/>
+      - V2.18.0 to V3.0.0<br /> 
 ########################################
 
