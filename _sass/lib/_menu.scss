@@ -1,63 +1,63 @@
 /* Responsive inline menu
   =========================================================================== */
 .menu {
-    min-height:60px;
+  min-height: 60px;
 }
 .inline-menu {
-    margin:0;
-    padding:0;
-    list-style:none;
-    text-align:center;
-    border-bottom:solid 2px;
-    background-color: $light-color;
-    color: $accent-color;
-    .folded & {
-        margin-top:-58px;
-    }
-    .fixed & {
-        position:fixed;
-        min-width: $on-md / 2;
-        width:100%;
-        z-index:3;
-        left: 0;
-    }
-    li {
-        display:inline;
-        .menu-item {
-            border:0;
-            border-top:solid 2px transparent;
-            padding:16px 32px;
-            text-decoration: none;
-            display:inline-block;
-            font-weight: 700;
-            color: $accent-color;
-            &:not(a) {
-                cursor: default;
-            }
-            &:active,
-            &:focus,
-            &:hover {
-                &:not(a) {
-                    cursor: default;
-                    background-color: $light-color;
-                    color: $accent-color;
-                }
-                text-decoration: none;
-                background-color: $accent-color;
-                color: $light-color;
-            }
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  border-bottom: solid 2px;
+  background-color: $light-color;
+  color: $accent-color;
+  .folded & {
+    margin-top: -58px;
+  }
+  .fixed & {
+    position: fixed;
+    min-width: $on-md / 2;
+    width: 100%;
+    z-index: 3;
+    left: 0;
+  }
+  li {
+    display: inline;
+    .menu-item {
+      border: 0;
+      border-top: solid 2px transparent;
+      padding: 16px 32px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 700;
+      color: $accent-color;
+      &:not(a) {
+        cursor: default;
+      }
+      &:active,
+      &:focus,
+      &:hover {
+        &:not(a) {
+          cursor: default;
+          background-color: $light-color;
+          color: $accent-color;
         }
+        text-decoration: none;
+        background-color: $accent-color;
+        color: $light-color;
+      }
     }
-    .active .menu-item {
-        position:relative;
-        border-color: $accent-color;
-        &:after{
-            content:'▼';
-            position:absolute;
-            top:0;
-            left:50%;
-            line-height:0.5;
-            margin-left:-5px;
-        }
+  }
+  .active .menu-item {
+    position: relative;
+    border-color: $accent-color;
+    &:after {
+      content: "▼";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      line-height: 0.5;
+      margin-left: -5px;
     }
+  }
 }

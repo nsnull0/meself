@@ -1,16 +1,16 @@
 ---
-menu_index:     0
-permalink:      /
-title:          home
-custom_header:  true
-redirect_from:  /home
-className:      index
-defer:          |
+menu_index: 0
+permalink: /
+title: home
+custom_header: true
+redirect_from: /home
+className: index
+defer: |
   <link href="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css" rel="stylesheet"/>
-  <script async="" defer="" src="https://unpkg.com/nprogress"></script>
-  <script async="" defer="" src="https://unpkg.com/smooth-scroll"></script>
-  <script async="" defer="" src="https://unpkg.com/gumshoejs"></script>
-  <script async="" defer="" src="https://unpkg.com/blueimp-md5/js/md5.min.js"></script>
+  <script async="" defer="" src="https://unpkg.com/nprogress@0.2.0"></script>
+  <script async="" defer="" src="https://unpkg.com/smooth-scroll@16.0.0"></script>
+  <script async="" defer="" src="https://unpkg.com/gumshoejs@5.0.1"></script>
+  <script async="" defer="" src="https://unpkg.com/blueimp-md5@2.10.0/js/md5.min.js"></script>
   <script async="" defer="" src="https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js"></script>
   <style>
   .index-gradient {
@@ -24,7 +24,7 @@ defer:          |
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#333333", endColorstr="#00ffffff",GradientType=0 );
   }
   </style>
-blank_gif:      data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
 ---
 
 <!-- markdownlint-disable MD033 -->

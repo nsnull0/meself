@@ -1,238 +1,259 @@
 window.defer.push(() => {
-    window.NativeUtils.merge(window, window.NativeUtils);
-    let tmp = 0,
-        isMapboxLoaded = 0,
-        stackOf_HeroAni = [],
-        recentlySubmitted = 0;
-    const w = window,
-        hero = w.oneDOM('.hero .title span'),
-        cForm = w.oneDOM('#cForm'),
-        SUBMIT_RECENTLY = {
-            id: 'cFormModal',
-            header: 'Ooops',
-            body: 'It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message.'
-        },
-        SUBMIT_SENDING = {
-            id: 'cFormModal',
-            header: 'Sending Message',
-            body: 'Did you know, that your message is travelling via Internet to my slack channel in less than a second!'
-        },
-        SUBMIT_INVALID = {
-            id: 'cFormModal',
-            header: 'Invalid Response',
-            body: 'Invalid response from server, in case of emergency you can call my number.'
-        },
-        SUBMIT_SENT = {
-            id: 'cFormModal',
-            header: 'Message Sent',
-            body: 'Your message has been sent, please wait for the next reply.'
-        },
-        SUBMIT_FAILED = {
-            id: 'cFormModal',
-            header: 'Failed',
-            body: 'Unable to sent your message, probably network connection issue.'
-        },
-
-        /* = hero typing animation = */
-        mouseTrigger_HeroAni = () => {
-            const ani = (hero) => {
-                if (stackOf_HeroAni && stackOf_HeroAni.length) {
-                    hero.innerHTML = stackOf_HeroAni.pop();
-                    w.timeout_HeroAni = w.setTimeout(() => {
-                        ani(hero);
-                    }, 200);
-                }
-            };
-
-            w.clearTimeout(w.timeout_HeroAni);
-            stackOf_HeroAni = w.anisequence.reverse().slice(0, w.anisequence.length - stackOf_HeroAni.length);
+  window.NativeUtils.merge(window, window.NativeUtils);
+  let tmp = 0,
+    isMapboxLoaded = 0,
+    stackOf_HeroAni = [],
+    recentlySubmitted = 0;
+  const w = window,
+    hero = w.oneDOM(".hero .title span"),
+    cForm = w.oneDOM("#cForm"),
+    SUBMIT_RECENTLY = {
+      id: "cFormModal",
+      header: "Ooops",
+      body:
+        "It looks like you already sent us a message (this is needed to prevent spam), but worry not, as soon as you close this message, you can sent me another message."
+    },
+    SUBMIT_SENDING = {
+      id: "cFormModal",
+      header: "Sending Message",
+      body:
+        "Did you know, that your message is travelling via Internet to my slack channel in less than a second!"
+    },
+    SUBMIT_INVALID = {
+      id: "cFormModal",
+      header: "Invalid Response",
+      body:
+        "Invalid response from server, in case of emergency you can call my number."
+    },
+    SUBMIT_SENT = {
+      id: "cFormModal",
+      header: "Message Sent",
+      body: "Your message has been sent, please wait for the next reply."
+    },
+    SUBMIT_FAILED = {
+      id: "cFormModal",
+      header: "Failed",
+      body: "Unable to sent your message, probably network connection issue."
+    },
+    /* = hero typing animation = */
+    mouseTrigger_HeroAni = () => {
+      const ani = hero => {
+        if (stackOf_HeroAni && stackOf_HeroAni.length) {
+          hero.innerHTML = stackOf_HeroAni.pop();
+          w.timeout_HeroAni = w.setTimeout(() => {
             ani(hero);
-        },
+          }, 200);
+        }
+      };
 
-        /* = mapbox = */
-        tryMapbox = () => {
-            if (isMapboxLoaded || w.queryStringToObject().nomap) {
-                return;
-            }
-            if (w.isDOMInViewport(w.oneDOM('#map')) && window.mapboxgl) {
-                w.mapboxgl.accessToken = w.TOKEN_MAPBOX;
-                const lnlt = [w.GEO.center.long, w.GEO.center.lat],
-                    map = new w.mapboxgl.Map({
-                        container: 'map',
-                        center: lnlt,
-                        zoom: w.GEO.center.zoom,
-                        attributionControl: false,
-                        logoPosition: 'bottom-right',
-                        style: 'mapbox://styles/mapbox/streets-v9'
-                    });
+      w.clearTimeout(w.timeout_HeroAni);
+      stackOf_HeroAni = w.anisequence
+        .reverse()
+        .slice(0, w.anisequence.length - stackOf_HeroAni.length);
+      ani(hero);
+    },
+    /* = mapbox = */
+    tryMapbox = () => {
+      if (isMapboxLoaded || w.queryStringToObject().nomap) {
+        return;
+      }
+      if (w.isDOMInViewport(w.oneDOM("#map")) && window.mapboxgl) {
+        w.mapboxgl.accessToken = w.TOKEN_MAPBOX;
+        const lnlt = [w.GEO.center.long, w.GEO.center.lat],
+          map = new w.mapboxgl.Map({
+            container: "map",
+            center: lnlt,
+            zoom: w.GEO.center.zoom,
+            attributionControl: false,
+            logoPosition: "bottom-right",
+            style: "mapbox://styles/mapbox/streets-v9"
+          });
 
-                tmp = new w.mapboxgl.Marker().setLngLat(lnlt).addTo(map);
+        tmp = new w.mapboxgl.Marker().setLngLat(lnlt).addTo(map);
 
-                w.on(w.oneDOM('.mapboxgl-marker'), 'click', () => {
-                    open(w.URL_GOOGLE_MAPS, '_blank =_').focus();
-                });
-                isMapboxLoaded = 1;
-            }
-        },
-
-        /* = contact form = */
-        submitCForm = (e, $ = e.target.elements) => {
-            e.preventDefault();
-            if (recentlySubmitted) {
-                tmp = new w.Modal(SUBMIT_RECENTLY, () => {
-                    w.removeClass(cForm, 'recently-submitted');
-                    recentlySubmitted = !1;
-                });
+        w.on(w.oneDOM(".mapboxgl-marker"), "click", () => {
+          open(w.URL_GOOGLE_MAPS, "_blank =_").focus();
+        });
+        isMapboxLoaded = 1;
+      }
+    },
+    /* = contact form = */
+    submitCForm = (e, $ = e.target.elements) => {
+      e.preventDefault();
+      if (recentlySubmitted) {
+        tmp = new w.Modal(SUBMIT_RECENTLY, () => {
+          w.removeClass(cForm, "recently-submitted");
+          recentlySubmitted = !1;
+        });
+      } else {
+        tmp = new w.Modal(SUBMIT_SENDING);
+        fetch(w.URL_SLACK_WEBHOOK, {
+          method: "POST",
+          body: JSON.stringify({
+            attachments: [
+              {
+                fallback: `New message from — ${$.name.value}\nJOB — ${
+                  $.job.value
+                }\nEMAIL — ${$.email.value}\nMessage — ${$.msg.value}`,
+                color: "#36a64f",
+                pretext: "New message",
+                author_name: $.name.value,
+                author_link: `mailto:${$.email.value}`,
+                author_icon: `https://www.gravatar.com/avatar/${w.md5(
+                  $.email.value.trim().toLowerCase()
+                )}`,
+                title: `JOB — ${$.job.value}`,
+                title_link: `mailto:${$.email.value}`,
+                fields: [
+                  {
+                    title: "Message",
+                    value: $.msg.value,
+                    short: false
+                  }
+                ],
+                text: "",
+                image_url: "",
+                thumb_url: "",
+                footer_icon: "https://slack.com/favicon.ico",
+                footer: location.href,
+                ts: 1e-3 * Date.now()
+              }
+            ]
+          })
+        }).then(
+          response => {
+            if (response.ok) {
+              w.addClass(cForm, "recently-submitted");
+              cForm.reset();
+              recentlySubmitted = !0;
+              tmp = new w.Modal(SUBMIT_SENT);
             } else {
-                tmp = new w.Modal(SUBMIT_SENDING);
-                fetch(w.URL_SLACK_WEBHOOK, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        attachments: [{
-                            fallback: `New message from — ${$.name.value}\nJOB — ${$.job.value}\nEMAIL — ${$.email.value}\nMessage — ${$.msg.value}`,
-                            color: '#36a64f',
-                            pretext: 'New message',
-                            author_name: $.name.value,
-                            author_link: `mailto:${$.email.value}`,
-                            author_icon: `https://www.gravatar.com/avatar/${w.md5($.email.value.trim().toLowerCase())}`,
-                            title: `JOB — ${$.job.value}`,
-                            title_link: `mailto:${$.email.value}`,
-                            fields: [{
-                                title: 'Message',
-                                value: $.msg.value,
-                                short: false
-                            }],
-                            text: '',
-                            image_url: '',
-                            thumb_url: '',
-                            footer_icon: 'https://slack.com/favicon.ico',
-                            footer: location.href,
-                            ts: 1e-3 * Date.now()
-                        }]
-                    }),
-                }).then((response) => {
-                    if (response.ok) {
-                        w.addClass(cForm, 'recently-submitted');
-                        cForm.reset();
-                        recentlySubmitted = !0;
-                        tmp = new w.Modal(SUBMIT_SENT);
-                    } else {
-                        tmp = new w.Modal(SUBMIT_INVALID);
-                    }
-
-                    return response.text();
-                }, (error) => {
-                    console.warn(error.message);
-                    tmp = new w.Modal(SUBMIT_FAILED);
-                });
+              tmp = new w.Modal(SUBMIT_INVALID);
             }
 
-            return false;
-        },
+            return response.text();
+          },
+          error => {
+            console.warn(error.message);
+            tmp = new w.Modal(SUBMIT_FAILED);
+          }
+        );
+      }
 
-        /* = app icon clicked = */
-        appIconClicked = (e, $ = e.target) => {
-            e.preventDefault();
-            while (!$.href) {
-                $ = $.parentNode;
-            }
-            const dest = `#${$.href.split('#')[1]}`,
-                selected = $.parentNode,
-                delay = w.oneDOM('.sliding .modal-wrapper.open') ? 800 : 0;
+      return false;
+    },
+    /* = app icon clicked = */
+    appIconClicked = (e, $ = e.target) => {
+      e.preventDefault();
+      while (!$.href) {
+        $ = $.parentNode;
+      }
+      const dest = `#${$.href.split("#")[1]}`,
+        selected = $.parentNode,
+        delay = w.oneDOM(".sliding .modal-wrapper.open") ? 800 : 0;
 
-            if (w.hasClass($, 'close') || w.hasClass(w.oneDOM(dest), 'open')) {
+      if (w.hasClass($, "close") || w.hasClass(w.oneDOM(dest), "open")) {
+        /* = ONCLOSE = */
+        w.removeClass(w.allDOM(".sliding .modal-wrapper"), "open");
+        setTimeout(() => {
+          w.removeClass(w.allDOM(".sliding .app-list"), "active");
+          w.removeClass(w.allDOM(".sliding .app-list"), "blur");
+        }, delay);
+      } else if (!w.hasClass(w.oneDOM(dest), "open")) {
+        /* = ONOPEN = */
+        w.removeClass(w.allDOM(".sliding .modal-wrapper"), "open");
+        w.removeClass(w.allDOM(".sliding .app-list"), "active");
+        w.addClass(w.allDOM(".sliding .app-list"), "blur");
+        setTimeout(() => {
+          w.addClass(w.oneDOM(dest), "open");
+        }, delay);
+        w.addClass(selected, "active");
+        w.removeClass(selected, "blur");
 
-                /* = ONCLOSE = */
-                w.removeClass(w.allDOM('.sliding .modal-wrapper'), 'open');
-                setTimeout(() => {
-                    w.removeClass(w.allDOM('.sliding .app-list'), 'active');
-                    w.removeClass(w.allDOM('.sliding .app-list'), 'blur');
-                }, delay);
-            } else if (!w.hasClass(w.oneDOM(dest), 'open')) {
+        /* = skip lazyload & remove unload on this particular img = */
+        tmp = w.oneDOM(`${dest} .gallery .ratio img`);
+        w.removeClass(tmp, "unload");
+        if (tmp && tmp.dataset.src) {
+          tmp.src = tmp.dataset.src;
+          w.Reflect.deleteProperty(tmp.dataset, "src");
+          w.removeClass(tmp, "lazyload");
+        }
+      }
+      w.lazyLoad();
 
-                /* = ONOPEN = */
-                w.removeClass(w.allDOM('.sliding .modal-wrapper'), 'open');
-                w.removeClass(w.allDOM('.sliding .app-list'), 'active');
-                w.addClass(w.allDOM('.sliding .app-list'), 'blur');
-                setTimeout(() => {
-                    w.addClass(w.oneDOM(dest), 'open');
-                }, delay);
-                w.addClass(selected, 'active');
-                w.removeClass(selected, 'blur');
+      return false;
+    },
+    /* = gallery nav clicked = */
+    galleryNavClicked = (e, $ = e.target) => {
+      e.preventDefault();
+      try {
+        let idx = w.hasClass($, "prev") ? -1 : 1,
+          newImg = $,
+          img = $;
+        const gallery = $.parentNode,
+          list = JSON.parse(gallery.dataset.img),
+          last = list.length - 1,
+          activeIdx = Number(gallery.dataset.idx) || 0;
 
-                /* = skip lazyload & remove unload on this particular img = */
-                tmp = w.oneDOM(`${dest} .gallery .ratio img`);
-                w.removeClass(tmp, 'unload');
-                if (tmp && tmp.dataset.src) {
-                    tmp.src = tmp.dataset.src;
-                    w.Reflect.deleteProperty(tmp.dataset, 'src');
-                    w.removeClass(tmp, 'lazyload');
-                }
-            }
-            w.lazyLoad();
+        idx += activeIdx;
+        idx = idx < 0 ? last : idx;
+        idx = idx > last ? 0 : idx;
+        img = w.oneDOM(`img[src="${list[activeIdx]}"]`, gallery);
+        newImg = w.oneDOM(`img[src="${list[idx]}"]`, gallery);
+        if (newImg) {
+          w.removeClass(newImg, "unload");
+          w.addClass(img, "unload");
+        } else {
+          newImg = w.stringToDOM(
+            '<img alt="Gallery image" class="ease unload">'
+          );
+          newImg.src = list[idx];
+          img.parentNode.appendChild(newImg);
+          w.addClass(img, "waitload");
+          w.on(newImg, "load", () => {
+            w.removeClass(img, "waitload");
+            w.removeClass(newImg, "unload");
+            w.addClass(img, "unload");
+          });
+        }
+        gallery.dataset.idx = idx;
+      } catch (err) {
+        console.error(err);
+      }
 
-            return false;
-        },
+      return false;
+    };
 
-        /* = gallery nav clicked = */
-        galleryNavClicked = (e, $ = e.target) => {
-            e.preventDefault();
-            try {
-                let idx = w.hasClass($, 'prev') ? -1 : 1,
-                    newImg = $,
-                    img = $;
-                const gallery = $.parentNode,
-                    list = JSON.parse(gallery.dataset.img),
-                    last = list.length - 1,
-                    activeIdx = Number(gallery.dataset.idx) || 0;
+  w.on(hero, "mouseover mouseout", mouseTrigger_HeroAni);
 
-                idx += activeIdx;
-                idx = idx < 0 ? last : idx;
-                idx = idx > last ? 0 : idx;
-                img = w.oneDOM(`img[src="${list[activeIdx]}"]`, gallery);
-                newImg = w.oneDOM(`img[src="${list[idx]}"]`, gallery);
-                if (newImg) {
-                    w.removeClass(newImg, 'unload');
-                    w.addClass(img, 'unload');
-                } else {
-                    newImg = w.stringToDOM('<img alt="Gallery image" class="ease unload">');
-                    newImg.src = list[idx];
-                    img.parentNode.appendChild(newImg);
-                    w.addClass(img, 'waitload');
-                    w.on(newImg, 'load', () => {
-                        w.removeClass(img, 'waitload');
-                        w.removeClass(newImg, 'unload');
-                        w.addClass(img, 'unload');
-                    });
-                }
-                gallery.dataset.idx = idx;
-            } catch (err) {
-                console.error(err);
-            }
+  /* = parallax = */
+  w.on(window, "scroll resize", () => {
+    hero.style.top = `${Math.floor(w.getScrollPosition().y / 2)}px`;
+  });
 
-            return false;
-        };
+  w.on(
+    w.allDOM(".sliding .modal-wrapper .close, .sliding a.app-icon"),
+    "click",
+    appIconClicked,
+    false
+  );
 
-    w.on(hero, 'mouseover mouseout', mouseTrigger_HeroAni);
+  w.on(
+    w.allDOM(".gallery .prev, .gallery .next"),
+    "click",
+    galleryNavClicked,
+    false
+  );
 
-    /* = parallax = */
-    w.on(window, 'scroll resize', () => {
-        hero.style.top = `${Math.floor(w.getScrollPosition().y / 2)}px`;
-    });
+  w.on(w.oneDOM(".gallery .unload"), "load", (e, $ = e.target) => {
+    w.removeClass($, "unload");
+  });
 
-    w.on(w.allDOM('.sliding .modal-wrapper .close, .sliding a.app-icon'), 'click', appIconClicked, false);
+  tryMapbox();
 
-    w.on(w.allDOM('.gallery .prev, .gallery .next'), 'click', galleryNavClicked, false);
+  w.on(window, "scroll resize", tryMapbox);
 
-    w.on(w.oneDOM('.gallery .unload'), 'load', (e, $ = e.target) => {
-        w.removeClass($, 'unload');
-    });
-
-    tryMapbox();
-
-    w.on(window, 'scroll resize', tryMapbox);
-
-    w.on(cForm, 'submit', submitCForm, false);
+  w.on(cForm, "submit", submitCForm, false);
 });
-window.tmp = window.runDefer ? window.runDefer() : () => { };
-window.Reflect.deleteProperty(window, 'tmp');
+window.tmp = window.runDefer ? window.runDefer() : () => {};
+window.Reflect.deleteProperty(window, "tmp");

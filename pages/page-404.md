@@ -1,9 +1,10 @@
 ---
-menu_index:     -1
-permalink:      /404.html
-title:          404 - page not found
-custom_header:  true
+menu_index: -1
+permalink: /404.html
+title: 404 - page not found
+custom_header: true
 ---
+
 # 404 - page not found
 
 oops - it seems you're a little lost here little fellas

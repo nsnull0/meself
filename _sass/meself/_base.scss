@@ -1,17 +1,19 @@
 /* Basic styling
   =========================================================================== */
-*{
-   -webkit-font-smoothing: antialiased;
+* {
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   position: relative;
 }
-*,*:active,*:focus{
+*,
+*:active,
+*:focus {
   -webkit-tap-highlight-color: transparent;
-           -moz-outline-width: 0;
-                outline-width: 0;
-                outline-style: none;
-                      outline: 0;
+  -moz-outline-width: 0;
+  outline-width: 0;
+  outline-style: none;
+  outline: 0;
 }
 body {
   font: 400 #{$base-font-size}/#{$base-line-height} $base-font-family;
@@ -20,19 +22,41 @@ body {
   overflow-y: scroll;
 }
 .font {
-    &-serif {font-family: $serif-font-family; }
-    &-mono {font-family: $monospace-family; }
-    &-web {font-family: $web-font-family; }
-    &-small {font-size: 87.5%; }
-    &-large {font-size: 112.5%; }
-    &-xsmall {font-size: 80%; }
-    &-xlarge {font-size: 120%; }
+  &-serif {
+    font-family: $serif-font-family;
+  }
+  &-mono {
+    font-family: $monospace-family;
+  }
+  &-web {
+    font-family: $web-font-family;
+  }
+  &-small {
+    font-size: 87.5%;
+  }
+  &-large {
+    font-size: 112.5%;
+  }
+  &-xsmall {
+    font-size: 80%;
+  }
+  &-xlarge {
+    font-size: 120%;
+  }
 }
 .align {
-    &-left { text-align: left; }
-    &-right { text-align: right; }
-    &-center { text-align: center; }
-    &-justify { text-align: justify; }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-justify {
+    text-align: justify;
+  }
 }
 main {
   background-color: $light-color;
@@ -49,12 +73,21 @@ footer {
   }
 }
 
-
 /* Set `margin-top-bottom` to maintain vertical rhythm
   =========================================================================== */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure,
 %vertical-rhythm {
   margin: $spacing-unit 0;
   .row > * & {
@@ -85,7 +118,8 @@ figcaption {
 
 /* Lists
   =========================================================================== */
-ul, ol {
+ul,
+ol {
   margin-left: $spacing-unit;
 }
 li {
@@ -97,14 +131,26 @@ li {
 
 /* Headings
   =========================================================================== */
-h1, h2 { font-weight: 100; font-family: $web-font-family;}
-h3, h4 { font-weight: 400; font-family: $web-font-family;}
-h5, h6 { font-weight: 600; font-family: $web-font-family;}
+h1,
+h2 {
+  font-weight: 100;
+  font-family: $web-font-family;
+}
+h3,
+h4 {
+  font-weight: 400;
+  font-family: $web-font-family;
+}
+h5,
+h6 {
+  font-weight: 600;
+  font-family: $web-font-family;
+}
 
 /* Links
   =========================================================================== */
 a {
-  display:inline-block;
+  display: inline-block;
   color: $accent-color;
   text-decoration: none;
   @extend %ease;
@@ -114,17 +160,26 @@ a {
   =========================================================================== */
 blockquote {
   padding: $spacing-unit/2;
-  padding-right: $spacing-unit/4*3;
+  padding-right: $spacing-unit/4 * 3;
   border-left: $spacing-unit/4 solid $accent-color;
   font-style: italic;
-  margin: $spacing-unit $spacing-unit/4*3*-1;
+  margin: $spacing-unit $spacing-unit/4 * 3 * -1;
   @include relative-font-size(1.25);
-  @include media-query($on-md) { margin: $spacing-unit; }
-  p { font-weight: 100; &:last-child { margin-bottom: 0; } &:first-child { margin-top: 0; }
+  @include media-query($on-md) {
+    margin: $spacing-unit;
+  }
+  p {
+    font-weight: 100;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
     & + p:last-child {
       font-weight: 700;
-      margin-left: $spacing-unit*2;
-      @include relative-font-size(.8125);
+      margin-left: $spacing-unit * 2;
+      @include relative-font-size(0.8125);
     }
   }
 }
@@ -147,7 +202,7 @@ code {
 }
 
 pre {
-  padding: ($spacing-unit*.5) ($spacing-unit*.75);
+  padding: ($spacing-unit * 0.5) ($spacing-unit * 0.75);
   overflow-x: auto;
   > code {
     border: 0;
@@ -215,13 +270,12 @@ button {
   padding-left: $spacing-unit;
   @extend %clearfix;
   @include media-query($on-lg) {
-
   }
 }
 
 /* a11y
   =========================================================================== */
-.screen-reader{
+.screen-reader {
   background: $light-color;
   color: $dark-color;
   position: absolute;
@@ -243,13 +297,13 @@ button {
   =========================================================================== */
 .ease,
 %ease {
-  -webkit-transition: ease-in-out .3s;
-          transition: ease-in-out .3s;
+  -webkit-transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.3s;
 }
 .ease-slow,
 %ease-slow {
-  -webkit-transition: ease-in-out .7s;
-          transition: ease-in-out .7s;
+  -webkit-transition: ease-in-out 0.7s;
+  transition: ease-in-out 0.7s;
 }
 
 /* Checkered
@@ -257,10 +311,18 @@ button {
 .checkered,
 %checkered {
   background-color: #fff;
-  background-position: 0 0,10px 10px;
+  background-position: 0 0, 10px 10px;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   border: 0;
-  background-image: -webkit-linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%,#eee),
-                    -webkit-linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%,#eee);
+  background-image: -webkit-linear-gradient(
+      45deg,
+      #eee 25%,
+      transparent 25%,
+      transparent 75%,
+      #eee 75%,
+      #eee
+    ),
+    -webkit-linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee
+          75%, #eee);
 }
