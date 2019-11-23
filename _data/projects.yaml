@@ -148,7 +148,47 @@
     Released version 3.3 in Appstore<br/>
     <br/>
     Updated new release V3.3 on August 2018<br/>
-    Milestone maintenance and develped release by Yoseph Wijaya:<br/>
+    Milestone maintenance and developed release by Yoseph Wijaya:<br/>
       - V2.18.0 to V3.3.1<br /> 
+- ######################################
+  id: paypay
+  name: PayPay
+  icon: assets/images/logo_apps/paypay_logo.png
+  ios-store: https://apps.apple.com/jp/app/id1435783608
+  and-store: https://play.google.com/store/apps/details?id=jp.ne.paypay.android.app
+  gallery:
+    - assets/images/paypay/pp1.jpg
+    - assets/images/paypay/pp2.jpg
+    - assets/images/paypay/pp3.jpg
+    - assets/images/paypay/pp4.jpg
+    - assets/images/paypay/pp5.jpg
+    - assets/images/paypay/pp6.jpg
+    - assets/images/paypay/pp7.jpg
+    - assets/images/paypay/pp8.jpg
+    - assets/images/paypay/pp9.jpg
+  description: |
+    PayPay((ペイペイ))
+    <br/>
+    This App is for payment, easily pay at any-where with so many cashback and discount campaign.
+    <br/>
+    Japan now strongly suggest on using cashless on every market as many as possible.
+    <br/>
+    Thus this application will come in handy, there's plenty payment app like this outside,
+    but this App has its own unique capabilities on the payment itself.
+    <br/>
+    Bring your daily life at ease, even pay your monthly utility needed such as gas, electricity, and so on.
+    <br/>
+    You can also split it easily if you go with your friend.
+    <br/>
+    <br/>
+    Try it first and see the difference.
+    <br/>
+    I really hope this app could go big someday.
+    <br/>
+    <br/>
+    Released version 2.7.0 in Appstore<br/>
+    <br/>
+    Milestone maintenance release included by Yoseph Wijaya and Team<br/>
+      - V1.xx.0 to current version<br /> 
 ########################################
 

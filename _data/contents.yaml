@@ -1,7 +1,7 @@
 GEO:
   center:
-    lat: 35.5901148
-    long: 139.728117
+    lat: 35.5752274
+    long: 139.6987808
     zoom: 15
 ########################################
 TOKEN_MAPBOX: pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g
@@ -29,9 +29,6 @@ about:
     a human who love to share everything for unique and original people,
     to know more about me you can add and drop me chat on whatsapp.
 
-    Please feel free to contact me if you have interesting idea to build in iOS platform.
-
-    Some of you might be wondering, am i jobless guy? fraudsters? I am neither of that,
     I am just very pure normal developer guy who love to code and hug.
     Short stories currently working on some projects on-site in Japan company that
     required me to give most of the time to the projects.
@@ -55,10 +52,10 @@ anisequence:
 contact:
   ######################################
   address: |
-    Sannou 1-7<br>
-    Oomori 2<br>
+    Sky Court 18-11<br>
+    Ikegami 3<br>
     Tokyo<br>
-    〒 143-0023<br>
+    〒 146-0082<br>
     Japan
   ######################################
   detail: |
