@@ -53,9 +53,9 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
   <div class="container">
     <p><h2>project-list</h2><small>(tap icon apps to see detail)</small><br/></p><br/>
     <div class="popup-modalx sliding">
-    <div class="row align-center">
+    <div class="row">
       {% for project in site.data.projects %}
-      <div class="col-sm-1-3 col-md-1-6 app-list ease project-{{ project.id }}">
+      <div class="col-sm-1-3 col-md-1-6 app-list align-center ease project-{{ project.id }}">
         <a class="app-icon" href="#project-{{ project.id }}">
           <img src="{{ page.blank_gif }}" class="lazyload app-icon" alt="App icon" data-src="{{ project.icon }}"/>
           <span class="screen-reader">🔗 open</span>
