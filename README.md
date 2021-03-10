@@ -1,5 +1,7 @@
 # meself
 
+[![Known Vulnerabilities](https://snyk.io/test/github/nsnull0/meself/badge.svg?targetFile=Gemfile.lock)](https://snyk.io/test/github/nsnull0/meself?targetFile=Gemfile.lock)
+
 Profile web - <https://yoseph.ws/>
 
 ## Install
