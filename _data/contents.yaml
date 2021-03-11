@@ -1,8 +1,8 @@
 GEO:
   center:
-    lat: 35.5752274
-    long: 139.6987808
-    zoom: 15
+    lat: 35.59012957658029
+    long: 139.41757389773662
+    zoom: 10
 ########################################
 TOKEN_MAPBOX: pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g
 URL_GOOGLE_MAPS: https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/
@@ -52,10 +52,10 @@ anisequence:
 contact:
   ######################################
   address: |
-    Sky Court 18-11<br>
-    Ikegami 3<br>
+    Machida-shi <br>
+    Zushimachi 34-1 <br>
     Tokyo<br>
-    〒 146-0082<br>
+    〒 194-0203<br>
     Japan
   ######################################
   detail: |
