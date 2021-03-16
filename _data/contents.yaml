@@ -5,7 +5,7 @@ GEO:
     zoom: 10
 ########################################
 TOKEN_MAPBOX: pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g
-URL_GOOGLE_MAPS: https://www.google.co.id/maps/place/Japan,+〒143-0023+Tōkyō-to,+Ōta-ku,+Sannō,+1+Chome−２４−１+凛ｏｍｏｒｉ/@'+GEO.center.lat+','+GEO.center.long+','+GEO.center.zoom+'z/
+URL_GOOGLE_MAPS: https://www.google.co.id/maps/place/34-1+Zushimachi,+Machida,+Tokyo+194-0203/@35.5900249,139.4153852,17z/data=!3m1!4b1!4m5!3m4!1s0x6018fcf0411aaaab:0x2b7d2a3d7fc8e298!8m2!3d35.5900249!4d139.4175739
 URL_SLACK_WEBHOOK: https://hooks.slack.com/services/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
 ########################################
 about:
