@@ -1,0 +1,32 @@
+name: Jekyll Deploy
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/gems
+          key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Add secrets to data file
+      	run: |
+      	  ./prescript.sh {{ secrets.GIT_TOKEN_MAPBOX }} {{ secrets.SLACK_URL_WEBHOOK }} {{ secrets.GIT_URL_GOOGLE_MAPS }}
+
+      - name: Build & Deploy to GitHub Pages
+        uses: DavidS/jekyll-deploy@main
+        env:
+          JEKYLL_ENV: production
+          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
