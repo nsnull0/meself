@@ -137,8 +137,8 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
 <script>
 window.anisequence = {{ site.data.contents.anisequence | jsonify }};
 window.GEO = {{ site.data.contents.GEO | jsonify }};
-window.TOKEN_MAPBOX = {{ site.data.contents.TOKEN_MAPBOX | jsonify }};
-window.URL_GOOGLE_MAPS = {{ site.data.contents.URL_GOOGLE_MAPS | jsonify }};
-window.URL_SLACK_WEBHOOK = {{ site.data.contents.URL_SLACK_WEBHOOK | jsonify }};
+window.TOKEN_MAPBOX = {{ site.data.mapbox_secrets.TOKEN_MAPBOX | jsonify }};
+window.URL_GOOGLE_MAPS = {{ site.data.google_secrets.URL_GOOGLE_MAPS | jsonify }};
+window.URL_SLACK_WEBHOOK = {{ site.data.slack_secrets.URL_SLACK_WEBHOOK | jsonify }};
 </script>
 <script async="" defer="" src="{{ "/assets/js/page-index.js" | absolute_url }}"></script>
