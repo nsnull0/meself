@@ -25,7 +25,8 @@ jobs:
             ${{ runner.os }}-
 
       - name: Build & Deploy to GitHub Pages
-        uses: DavidS/jekyll-deploy@main
+        uses: joshlarsen/jekyll4-deploy-gh-pages@master
         env:
-          JEKYLL_ENV: production
-          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
