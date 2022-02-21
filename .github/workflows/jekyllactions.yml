@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Add secrets
+        run: ./prescript.sh {{ secrets.GIT_TOKEN_MAPBOX }} {{ secrets.SLACK_URL_WEBHOOK }} {{ secrets.GIT_URL_GOOGLE_MAPS }}
+
       - name: Cache gems
         uses: actions/cache@v1
         with:
@@ -21,12 +24,9 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Add secrets to data file
-      	run: |
-      	  ./prescript.sh {{ secrets.GIT_TOKEN_MAPBOX }} {{ secrets.SLACK_URL_WEBHOOK }} {{ secrets.GIT_URL_GOOGLE_MAPS }}
-
       - name: Build & Deploy to GitHub Pages
-        uses: DavidS/jekyll-deploy@main
+        uses: joshlarsen/jekyll4-deploy-gh-pages@master
         env:
-          JEKYLL_ENV: production
-          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
