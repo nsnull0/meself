@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Add secrets
+        run: ./prescript.sh {{ secrets.GIT_TOKEN_MAPBOX }} {{ secrets.SLACK_URL_WEBHOOK }} {{ secrets.GIT_URL_GOOGLE_MAPS }}
+
       - name: Cache gems
         uses: actions/cache@v1
         with:
@@ -20,9 +23,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
-      - name: Add secrets
-      	run: ./prescript.sh {{ secrets.GIT_TOKEN_MAPBOX }} {{ secrets.SLACK_URL_WEBHOOK }} {{ secrets.GIT_URL_GOOGLE_MAPS }}
 
       - name: Build & Deploy to GitHub Pages
         uses: DavidS/jekyll-deploy@main
