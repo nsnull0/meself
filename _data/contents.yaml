@@ -4,7 +4,8 @@ GEO:
     long: 139.41757389773662
     zoom: 10
 ########################################
-
+TOKEN_MAPBOX: "pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g"
+URL_GOOGLE_MAPS: "https://www.google.co.id/maps/place/34-1+Zushimachi,+Machida,+Tokyo+194-0203/@35.5900249,139.4153852,17z/data=!3m1!4b1!4m5!3m4!1s0x6018fcf0411aaaab:0x2b7d2a3d7fc8e298!8m2!3d35.5900249!4d139.4175739"
 ########################################
 about:
   ######################################
@@ -61,5 +62,4 @@ contact:
     <a class="ease" target="_blank" href="mailto:info@yoseph.ws">mailto: info@yoseph.ws</a><br>
     <a class="ease" target="_blank" href="https://github.com/nsnull0">GitHub: @nsnull0</a><br>
     <a class="ease" target="_blank" href="https://www.instagram.com/yoseph.ws/">Instagram: yoseph.ws</a><br>
-    <a class="ease" target="_blank" href="tel:+81 ">tel: drop me a message!</a><br>
 ########################################

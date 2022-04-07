@@ -116,7 +116,7 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
         </div>
         <address>{{ site.data.contents.contact.detail | markdownify }}</address>
       </div> <!-- .col -->
-      <div class="col-sm-1 col-md-1-2">
+      <!-- <div class="col-sm-1 col-md-1-2">
         <form class="no-print" id="cForm">
           <p><label>  <input type="text" name="name" placeholder="Name">
           </label></p>
@@ -129,7 +129,7 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           <p><label>  <button type="submit">Send</button>
           </label></p>
         </form>
-      </div> <!-- .col -->
+      </div> .col --> 
     </div> <!-- .row --> <p/>
   </div>
 </section>
@@ -137,8 +137,8 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
 <script>
 window.anisequence = {{ site.data.contents.anisequence | jsonify }};
 window.GEO = {{ site.data.contents.GEO | jsonify }};
-window.TOKEN_MAPBOX = {{ site.data.mapbox_secrets.TOKEN_MAPBOX | jsonify }};
-window.URL_GOOGLE_MAPS = {{ site.data.google_secrets.URL_GOOGLE_MAPS | jsonify }};
+window.TOKEN_MAPBOX = {{ site.data.contents.TOKEN_MAPBOX | jsonify }};
+window.URL_GOOGLE_MAPS = {{ site.data.contents.URL_GOOGLE_MAPS | jsonify }};
 window.URL_SLACK_WEBHOOK = {{ site.data.slack_secrets.URL_SLACK_WEBHOOK | jsonify }};
 </script>
 <script async="" defer="" src="{{ "/assets/js/page-index.js" | absolute_url }}"></script>
