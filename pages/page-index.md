@@ -71,7 +71,7 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
       <a class="btn close" href="#project"><span class="screen-reader">× close</span></a>
       <div class="target-modal">
         <h3>{{ project.name }}</h3>
-        {% if project.ios-store or project.and-store %}
+        {% if project.ios-store or project.and-store or project.link %}
         <p class="apps-marketing">
           {% if project.ios-store %}
           <a class="ios-btn" target="_blank" href="{{ project.ios-store }}">
@@ -81,6 +81,11 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           {% if project.and-store %}
           <a class="and-btn" target="_blank" href="{{ project.and-store }}">
             <img src="{{ page.blank_gif }}" class="lazyload" data-src="{{ "/assets/images/logo_apps/badge-and.png" | absolute_url }}"/>
+          </a>
+          {% endif %}
+          {% if project.link %}
+          <a target="_blank" href="{{ project.link }}">
+            <img src="{{ page.blank_gif }}" class="lazyload" style="max-width: 50px;" data-src="{{ "/assets/images/logo_apps/browser.png" | absolute_url }}"/>
           </a>
           {% endif %}
         </p>
