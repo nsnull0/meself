@@ -84,8 +84,8 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           </a>
           {% endif %}
           {% if project.link %}
-          <a target="_blank" href="{{ project.link }}">
-            <img src="{{ page.blank_gif }}" class="lazyload" style="max-width: 50px;" data-src="{{ "/assets/images/logo_apps/browser.png" | absolute_url }}"/>
+          <a target="_blank" href="{{ project.link }}" style="color: #87FBB9;">
+            {{ project.link }}
           </a>
           {% endif %}
         </p>
