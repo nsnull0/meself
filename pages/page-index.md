@@ -120,9 +120,9 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           <address>{{ site.data.contents.contact.address | markdownify }}</address>
         </div>
         <address>{{ site.data.contents.contact.detail | markdownify }}</address>
-      </div> <!-- .col -->
-      <!-- <div class="col-sm-1 col-md-1-2">
-        <form class="no-print" id="cForm">
+      </div>
+      <div class="col-sm-1 col-md-1-2">
+        <!-- form class="no-print" id="cForm">
           <p><label>  <input type="text" name="name" placeholder="Name">
           </label></p>
           <p><label>  <input type="email" name="email" placeholder="Email (required)" required="required">
@@ -133,8 +133,23 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           </label></p>
           <p><label>  <button type="submit">Send</button>
           </label></p>
-        </form>
-      </div> .col --> 
+        </form> -->
+          <div class="embed-container">
+            <iframe
+                src="https://www.youtube.com/embed/-340ucBEHx0?autoplay=1"
+                width="350"
+                height="240"
+                frameborder="0"
+                allowfullscreen=""
+                allow='autoplay'>
+            </iframe>
+          </div>
+          <p>
+            Latest share knowledge from yoseph.ws
+            <br/>
+            Feel free to visits <a href="https://curcifer.tech/blog/" style="color: #87FBB9;"> Curcifer Tech </a> for more detail
+        </p>
+      </div>
     </div> <!-- .row --> <p/>
   </div>
 </section>
