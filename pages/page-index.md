@@ -136,7 +136,7 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
         </form> -->
           <div class="embed-container">
             <iframe
-                src="https://www.youtube.com/embed/-340ucBEHx0?autoplay=1"
+                src="https://www.youtube.com/embed/JjqKwv6204c?autoplay=1"
                 width="350"
                 height="240"
                 frameborder="0"
@@ -145,7 +145,7 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
             </iframe>
           </div>
           <p>
-            Latest share knowledge from yoseph.ws
+            Demo from yoseph.ws
             <br/>
             Feel free to visits <a href="https://curcifer.tech/blog/" style="color: #87FBB9;"> Curcifer Tech </a> for more detail
         </p>
