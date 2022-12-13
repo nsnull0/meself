@@ -145,9 +145,9 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
             </iframe>
           </div>
           <p>
-            Demo from yoseph.ws
+            Blog post website
             <br/>
-            Feel free to visits <a href="https://curcifer.tech/blog/" style="color: #87FBB9;"> Curcifer Tech </a> for more detail
+            Feel free to visits <a href="https://curcifer-tech.whopfi.com/" style="color: #87FBB9;"> Curcifer Tech </a> for more contents
         </p>
       </div>
     </div> <!-- .row --> <p/>
