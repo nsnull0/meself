@@ -134,7 +134,7 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           <p><label>  <button type="submit">Send</button>
           </label></p>
         </form> -->
-          <div class="embed-container">
+          <!-- <div class="embed-container">
             <iframe
                 src="https://www.youtube.com/embed/JjqKwv6204c?autoplay=1"
                 width="350"
@@ -143,11 +143,15 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
                 allowfullscreen=""
                 allow='autoplay'>
             </iframe>
-          </div>
+          </div> -->
           <p>
             Blog post website
             <br/>
-            Feel free to visits <a href="https://curcifer-tech.whopfi.com/" style="color: #87FBB9;"> Curcifer Tech </a> for more contents
+            Coding and Crypto DeFi related <a href="https://curcifer-tech.whopfi.com/" style="color: #87FBB9;">  @Curcifer Tech </a>
+            <br/>
+            Forex Trading related <a href="https://egoldstandard.com/blog" style="color: #87FBB9"> @Enigma Gold Standard </a>
+            <br/>
+            Technical Crypto Auditor related <a href="https://whopfi.com/"  style="color: #87FBB9;"> @WhopFi </a>
         </p>
       </div>
     </div> <!-- .row --> <p/>
