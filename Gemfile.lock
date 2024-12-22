@@ -260,7 +260,7 @@ GEM
       unf_ext
     unf_ext (0.0.9.1)
     unicode-display_width (1.8.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
 
 PLATFORMS
   ruby
@@ -268,7 +268,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages (>= 207)
   tzinfo-data
-  webrick (~> 1.7)
+  webrick (~> 1.8)
 
 RUBY VERSION
    ruby 2.7.7p221
