@@ -28,18 +28,6 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
 ---
 
 <!-- markdownlint-disable MD033 -->
-
-<header class="site-header" role="banner">
-  <div class="container">
-    <nav data-gumshoe-header class="menu fixed no-print">
-      <ul data-gumshoe class="inline-menu ease font-montserrat">
-        <li><a data-scroll class="btn ease menu-item" href="#me">me.self</a></li>
-        <li><a data-scroll class="btn ease menu-item" href="#project">project</a></li>
-        <li><a data-scroll class="btn ease menu-item" href="#contact">contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
 <div class="index-gradient">
 <section id="me">
   <div class="hero"><div class="ratio ease"><div>
@@ -145,13 +133,11 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
             </iframe>
           </div> -->
           <p>
-            Blog post website
-            <br/>
-            Coding and Crypto DeFi related <a href="https://curcifer-tech.whopfi.com/" style="color: #87FBB9;">  @Curcifer Tech </a>
-            <br/>
-            Forex Trading related <a href="https://egoldstandard.com/blog" style="color: #87FBB9"> @Enigma Gold Standard </a>
+            Hobbies projects
             <br/>
             Technical Crypto Auditor related <a href="https://whopfi.com/"  style="color: #87FBB9;"> @WhopFi </a>
+            <br/>
+            DeFi related <a href="https://whopfi.com/"  style="color: #87FBB9;"> @YCB </a>
         </p>
       </div>
     </div> <!-- .row --> <p/>

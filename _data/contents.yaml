@@ -1,7 +1,7 @@
 GEO:
   center:
-    lat: 35.59012957658029
-    long: 139.41757389773662
+    lat: 35.5467
+    long: 139.4386
     zoom: 10
 ########################################
 TOKEN_MAPBOX: "pk.eyJ1IjoieW9zM3BoIiwiYSI6ImNqM2lscW10MTAwZG4yd296MnNob3hkN3UifQ.beVg5LyH6YmeBqj_F7aW7g"
@@ -21,11 +21,11 @@ about:
     Have Fun!!
   ######################################
   text: |
-    Hello my name is Yoseph Wijaya Savianto.
+    Hi there! I’m Yoseph Wijaya Savianto.
 
-    I am just very pure normal developer guy who love to code and hug.
+    I’m a passionate developer with a love for coding, creativity, and connection. While programming is my primary focus, my curiosity and enthusiasm have led me to explore a variety of interests beyond the tech world.
 
-    I've been doing many things not just coding and programming, so feel free to drop me a message and let's be friends :)
+    I believe in the power of collaboration, innovation, and, yes—hugs! Whether you’re looking to build something amazing together, share ideas, or simply connect, feel free to drop me a message. Let’s create, grow, and make friends along the way. 😊
 ########################################
 anisequence:
   - ME.SELF
@@ -41,7 +41,6 @@ contact:
   ######################################
   address: |
     Machida <br>
-    Zushimachi <br>
     Tokyo<br>
     Japan
   ######################################
@@ -49,5 +48,5 @@ contact:
     Yoseph Wijaya Savianto<br>
     <a class="ease" target="_blank" href="mailto:info@yoseph.ws">mailto: info@yoseph.ws</a><br>
     <a class="ease" target="_blank" href="https://github.com/nsnull0">GitHub: @nsnull0</a><br>
-    <a class="ease" target="_blank" href="https://www.instagram.com/yoseph.ws/">Instagram: yoseph.ws</a><br>
+    <a class="ease" target="_blank" href="https://www.linkedin.com/in/yoseph-wijaya-a4539979/">Linkedin: yoseph wijaya</a><br>
 ########################################
