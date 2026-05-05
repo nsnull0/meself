@@ -191,46 +191,6 @@
     Milestone maintenance release included by Yoseph Wijaya and Team<br/>
       - V1.xx.0 to current version<br /> 
 - ######################################
-  id: ct
-  name: Curcifer Tech
-  icon: assets/images/logo_apps/ct-logo.png
-  link: https://curcifer-tech.whopfi.com/projects.html
-  gallery:
-    - assets/images/curcifertech/ct-1.png
-    - assets/images/curcifertech/ct-2.png
-    - assets/images/curcifertech/ct-3.png
-  description: |
-    Landing site for all Curcifer Tech Blog.
-    <br/>
-    Currently it become my personal blog at the moment.
-    but time by time if people want to join Curcifer Tech blog,
-    then there will be more techies inside to share great materials for technologies.
-    <br/>
-    The purpose of this blog is to share any new finding in passive income information in the world.
-    <br/>
-    Updated 2023 CT
-- ######################################
-  id: whopfi
-  name: WhopFi
-  icon: assets/images/whopfi/whopfi.svg
-  link: https://whopfi.com/
-  gallery:
-    - assets/images/whopfi/whopfi-ss.png
-  description: |
-    This service is one of YCB project, created to secure DeFi world.
-    <br/>
-    Escalating DeFi protocol to new level.
-    Logging all important with detailed report.
-    To solve the issue about the fear to join DeFi (Decentralized Finance).
-    <br/>
-    <br/>
-    For Defi Owner, using this service they can avoid huge financial lose due to immutable code before submission.
-    For DeFi Customer, subscribing to this service they can avoid huge financial lose due to naughty business owner.
-    <br/>
-    This still in progress, but already open for Review Smart Contract only.
-    <br/>
-    Updated 2023 WhopFi
-- ######################################
   id: ycb
   name: Your Crypto Bank
   icon: assets/images/ycb/ycblogo.svg
@@ -238,19 +198,18 @@
   gallery:
     - assets/images/ycb/ycb-ss.png
   description: |
-    This is the main project of YCB (Your Crypto Bank).
+    This is the Forge and Defi for fun as trader.
     <br/>
-    The bank in here is not like ordinary bank, but this contain many project to solve problem in cryptocurrencies.
+    The work is in progress but the coin defi for YCB is launched, have fun!
     <br/>
     <br/>
-    Currently only Central Swap feature is available to try, you can swap your crypto across blockchain with connection of decentralized wallet, such as metamask.
-    available in Polygon, Avalanche, BSC, and Ethereum blockchain.
+    Coin auditor and the forge will be your good friend daily on finding good crypto token.
     <br/>
     FYI, since this project currently only myself working solo, if you developer, ui/ux, smart contract dev, or any investor interested to join early stage, please reach me out.
     <br/>
     There are  upcoming project that will be implemented soon in YCB.
     Please Stay tune!
     <br/>
-    Updated 2023 YCB
+    Updated 2026 YCB
 ########################################
 
