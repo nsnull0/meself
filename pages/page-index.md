@@ -135,8 +135,6 @@ blank_gif: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAE
           <p>
             Hobbies projects
             <br/>
-            Technical Crypto Auditor related <a href="https://whopfi.com/"  style="color: #87FBB9;"> @WhopFi </a>
-            <br/>
             DeFi related <a href="https://whopfi.com/"  style="color: #87FBB9;"> @YCB </a>
         </p>
       </div>
